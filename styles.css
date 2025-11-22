@@ -75,6 +75,7 @@ body {
 .hero {
     text-align: center;
     margin-top: 80px;
+    margin-bottom: 40px;
 }
 
 .cosmic-icon {
@@ -155,25 +156,28 @@ body {
 .text-frame::after {
     content: "";
     position: absolute;
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-/* Arriba izquierda */
+/* CENTRADO ARRIBA */
 .text-frame::before {
-    top: -18px;
-    left: -18px;
-    background-image: url("data:image/svg+xml,%3Csvg width='90' height='90' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='%23A47BD9' stroke-width='2' d='M10 60 Q40 20, 80 10'/%3E%3C/svg%3E");
+    top: -45px;                /* Mueve hacia arriba */
+    left: 50%;                 /* Se coloca al centro */
+    transform: translateX(-50%);
+    background-image: url("img/flor.png");
 }
 
-/* Abajo derecha */
+/* CENTRADO ABAJO */
 .text-frame::after {
-    bottom: -18px;
-    right: -18px;
-    background-image: url("data:image/svg+xml,%3Csvg width='90' height='90' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='%23A47BD9' stroke-width='2' d='M10 10 Q40 70, 80 80'/%3E%3C/svg%3E");
+    bottom: -45px;             /* Mueve hacia abajo */
+    left: 50%;                 /* Se coloca al centro */
+    transform: translateX(-50%);
+    background-image: url("img/flor.png");
 }
+
 
 /* Tipografía */
 .about-text h2 {
