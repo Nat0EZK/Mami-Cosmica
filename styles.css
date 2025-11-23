@@ -98,6 +98,64 @@ body {
     color: #9a86bc;
 }
 
+.slogan {
+    font-size: 2rem;
+    color: #8e75b1;
+    margin-top: 40px;
+    opacity: 0.85;
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+.slogan {
+    animation: fade-in 1.2s ease forwards;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 32px;
+    border-radius: 30px;
+    background: var(--lavanda);
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+    box-shadow: 0 6px 15px rgba(143, 121, 184, 0.25);
+
+    /* 🟣 Animación tipo respiro */
+    animation: breathing 3s ease-in-out infinite;
+}
+
+/* Efecto de respiro suave */
+@keyframes breathing {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 6px 15px rgba(143, 121, 184, 0.25);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(143, 121, 184, 0.35);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 6px 15px rgba(143, 121, 184, 0.25);
+    }
+}
+
+.hero-btn:hover {
+    background: var(--lavanda-clara);
+    transform: scale(1.07);
+    box-shadow: 0 10px 22px rgba(143, 121, 184, 0.40);
+}
+
+
 /* ========== SOBRE MÍ (versión rectangular) ========== */
 
 .about-section {
