@@ -532,13 +532,17 @@ body {
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
-
+    
     color: #fff;
     font-size: 24px;
     font-weight: 700;
     text-shadow: 0px 3px 6px rgba(0,0,0,0.4);
     margin: 0;
     padding: 0;
+}
+
+.card-title-top span {
+    font-size: 1.55em; /* igual que el texto */
 }
 
 .card-overlay .pack-title {
