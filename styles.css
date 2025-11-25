@@ -339,7 +339,6 @@ body {
     color: #6d5478;
     position: relative;
     padding-left: 22px; /* espacio para la estrella */
-    padding-right: 28px; /* espacio para la flecha */
 }
 
 /* Estrella en TODOS los ítems */
@@ -361,29 +360,20 @@ body {
     font-weight: 600;
     color: var(--lavanda);
     transition: 0.3s ease;
+    padding-right: 28px; /* espacio para el ▼ */
 }
 
-/* Flecha ▼ a la derecha */
-.flecha {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.9rem;
-    color: var(--lavanda);
-    opacity: 0.7;
-    transition: 0.3s ease;
-}
 
-/* Hover en destacados */
+/* Hover */
 .service-box ul li.highlight:hover {
     color: var(--lavanda-clara);
 }
 
-.service-box ul li.highlight:hover .flecha {
+.service-box ul li.highlight:hover::after {
     opacity: 1;
     transform: translateY(-50%) scale(1.15);
 }
+
 
 /* ============================
    BLOQUE EXPANDIBLE
@@ -420,7 +410,6 @@ body {
 
 
 
-
 /* RESPONSIVE */
 @media (max-width: 1000px) {
     .service-block {
@@ -447,6 +436,242 @@ body {
         font-size: 1.1rem;
     }
 }
+
+/* --- MAGIA CÓSMICA 2026 --- */
+
+.magia-section {
+    text-align: center;
+    padding: 80px 20px;
+    background: #F7F2E9;
+}
+
+.magia-title {
+    font-size: 55px;
+    font-family: var(--font-titles);
+    color: var(--lavanda);
+    margin-bottom: 20px;
+}
+
+.magia-sub {
+    font-size: 20px;
+    max-width: 750px;
+    margin: 0 auto 10px;
+    color: #555;
+}
+
+/* CONTENEDOR DE TARJETAS */
+.magia-cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+/* ------------ FLIP CARD ------------ */
+
+.flip-card {
+    width: 300px;
+    height: 450px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-inner,
+.flip-card.active .flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* CARA FRONTAL Y POSTERIOR */
+.flip-front,
+.flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #E8DFF1; /* COLOR BASE UNIFORME */
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.15);
+    color: #4b3b58;
+}
+
+/* ---------- IMAGEN COMPLETA EN LA TARJETA ---------- */
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+
+/* TEXTO ENCIMA DE LA IMAGEN */
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 25px 15px;
+    text-align: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+    color: #fff;
+    z-index: 2;
+}
+
+/* TÍTULO "PACK 1 / PACK 2" SOBRE LA IMAGEN */
+.card-title-top {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    text-shadow: 0px 3px 6px rgba(0,0,0,0.4);
+    margin: 0;
+    padding: 0;
+}
+
+.card-overlay .pack-title {
+    font-size: 17px;
+    line-height: 1.3;
+}
+
+/* PARTE TRASERA */
+.flip-back {
+    transform: rotateY(180deg);
+    padding: 25px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flip-back h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.flip-back ul {
+    padding-left: 20px;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+.flip-back .pack-desc {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* TEXTO "TOCA PARA REVELAR" */
+.magia-hint {
+    margin-top: 40px;
+    font-size: 20px;
+    color: #777;
+    font-style: italic;
+}
+
+
+/* --------------------- RESPONSIVE MAGIA COSMICA 2026  --------------------- */
+
+@media (max-width: 900px) {
+    .magia-title {
+        font-size: 42px;
+    }
+
+    .magia-sub {
+        font-size: 18px;
+    }
+
+    .magia-cards {
+        gap: 30px;
+    }
+
+    .flip-card {
+        width: 280px;
+        height: 430px;
+    }
+}
+
+@media (max-width: 600px) {
+    .magia-title {
+        font-size: 36px;
+    }
+
+    .magia-sub {
+        font-size: 16px;
+        padding: 0 10px;
+    }
+
+    .flip-card {
+        width: 260px;
+        height: 410px;
+    }
+
+    .card-overlay {
+        padding: 20px 12px;
+    }
+
+    .card-overlay h3 {
+        font-size: 20px;
+    }
+
+    .card-overlay .pack-title {
+        font-size: 15px;
+    }
+
+    .flip-back {
+        padding: 20px;
+    }
+
+    .flip-back ul {
+        font-size: 15px;
+    }
+
+    .flip-back .pack-desc {
+        font-size: 16px;
+    }
+
+    .magia-hint {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 420px) {
+    .magia-title {
+        font-size: 30px;
+    }
+
+    .flip-card {
+        width: 240px;
+        height: 390px;
+    }
+
+    .card-overlay {
+        padding: 18px;
+    }
+
+    .card-overlay h3 {
+        font-size: 18px;
+    }
+
+    .magia-hint {
+        font-size: 15px;
+        margin-top: 30px;
+    }
+}
+
 
 
 /* ============================

@@ -50,3 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+// Flip-cards en móviles (tap)
+document.querySelectorAll(".flip-card").forEach(card => {
+    card.addEventListener("click", () => {
+        card.classList.toggle("active");
+    });
+});
+
