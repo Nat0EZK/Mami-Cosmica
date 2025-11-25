@@ -23,9 +23,30 @@ body {
 }
 
 /* NAVBAR */
+header {
+    /* 1. Fija la cabecera en la parte superior de la ventana */
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    
+    /* 2. Asegura que la barra esté por encima de otros contenidos al hacer scroll */
+    z-index: 1000; 
+
+    /* 3. Estilo para el fondo (usamos una versión más clara para que no opaque el texto, y semi-transparente para el efecto etéreo) */
+    background-color: rgba(247, 242, 233, 0.95); /* Color de fondo con ligera transparencia */
+    
+    /* 4. Opcional: Una ligera sombra para que se separe visualmente del contenido al hacer scroll */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    
+    /* Asegura que el contenido del header no sea afectado por la fijación */
+    padding: 0;
+}
+
+/* Mantén la clase .navbar para el centrado interno */
 .navbar {
     width: 100%;
-    padding: 30px 0;
+    padding: 20px 0; /* Mantenemos el padding vertical para dar espacio al menú */
     display: flex;
     justify-content: center;
 }
@@ -584,6 +605,19 @@ body {
     font-size: 20px;
     color: #777;
     font-style: italic;
+}
+
+/* Clases para manejar la visibilidad de secciones por JS (Servicios y Packs) */
+.oculto-seccion {
+    /* Oculta la sección y la saca del flujo, permitiendo el display:block/none */
+    display: none; 
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.visible-seccion {
+    display: block !important; /* Asegura que la sección se muestre */
+    opacity: 1 !important;     /* Asegura que la opacidad sea visible */
 }
 
 
