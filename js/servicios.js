@@ -1,103 +1,95 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // 1. Lógica para mostrar/ocultar secciones al navegar
-const navLinks = document.querySelectorAll('.menu a[href^="#"]');
+    const navLinks = document.querySelectorAll('.menu a[href^="#"]');
 
-navLinks.forEach(link => {
-    const targetHref = link.getAttribute('href');
+    navLinks.forEach(link => {
+        const targetHref = link.getAttribute('href');
 
-    link.addEventListener('click', function(e) {
-        // La acción por defecto de Inicio o Sobre Mí es hacer scroll
-        if (targetHref !== '#servicios' && targetHref !== '#magia-2026') {
+        link.addEventListener('click', function(e) {
             
-            // Ocultar todas las secciones dinámicas al hacer clic en 'Inicio' o 'Sobre Mí'
-            document.querySelectorAll('.oculto-seccion').forEach(section => {
-                section.classList.remove('visible-seccion');
-                section.style.display = 'none'; 
-            });
-            
-            // Permitir que el navegador maneje el scroll natural
-            // No hacemos e.preventDefault()
-            
-        } else {
-            // Manejar los clics en 'Servicios' y 'Packs'
-            e.preventDefault();
-            
-            const targetSection = document.querySelector(targetHref);
-
-            if (targetSection) {
-                // Ocultar todas las secciones que pueden estar visibles (Servicios y Magia Cósmica)
+            // === CAMBIO IMPORTANTE: Agregamos "&& targetHref !== '#contacto'" ===
+            // Ahora verifica Servicios, Magia, Talleres Y Contacto
+            if (targetHref !== '#servicios' && targetHref !== '#magia-2026' && targetHref !== '#talleres' && targetHref !== '#contacto') {
+                
+                // Si es Inicio o Sobre Mí, ocultamos todas las secciones dinámicas
                 document.querySelectorAll('.oculto-seccion').forEach(section => {
                     section.classList.remove('visible-seccion');
                     section.style.display = 'none'; 
                 });
+                
+                // Permitimos el scroll natural (return true behavior)
+                
+            } else {
+                // Si es una de las secciones especiales (Servicios, Packs, Talleres, Contacto)
+                e.preventDefault();
+                
+                const targetSection = document.querySelector(targetHref);
 
-                // Mostrar solo la sección objetivo
-                targetSection.style.display = 'block'; 
-                setTimeout(() => {
-                    targetSection.classList.add('visible-seccion');
+                if (targetSection) {
+                    // 1. Ocultar TODAS las secciones dinámicas primero
+                    document.querySelectorAll('.oculto-seccion').forEach(section => {
+                        section.classList.remove('visible-seccion');
+                        section.style.display = 'none'; 
+                    });
+
+                    // 2. Mostrar SOLO la sección objetivo
+                    targetSection.style.display = 'block'; 
                     
-                    // Scroll suave a la sección
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 10);
+                    // Pequeño timeout para animación fade-in
+                    setTimeout(() => {
+                        targetSection.classList.add('visible-seccion');
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 10);
+                }
             }
-        }
+        });
     });
-});
 
 
-    // 2. Abre detalles al hacer click en items destacados (CÓDIGO ORIGINAL)
+    // 2. Abre detalles al hacer click en items destacados (CARTA ASTRAL, ETC.)
     document.querySelectorAll(".highlight").forEach(item => {
         item.addEventListener("click", () => {
-
-            const target = item.dataset.target; // ID del bloque a abrir
+            const target = item.dataset.target;
             const bloque = document.getElementById(target);
-
-            // Cerrar todos los bloques antes
-            document.querySelectorAll(".info-detalle").forEach(b => {
-                b.classList.add("oculto");
-            });
-
-            // Resetear flechas ▼
-            document.querySelectorAll(".highlight .flecha").forEach(f => {
-                f.textContent = "▼";
-            });
-
-            // Abrir el bloque
+            document.querySelectorAll(".info-detalle").forEach(b => b.classList.add("oculto"));
+            document.querySelectorAll(".highlight .flecha").forEach(f => f.textContent = "▼");
             bloque.classList.remove("oculto");
-
-            // Cambiar flecha de ese item a ▲
             item.querySelector(".flecha").textContent = "▲";
-
-            // Hacer scroll suave
             bloque.scrollIntoView({ behavior: "smooth", block: "start" });
         });
     });
 
-    // 3. Botón para cerrar (▲) (CÓDIGO ORIGINAL)
+    // 3. Botón para cerrar detalles (▲ Cerrar)
     document.querySelectorAll(".cerrar-detalle").forEach(btn => {
         btn.addEventListener("click", () => {
-
             const bloque = btn.parentElement;
-
-            // Ocultar bloque
             bloque.classList.add("oculto");
-
-            // Resetear flechas ▼
-            document.querySelectorAll(".highlight .flecha").forEach(f => {
-                f.textContent = "▼";
-            });
-
-            // Volver hacia los servicios
-            document.getElementById("servicios").scrollIntoView({ 
-                behavior: "smooth", 
-                block: "start" 
-            });
+            document.querySelectorAll(".highlight .flecha").forEach(f => f.textContent = "▼");
+            document.getElementById("servicios").scrollIntoView({ behavior: "smooth", block: "start" });
         });
     });
+
+    // === NUEVO CÓDIGO PARA CONTACTO & FAQ ===
+    const faqHeaders = document.querySelectorAll('.faq-header');
+
+    faqHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            
+            // Opción: Si quieres que se cierre uno al abrir otro, descomenta esto:
+            document.querySelectorAll('.faq-item').forEach(i => {
+            if(i !== item) i.classList.remove('active');
+            });
+
+            // Toggle la clase active
+            item.classList.toggle('active');
+        });
+    });
+
 });
 
-// 4. Flip-cards en móviles (tap) (CÓDIGO ORIGINAL - FUERA del DOMContentLoaded)
+// 4. Flip-cards en móviles
 document.querySelectorAll(".flip-card").forEach(card => {
     card.addEventListener("click", () => {
         card.classList.toggle("active");

@@ -620,6 +620,380 @@ header {
     opacity: 1 !important;     /* Asegura que la opacidad sea visible */
 }
 
+/* ============================
+   SECCIÓN TALLERES (Versión Contraste Mejorado)
+   ============================ */
+
+.talleres-section {
+    padding: 100px 20px;
+    /* Fondo general un poco más cálido para diferenciarlo del blanco puro */
+    background: #F7F2E9; 
+    /* Decoración sutil de fondo */
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(143, 121, 184, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(183, 163, 214, 0.08) 0%, transparent 40%);
+    text-align: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.talleres-header {
+    margin-bottom: 60px;
+}
+
+.moon-icon {
+    font-size: 2.5rem;
+    color: var(--lavanda);
+    margin-bottom: 10px;
+}
+
+.talleres-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    color: #2e2e2e; /* Negro casi puro para el título principal */
+    font-weight: 600; /* Un poco más grueso */
+}
+
+/* CONTENEDOR FLEXIBLE */
+.blobs-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 200px;
+    
+}
+
+/* TARJETAS CON FORMA DE "BLOB" (AMEBA) */
+.blob-card {
+    width: 450px;
+    height: 450px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+    
+    /* CAMBIO: Gradiente más sólido (menos transparente) y con más color */
+    background: linear-gradient(135deg, #f8f4ed 0%, #f2e8da 100%);
+    
+    /* CAMBIO: Borde más oscuro para definir la forma */
+    border: 2px solid #c9b3e6;
+    
+    /* CAMBIO: Sombra más pronunciada para dar efecto 3D */
+    box-shadow: 0 15px 35px rgba(110, 80, 150, 0.15);
+}
+
+/* Forma orgánica 1 (Izquierda) */
+.blob-left {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+}
+
+/* Forma orgánica 2 (Derecha) */
+.blob-right {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.blob-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 45px rgba(110, 80, 150, 0.25);
+    border-color: var(--lavanda);
+}
+
+/* CONTENIDO INTERNO */
+.blob-content {
+    max-width: 85%;
+    z-index: 2;
+}
+
+.blob-icon-img img {
+    height: 85px; 
+    margin-bottom: 20px;
+    /* Aseguramos que el icono no se vea transparente */
+    opacity: 1; 
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+/* Títulos dentro de las burbujas */
+.blob-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    /* CAMBIO: Color morado oscuro casi negro para lectura fácil */
+    color: #3e2850; 
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+/* Párrafos dentro de las burbujas */
+.blob-card p {
+    font-size: 1.1rem;
+    font-weight: 500; /* Letra un poco más gruesa */
+    /* CAMBIO: Gris oscuro con tono violeta */
+    color: #5a4a63; 
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* BOTÓN VER DETALLES */
+.btn-detalles {
+    /* CAMBIO: Color sólido más fuerte */
+    background: #9b72cf; 
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    margin-right: 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(155, 114, 207, 0.4);
+    letter-spacing: 0.5px;
+}
+
+.btn-detalles:hover {
+    background: #7d5aa6; /* Más oscuro al pasar el mouse */
+    transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .blobs-wrapper {
+        flex-direction: column;
+        gap: 60px;
+    }
+    
+    .blob-card {
+        width: 350px;
+        height: 350px;
+        padding: 20px;
+    }
+}
+
+/* ============================
+   SECCIÓN CONTACTO & FAQ
+   ============================ */
+
+.contact-section {
+    padding: 100px 20px;
+    background: #F7F2E9; /* Mismo fondo base */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Fondo sutil estilo mármol/etéreo como la imagen */
+    background-image: 
+        radial-gradient(circle at 0% 0%, rgba(143, 121, 184, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(183, 163, 214, 0.1) 0%, transparent 50%);
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    color: #2e2e2e;
+    font-weight: 500;
+}
+
+/* --- CONTENEDOR FAQ --- */
+.faq-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 auto; 
+}
+
+.faq-item {
+    background: rgba(232, 223, 241, 0.4); /* Fondo lila muy suave y transparente */
+    border: 1px solid #C8B6D9; /* Borde lila definido */
+    border-radius: 50px; /* Borde pastilla */
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(143, 121, 184, 0.1);
+}
+
+.faq-item:hover {
+    background: rgba(232, 223, 241, 0.6);
+    box-shadow: 0 6px 20px rgba(143, 121, 184, 0.2);
+}
+
+/* CABECERA (Click para abrir) */
+.faq-header {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.3); /* Efecto vidrio */
+}
+
+.faq-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: #4A3B52;
+    margin: 0;
+    font-weight: 600;
+}
+
+.faq-icon {
+    font-size: 1.2rem;
+    color: var(--lavanda);
+    transition: transform 0.3s ease;
+}
+
+/* Rotación de flecha cuando está activo */
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+/* CUERPO (Oculto por defecto) */
+.faq-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.faq-item.active .faq-body {
+    max-height: 500px; /* Altura suficiente para el texto */
+    opacity: 1;
+}
+
+.faq-content {
+    padding: 20px 40px 40px 40px;
+    text-align: center;
+    display: flex;
+    align-items: flex-start; /* Alinear estrellas arriba si el texto es largo */
+    justify-content: center;
+    gap: 15px;
+    color: #5a4a63;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    
+}
+
+.sparkle {
+    color: var(--lavanda);
+    font-size: 1.5rem;
+    margin-top: -5px; /* Ajuste visual */
+}
+
+/* --- INSTAGRAM PORTAL --- */
+.insta-portal-container {
+    margin-top: 80px;
+    text-align: center;
+    position: relative;
+}
+
+.insta-portal {
+    display: inline-block;
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.insta-portal:hover {
+    transform: scale(1.05);
+}
+
+/* Anillo brillante exterior */
+.insta-glow-ring {
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(143,121,184,0.3), rgba(255,255,255,0.1), rgba(143,121,184,0.3));
+    z-index: 0;
+    animation: spin-glow 8s linear infinite;
+    box-shadow: 0 0 20px rgba(183, 163, 214, 0.4);
+}
+
+@keyframes spin-glow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Imagen central (Tu foto o logo) */
+.insta-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Icono flotante de Instagram */
+.insta-icon-float {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    z-index: 2;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.insta-icon-float img {
+    width: 100%;
+    height: 100%;
+}
+
+.insta-text {
+    margin-top: 25px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #2e2e2e;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .faq-header {
+        padding: 15px 25px;
+    }
+    
+    .faq-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .faq-content {
+        padding: 15px 20px 30px 20px;
+        font-size: 1rem;
+    }
+    
+    .contact-title {
+        font-size: 2.8rem;
+    }
+    
+    .insta-portal {
+        width: 140px;
+        height: 140px;
+    }
+}
 
 /* --------------------- RESPONSIVE MAGIA COSMICA 2026  --------------------- */
 
