@@ -759,6 +759,8 @@ header {
     transition: 0.3s;
     box-shadow: 0 4px 12px rgba(155, 114, 207, 0.4);
     letter-spacing: 0.5px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-detalles:hover {

@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // 1. Lógica para mostrar/ocultar secciones al navegar
-    const navLinks = document.querySelectorAll('.menu a[href^="#"]');
+    // Ahora el script funciona para el menú Y para los botones de detalles
+    const navLinks = document.querySelectorAll('.menu a[href^="#"], .btn-detalles, .hero-btn');
 
     navLinks.forEach(link => {
         const targetHref = link.getAttribute('href');
