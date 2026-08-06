@@ -4,19 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mami Cósmica</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <div class="cosmic-sky" aria-hidden="true"></div>
 
     <header>
         <nav class="navbar">
             <div class="logo"></div>
 
-            <div class="menu">
+            <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="menu" id="menu-principal">
                 <a href="#" class="inicio">Inicio</a>
                 <a href="#sobre-mi">Sobre Mí</a>
                 <a href="#servicios">Servicios</a>
-                <a href="#magia-2026">Packs</a> 
+                <a href="#taller-presencial">Útero Cósmico</a>
                 <a href="#talleres">Talleres</a> 
                 <a href="#productos">Productos</a> 
                 <a href="#contacto">Contacto</a> 
@@ -35,7 +48,7 @@
 
             <p class="slogan">La verdadera magia es la que se crea cuando decides profundizar en ti</p>
 
-            <a href="#magia-2026" class="hero-btn">Empieza</a>
+            <a href="#taller-presencial" class="hero-btn">Empieza</a>
         </div>
     </section>
 
@@ -47,11 +60,11 @@
             <div class="about-photo">
 
         <div class="photo-rect">
-            <img src="img/aboutme.jpg" alt="Sobre Mami Cósmica">
+            <img loading="lazy" decoding="async" src="img/aboutme.jpg" alt="Sobre Mami Cósmica">
         </div>
 
         <div class="photo-rect">
-            <img src="img/aboutme2.jpg" alt="Sobre Mami Cósmica 2">
+            <img loading="lazy" decoding="async" src="img/aboutme2.jpg" alt="Sobre Mami Cósmica 2">
         </div>
 
     </div>
@@ -81,13 +94,14 @@
         </div>
 
     </div>
+    </section>
 
         <section id="servicios" class="services-section oculto-seccion"> <h2 class="services-title">Servicios</h2>
 
     <div class="service-block">
 
         <div class="service-image">
-            <img src="img/lecturas.jpg" alt="Lecturas Mami Cósmica">
+            <img loading="lazy" decoding="async" src="img/lecturas.jpg" alt="Lecturas Mami Cósmica">
         </div>
 
         <div class="service-box">
@@ -115,7 +129,7 @@
     <div class="service-block">
 
         <div class="service-image">
-            <img src="img/terapias.jpg" alt="Terapias Mami Cósmica">
+            <img loading="lazy" decoding="async" src="img/terapias.jpg" alt="Terapias Mami Cósmica">
         </div>
 
         <div class="service-box">
@@ -147,83 +161,159 @@
 
 </section>
 
-<section id="magia-2026" class="magia-section oculto-seccion"> <h2 class="magia-title">Magia Cósmica 2026</h2>
+<section id="taller-presencial" class="tp-section oculto-seccion">
 
-    <p class="magia-sub">
-        Cierra el año con claridad y recibe el 2026 alineada con tu energía.
-    </p>
+    <div class="tp-badges">
+        <span class="tp-badge">✦ Taller Presencial</span>
+        <span class="tp-badge">✦ Lima</span>
+    </div>
 
-    <p class="magia-sub">
-        No son rituales genéricos: es una evaluación energética profunda para que entiendas tu misión,
-        tus retos y tus oportunidades del nuevo año.
-    </p>
+    <div class="tp-hero-text">
+        <h2 class="tp-title">Reconexión Uterina Cósmica</h2>
+        <p class="tp-subtitle">Útero Cósmico</p>
+    </div>
 
-    <div class="magia-cards">
+    <div class="tp-hero-grid">
 
-        <div class="flip-card">
-            <div class="flip-inner">
-
-                <div class="flip-front">
-                    <img src="img/pack1.jpg" alt="Pack 1" class="card-img">
-
-                    <h3 class="card-title-top">PACK <span>1</span></h3>
-
-                    <div class="card-overlay">
-                        <p class="pack-title">
-                            Guía Astral Anual + Limpieza Akáshica + Oráculo Cósmico
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flip-back">
-                    <h3>PACK 1</h3>
-                    <p><strong>Incluye:</strong></p>
-                    <ul>
-                        <li>Lectura astral personalizada del 2026 (Zoom + grabación)</li>
-                        <li>Limpieza akáshica: karma, bloqueos, mal de ojo, emociones y chakras</li>
-                        <li>Oráculo Cósmico físico (44 cartas)</li>
-                    </ul>
-                    <p class="pack-desc">
-                        Para quienes quieren un reinicio energético completo.
-                    </p>
-                </div>
-
-            </div>
+        <div class="tp-mini-box">
+            <h4>En un vistazo</h4>
+            <ul>
+                <li>Taller presencial e íntimo</li>
+                <li>Grupos reducidos</li>
+                <li>Incluye PDF + cuarzo activado</li>
+                <li>Cupos limitados</li>
+            </ul>
         </div>
 
-        <div class="flip-card">
-            <div class="flip-inner">
+        <div class="tp-illustration">
+            <img loading="lazy" decoding="async" src="img/utero.png" alt="Reconexión Uterina Cósmica">
+        </div>
 
-                <div class="flip-front">
-                    <img src="img/pack2.jpg" alt="Pack 2" class="card-img">
-
-                    <h3 class="card-title-top">PACK <span>2</span></h3>
-
-                    <div class="card-overlay">
-                        <p class="pack-title">
-                            Guía Astral Anual + Astro Tarot
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flip-back">
-                    <h3>PACK 2</h3>
-                    <p><strong>Incluye:</strong></p>
-                    <ul>
-                        <li>Lectura astral del 2026</li>
-                        <li>Astro Tarot: respuestas específicas, tiempos y preguntas libres relacionadas al 2026</li>
-                    </ul>
-                    <p class="pack-desc">
-                        Para quienes buscan claridad, decisiones y guía directa.
-                    </p>
-                </div>
-
-            </div>
+        <div class="tp-mini-box tp-meta-box">
+            <h4>Detalles</h4>
+            <ul>
+                <li>🗓 Domingo 6 de setiembre</li>
+                <li>🕐 10:00 am – 3:00 pm</li>
+                <li>📍 Lima</li>
+            </ul>
         </div>
 
     </div>
 
-    <p class="magia-hint">Toca para revelar</p>
+    <div class="tp-about">
+
+        <div class="tp-about-text">
+            <h3>Sobre el Taller</h3>
+
+            <p>¿Crees que es posible vivir una experiencia que regenere tu biología, tu alma y transforme tu espíritu? Después de varios encuentros exitosos, íntimos y transformadores, he tomado la decisión de compartirte algo que antes me daba un poco de miedo por el qué dirán, jeje. Pero aquí una muestra de que estamos en crecimiento, y eso es hermoso.</p>
+
+            <p>Se habla mucho de sanar, del linaje, de la infancia, de la concepción, de la gestación; pero quizás no se entiende todavía cómo activar y transformar la realidad para que no quede solamente en un evento, un momento de reflexión que después no se pueda materializar en tu día a día.</p>
+
+            <p>Desde niña he tenido recuerdos de mis vidas “pasadas”, siempre los mismos sueños. Cuando activé mi canal médium y decidí conectar con mis dones, comprendí que en mis manos sostenía un gran poder: el sentir, liberar y transformar la energía.</p>
+
+            <p>Recordé los rituales que compartía como sacerdotisa y guardiana de los cristales: cada cristal guarda una frecuencia vibratoria que nos permite conectar con el Quantum y, poco a poco, regenerar y activar nuevas fibras de nuestro ADN. Los científicos solo conocen un pequeño porcentaje de su potencial, ¡y el de nuestra biología es una locura! Literalmente, esas cosas que ves en películas de ciencia ficción las haremos realidad en el taller.</p>
+
+            <p>En este espacio podrás comprender cómo funciona esto, activar tu propio cristal, sanar tu pasado y, de una vez por todas, conectar con la línea de tiempo que deseas. Porque tenemos que hacernos cargo de nuestra vida.</p>
+        </div>
+
+        <div class="tp-quote">
+            <p>“Regálate este espacio sagrado.<br>Tu útero es tu poder, tu guía, tu origen.”</p>
+        </div>
+
+    </div>
+
+    <div class="tp-pillars">
+        <h3>Pilares &amp; Beneficios</h3>
+
+        <div class="tp-pillars-grid">
+
+            <div class="tp-pillar-card">
+                <div class="tp-pillar-icon">✦</div>
+                <h4>Sanación Uterina</h4>
+                <p>Un ritual de sanación uterina cósmica para liberar y transformar la memoria de tu cuerpo y tu linaje.</p>
+            </div>
+
+            <div class="tp-pillar-card">
+                <div class="tp-pillar-icon">✦</div>
+                <h4>Reconexión Espiritual</h4>
+                <p>Astrología y física cuántica se unen para reconectarte con tu energía, tu cuerpo y tu espíritu.</p>
+            </div>
+
+            <div class="tp-pillar-card">
+                <div class="tp-pillar-icon">✦</div>
+                <h4>Memoria Cósmica</h4>
+                <p>Activa el recuerdo de tus vidas “pasadas” y conecta con la línea de tiempo que deseas vivir.</p>
+            </div>
+
+            <div class="tp-pillar-card">
+                <div class="tp-pillar-icon">✦</div>
+                <h4>Poder y Transformación</h4>
+                <p>Activa tu propio cristal y aprende a transformar la energía para materializarla en tu día a día.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="tp-program">
+        <h3>Actividades del Taller</h3>
+
+        <div class="tp-program-grid">
+
+            <ul class="tp-activities">
+                <li>☀️ Teoría astral sobre la energía, el cuerpo y espíritu. Astrología y física cuántica.</li>
+                <li>💕 Ritual de sanación uterina cósmica</li>
+                <li>🧚🏽‍♂️ Meditación y activación de códigos sagrados de regeneración celular 🧬</li>
+                <li>🎶 Danza somática y arte terapia</li>
+                <li>🌻 Limpieza energética y astral profunda</li>
+                <li>🐉 Oráculo y hechizo</li>
+            </ul>
+
+            <div class="tp-includes-box">
+                <h4>Incluye</h4>
+                <ul>
+                    <li>✦ Material en PDF y ejercicios para practicar post taller</li>
+                    <li>✦ Cuarzo personal activado, para seguir la sanación uterina en casa</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="tp-pricing">
+        <h3>Inversión</h3>
+
+        <div class="tp-pricing-grid">
+
+            <div class="tp-price-card">
+                <span class="tp-price-ribbon">Promo</span>
+                <span class="tp-price-tag">Pre-venta Secreta</span>
+                <span class="tp-price">S/ 355</span>
+                <a href="#contacto" class="btn-detalles tp-price-btn">Pre-venta</a>
+            </div>
+
+            <div class="tp-price-card tp-price-featured">
+                <span class="tp-price-ribbon">Promo</span>
+                <span class="tp-price-tag">Promo Dupla</span>
+                <span class="tp-price">S/ 611</span>
+                <p class="tp-price-note">Amigas, mamá e hija, hermanas — 2 cupos</p>
+                <a href="#contacto" class="btn-detalles tp-price-btn">Reservar dupla</a>
+            </div>
+
+            <div class="tp-price-card">
+                <span class="tp-price-tag">Regular</span>
+                <span class="tp-price">S/ 444</span>
+                <a href="#contacto" class="btn-detalles tp-price-btn">Regular</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="tp-cta">
+        <a href="#contacto" class="btn-detalles tp-cta-btn">Reserva Tu Lugar Ahora</a>
+        <p class="tp-cta-sub">✦ Cupos Limitados — Grupos Íntimos ✦</p>
+    </div>
+
+    <p class="tp-footer-quote">Tu útero es tu poder, tu guía, tu origen.</p>
 
 </section>
 
@@ -241,7 +331,7 @@
         <div class="blob-card blob-left">
             <div class="blob-content">
                 <div class="blob-icon-img">
-                    <img src="img/bebe.png" alt="Magia para Mamas"> 
+                    <img loading="lazy" decoding="async" src="img/bebe.png" alt="Magia para Mamas"> 
                 </div>
                 <h3>Magia para Mamas</h3>
                 <p>Falta</p>
@@ -252,7 +342,7 @@
         <div class="blob-card blob-right">
             <div class="blob-content">
                 <div class="blob-icon-img">
-                     <img src="img/utero.png" alt="Sanación uterina">
+                     <img loading="lazy" decoding="async" src="img/utero.png" alt="Sanación uterina">
                 </div>
                 <h3>Sanación Uterina</h3>
                 <p>Falta</p>
@@ -314,9 +404,9 @@
     <div class="insta-portal-container">
         <a href="https://www.instagram.com/mamicosmica/?hl=es-la" target="_blank" class="insta-portal">
             <div class="insta-glow-ring"></div>
-            <img src="img/aboutme.jpg" alt="Instagram Mami Cósmica" class="insta-img">
+            <img loading="lazy" decoding="async" src="img/aboutme.jpg" alt="Instagram Mami Cósmica" class="insta-img">
             <div class="insta-icon-float">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="IG">
+                <img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="IG">
             </div>
         </a>
         <p class="insta-text">Agenda tu Cita en Instagram</p>
@@ -324,8 +414,106 @@
 
 </section>
 
-</body>
+<section id="productos" class="products-section oculto-seccion">
+    
+    <div id="catalogo-productos" class="catalog-view">
+        <div class="products-header">
+            <h2 class="products-title">Nuestros Productos Mágicos</h2>
+            
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="card-image">
+                    <img loading="lazy" decoding="async" src="img/oraculomain.jpg" alt="Oráculo Lunar">
+                </div>
+                <div class="card-info">
+                    <h3>Oráculo Lunar</h3>
+                    <button id="btn-ver-oraculo" class="btn-product">Ver Detalles</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image">
+                    <img loading="lazy" decoding="async" src="img/velas.jpg" alt="Velas">
+                </div>
+                <div class="card-info">
+                    <h3>Kit Ritual</h3>
+                    <button class="btn-product secondary">Ver Detalles</button>
+                </div>
+            </div>
+            
+             <div class="product-card">
+                <div class="card-image">
+                    <img loading="lazy" decoding="async" src="img/cristales.jpg" alt="Cristales">
+                </div>
+                <div class="card-info">
+                    <h3>Cristales</h3>
+                    <button class="btn-product secondary">Ver Detalles</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="detalle-oraculo" class="product-detail-view oculto-interno">
+        
+        <div class="detail-container">
+            
+            <div class="detail-gallery">
+                <div class="main-media-frame">
+                    <img loading="lazy" decoding="async" id="main-img-display" src="img/oraculo-grande.jpg" alt="Vista Principal" class="media-active">
+                    <video id="main-video-display" controls class="media-hidden">
+                        <source src="" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="thumbnails-container">
+                    
+                    <div class="thumb-item active-thumb" onclick="cambiarVista('imagen', 'img/oraculo-grande.jpg', this)">
+                        <img loading="lazy" decoding="async" src="img/oraculo-grande.jpg" alt="thumb image">
+                    </div>
+
+                    <div class="thumb-item video-thumb-wrapper" onclick="cambiarVista('video', 'videos/oraculo.mp4', this)">
+                        <video src="videos/oraculo.mp4" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>
+                        <div class="play-indicator-large"></div>
+                    </div>
+
+                    <div class="thumb-item video-thumb-wrapper" onclick="cambiarVista('video', 'videos/oraculo2.MOV', this)">
+                        <video src="videos/oraculo2.MOV" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>
+                         <div class="play-indicator-large"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-info">
+                <h2>Oráculo Cósmico</h2>
+                <span class="price">Valor Referencial: $122 PEN</span>
+                
+                <p class="description">
+                   El Oráculo Cósmico recoge y decodifica información de investigaciones, leyes universales, canalizaciones, símbolos, astrología y mensajes de seres astrales y/o imaginarios. Estos pertenecen a los 3 mundos de la cosmovisión andina (Hanan Pacha, Kay Pacha y Uku Pacha) desde la interpretación y creencias de la autora. Encontrarás una herramienta de autoconocimiento a todo nivel, estarás en contacto con los recuerdos cósmicos de tu alma y de todo el planeta que nos ayudan a crear una nueva realidad en la quinta dimensión.
+                </p>
+
+                <div class="includes-box">
+                    <h4>Lo que incluye:</h4>
+                    <ul>
+                        <li>✦ 44 Cartas Ilustradas a mano</li>
+                        <li>✦ Presentación en cajita</li>
+                        <li>✦ Folleto informativo y libro digital</li>
+                    </ul>
+                </div>
+
+                <button id="btn-volver-catalogo" class="btn-back">
+                    ← Volver al Catálogo
+                </button>
+            </div>
+
+        </div> </div>
+
+</section>
 
 <script src="js/servicios.js"></script>
+<script src="js/cosmic.js"></script>
+
+</body>
 
 </html>
