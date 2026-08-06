@@ -1,42 +1,102 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guía para Claude Code (claude.ai/code) al trabajar en este repositorio.
 
-## Project overview
+## Qué es
 
-Mami Cósmica is a static single-page marketing/booking site (Spanish content) for a holistic astrology/therapy practice. There is no build system, package manager, or bundler — it's plain HTML/CSS/JS served directly.
+**Mami Cósmica** — sitio de una sola página (contenido en español) para una
+práctica de astrología y terapias holísticas: lecturas de carta astral,
+terapias, el taller presencial "Útero Cósmico" y venta del Oráculo Cósmico.
 
-- [index.html](index.html) — the entire page markup (one file, all sections)
-- [styles.css](styles.css) — all styling
-- [js/servicios.js](js/servicios.js) — all interactivity
-- `img/`, `videos/` — static media assets referenced directly by relative path
+Es una aplicación **React + TypeScript + Vite + Tailwind v4**, dentro de `app/`.
 
-## Running locally
+> Antes fue un sitio estático de HTML/CSS/JS en la raíz. Se retiró al portar
+> todo a React; vive en el historial de git si hiciera falta consultarlo.
 
-There's no dev server or build step. Open [index.html](index.html) directly in a browser, or serve the directory with any static file server (e.g. `npx serve` or the VS Code Live Server extension) to avoid `file://` path quirks.
+## Comandos
 
-There are no tests, linters, or CI configured in this repo.
+Todos se ejecutan dentro de `app/`:
 
-## Architecture: single-page, JS-driven "sections as views"
+```bash
+npm install        # dependencias
+npm run dev        # servidor de desarrollo
+npm run build      # tsc -b && vite build → app/dist/
+npm run preview    # sirve el build de producción
+npm run sync:assets # copia img/ y videos/ de la raíz a app/public/
+```
 
-The site is one HTML document where most `<section>` elements after the hero/about are hidden by default (class `oculto-seccion`) and toggled into view by [js/servicios.js](js/servicios.js) — there's no router and no page navigation. Key pattern to understand before editing nav or sections:
+No hay tests. Para validar un cambio: `npx tsc -b --noEmit` y revisarlo en el
+navegador con `npm run dev`.
 
-- Nav links and CTA buttons matching `.menu a[href^="#"], .btn-detalles, .hero-btn` are intercepted on click.
-- A hardcoded list in servicios.js (`seccionesDinamicas`) enumerates which `#hash` targets are "dynamic sections" (`#servicios`, `#taller-presencial`, `#talleres`, `#contacto`, `#productos`). Links to these get `preventDefault()`, all `.oculto-seccion` elements are hidden, then the target section is shown/faded in and scrolled to.
-- Links *not* in that list (e.g. `#sobre-mi`, `#`) fall through to normal anchor scrolling, but still hide any currently-open dynamic section first.
-- **When adding a new top-level section that should behave like Servicios/Taller Presencial/Talleres/Contacto/Productos**, add its `class="... oculto-seccion"` in the HTML *and* add its `#id` to `seccionesDinamicas` in servicios.js, or the nav toggle logic will silently skip it.
+## Estructura
 
-Within that shell, several sections have their own self-contained JS-driven sub-behavior (all wired in the same `DOMContentLoaded` handler in servicios.js):
+- `app/src/content.ts` — **todo el texto del sitio**. Cambiar una frase, un
+  precio o una fecha se hace aquí, no en los componentes.
+- `app/src/components/site/` — una sección por archivo: `Nav`, `Hero`,
+  `About`, `Services`, `Taller`, `Talleres`, `Productos`, `Contacto`, más
+  `Starfield` y `Ornament` (decoración compartida).
+- `app/src/components/` — componentes de React Bits (`SplitText`, `Magnet`,
+  `SpotlightCard`, `FadeContent`, `ClickSpark`, `SoftAurora`).
+- `app/src/components/ui/` — componentes de shadcn y Magic UI.
+- `app/src/index.css` — tema de shadcn + **capa de marca** al final
+  (tokens, tipografía, decoración). Es donde vive el sistema visual.
+- `img/`, `videos/` — **assets en la raíz, no en `app/public/`**.
 
-- **Servicios accordion**: `.highlight` list items (`data-target="detalle-*"`) show a matching `#detalle-*` block and flip a `▼/▲` arrow; `.cerrar-detalle` closes it back.
-- **Contacto FAQ accordion**: `.faq-header` toggles an `active` class on its parent `.faq-item`.
-- **Productos catalog/detail**: `#btn-ver-oraculo`/`#btn-volver-catalogo` swap `display` between `#catalogo-productos` and `#detalle-oraculo`. Inside the detail view, `cambiarVista(tipo, ruta, elementoThumb)` (a global function, called via inline `onclick` in the HTML) swaps the main media between image and video and updates the active thumbnail border.
+### Assets: la raíz manda
 
-When editing markup, keep IDs/classes in sync with these JS selectors — most wiring is done by id/class lookup rather than data attributes, and there's no framework to catch typos.
+`app/public/img/` y `app/public/videos/` son **copias generadas** y están en
+`.gitignore`. `scripts/sync-assets.mjs` las regenera antes de cada `dev` y
+cada `build`. Se hizo así porque `oraculo2.MOV` pesa 28 MB y duplicarlo
+dejaría casi 60 MB permanentes en el historial de git.
 
-## Styling conventions
+**Añade imágenes nuevas en `img/` de la raíz**, nunca directamente en
+`app/public/`: esa carpeta se sobrescribe.
 
-- CSS custom properties for the palette live in `:root` in [styles.css](styles.css): `--lavanda`, `--lavanda-clara`, `--fondo`.
-- Font is Google Fonts "Cormorant Garamond", imported at the top of styles.css.
-- The stylesheet is organized as one big file with `/* SECTION NAME */`-style comment banners per page section (NAVBAR, HERO, SOBRE MÍ, taller presencial, talleres, FAQ, productos, etc.) — match this convention when adding styles rather than introducing new files.
-- No CSS preprocessor, no CSS modules/scoping — all class names are global, so keep new class names specific enough to avoid collisions across sections.
+## Sistema visual — "Cielo Sereno"
+
+Crema tibia, lavanda espiritual y oro astral. Los tokens están en el bloque
+`@theme` de `index.css`: `cream-*`, `ink-*`, `lav-*`, `gold-*`, `night-*`.
+**Usa esos tokens en vez de colores sueltos.**
+
+- Display: **Cormorant Garamond**. Texto: **Raleway**. Ambas desde Google
+  Fonts en `app/index.html`.
+- El movimiento es sobrio a propósito: la marca es de sanación, no de
+  espectáculo. Duraciones cortas y curvas suaves.
+- `prefers-reduced-motion` se respeta globalmente. **Ojo:** la regla recorta
+  las animaciones a 0.01 ms, así que cualquier elemento que empiece en
+  `opacity: 0` y sólo aparezca a mitad de animación se queda invisible. Si
+  añades decoración animada, dale un estado visible en reposo (ver
+  `.sparkle-star`).
+
+## Componentes de terceros: están parcheados
+
+Los componentes de React Bits y Magic UI se editan al instalarlos. Si
+reinstalas alguno, estos arreglos se pierden:
+
+- **`Magnet`** y **`SpotlightCard`** — guardaban la posición del cursor en
+  estado de React y re-renderizaban en cada `mousemove`. Ahora escriben
+  directamente sobre el nodo dentro de un `requestAnimationFrame`. `Magnet`
+  además animaba con `transform .3s`, lo que hacía que el botón persiguiera
+  al cursor con retraso.
+- **`SpotlightCard`** usa `cn()` (tailwind-merge) para que su
+  `bg-neutral-900` por defecto no gane a los colores de marca.
+- **`SparklesText`** — acepta `as` para montarse como `<h1>`, no fuerza
+  `<strong>` ni `font-bold`, y genera las estrellas una sola vez en vez de
+  recalcularlas con `setInterval` cada 100 ms.
+
+## Detalles que conviene saber
+
+- `lucide-react` ya **no exporta logotipos de marca**. El icono de Instagram
+  está en línea dentro de `Contacto.tsx`.
+- `SplitText` parte el título en un `<div>` por letra. Un
+  `background-clip: text` sobre el `<h1>` no llega a pintarlas: heredan el
+  relleno transparente y el título desaparece.
+- El servidor de desarrollo de Vite responde `200` con el `index.html` para
+  archivos que no existen, así que **una imagen rota no se nota en `dev`**.
+  Compruébalo con `npm run build` + `npm run preview`.
+
+## Pendiente
+
+- Faltan `img/velas.jpg` e `img/cristales.jpg` (los usa Productos).
+- Las dos tarjetas de Talleres tienen "Falta" como texto provisional.
+- El sitio aún no está desplegado en ningún sitio.
