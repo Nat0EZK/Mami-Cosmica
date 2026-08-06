@@ -215,7 +215,7 @@ export const contacto = {
 export const productos = {
     heading: "Nuestros Productos Mágicos",
     items: [
-        { id: "oraculo", name: "Oráculo Lunar", image: "img/oraculomain.jpg", hasDetail: true },
+        { id: "oraculo", name: "Oráculo Cósmico", image: "img/oraculomain.jpg", hasDetail: true },
         { id: "kit", name: "Kit Ritual", image: "img/velas.jpg" },
         { id: "cristales", name: "Cristales", image: "img/cristales.jpg" },
     ],

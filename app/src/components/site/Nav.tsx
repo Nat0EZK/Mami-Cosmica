@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { nav } from "@/content";
 import { cn } from "@/lib/utils";
 
-export function Nav() {
+export function Nav({ active }: { active?: string | null }) {
     const [scrolled, setScrolled] = useState(false);
     const [open, setOpen] = useState(false);
 
@@ -37,10 +37,19 @@ export function Nav() {
                         <li key={item.href}>
                             <a
                                 href={item.href}
-                                className="group relative py-2 text-[0.9375rem] font-medium tracking-[0.04em] text-ink-soft transition-colors hover:text-lav-700"
+                                aria-current={active === item.href ? "page" : undefined}
+                                className={cn(
+                                    "group relative py-2 text-[0.9375rem] font-medium tracking-[0.04em] transition-colors hover:text-lav-700",
+                                    active === item.href ? "text-lav-700" : "text-ink-soft",
+                                )}
                             >
                                 {item.label}
-                                <span className="absolute inset-x-0 bottom-0 h-[1.5px] origin-left scale-x-0 rounded bg-gradient-to-r from-lav-500 to-gold-500 transition-transform duration-300 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-x-100" />
+                                <span
+                                    className={cn(
+                                        "absolute inset-x-0 bottom-0 h-[1.5px] origin-left rounded bg-gradient-to-r from-lav-500 to-gold-500 transition-transform duration-300 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-x-100",
+                                        active === item.href ? "scale-x-100" : "scale-x-0",
+                                    )}
+                                />
                             </a>
                         </li>
                     ))}
