@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import type { ReactNode, HTMLAttributes } from 'react';
 
 interface MagnetProps extends HTMLAttributes<HTMLDivElement> {
@@ -12,70 +12,94 @@ interface MagnetProps extends HTMLAttributes<HTMLDivElement> {
   innerClassName?: string;
 }
 
+/**
+ * Efecto magnético: el contenido se inclina hacia el cursor.
+ *
+ * Reescrito por rendimiento. La versión original guardaba la posición en
+ * estado de React y animaba con `transform .3s`, así que:
+ *   - re-renderizaba el árbol en cada mousemove (y escuchaba en `window`,
+ *     incluso con el cursor lejos), y
+ *   - cada nueva posición arrancaba una transición de 300 ms, de modo que
+ *     el botón perseguía al cursor siempre con retraso: se sentía pegajoso.
+ *
+ * Ahora la posición se escribe directamente en el nodo dentro de un
+ * requestAnimationFrame, sin estado ni transición mientras el cursor está
+ * cerca. La transición sólo se usa al soltar, para volver al centro.
+ */
 const Magnet: React.FC<MagnetProps> = ({
   children,
   padding = 100,
   disabled = false,
   magnetStrength = 2,
-  activeTransition = 'transform 0.3s ease-out',
-  inactiveTransition = 'transform 0.5s ease-in-out',
+  activeTransition = 'transform 60ms linear',
+  inactiveTransition = 'transform 450ms cubic-bezier(.16,1,.3,1)',
   wrapperClassName = '',
   innerClassName = '',
   ...props
 }) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-  const magnetRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const wrapper = wrapperRef.current;
+    const inner = innerRef.current;
+    if (!wrapper || !inner) return;
+
     if (disabled) {
-      setPosition({ x: 0, y: 0 });
+      inner.style.transform = 'translate3d(0,0,0)';
       return;
     }
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!magnetRef.current) return;
+    // Sin movimiento si el sistema lo pide.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      const { left, top, width, height } = magnetRef.current.getBoundingClientRect();
-      const centerX = left + width / 2;
-      const centerY = top + height / 2;
+    let frame = 0;
+    let active = false;
 
-      const distX = Math.abs(centerX - e.clientX);
-      const distY = Math.abs(centerY - e.clientY);
+    const onMove = (e: MouseEvent) => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const box = wrapper.getBoundingClientRect();
+        const cx = box.left + box.width / 2;
+        const cy = box.top + box.height / 2;
 
-      if (distX < width / 2 + padding && distY < height / 2 + padding) {
-        setIsActive(true);
-        const offsetX = (e.clientX - centerX) / magnetStrength;
-        const offsetY = (e.clientY - centerY) / magnetStrength;
-        setPosition({ x: offsetX, y: offsetY });
-      } else {
-        setIsActive(false);
-        setPosition({ x: 0, y: 0 });
-      }
+        const withinX = Math.abs(e.clientX - cx) < box.width / 2 + padding;
+        const withinY = Math.abs(e.clientY - cy) < box.height / 2 + padding;
+
+        if (withinX && withinY) {
+          if (!active) {
+            active = true;
+            inner.style.transition = activeTransition;
+          }
+          const x = (e.clientX - cx) / magnetStrength;
+          const y = (e.clientY - cy) / magnetStrength;
+          inner.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        } else if (active) {
+          active = false;
+          inner.style.transition = inactiveTransition;
+          inner.style.transform = 'translate3d(0,0,0)';
+        }
+      });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', onMove, { passive: true });
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(frame);
+      window.removeEventListener('mousemove', onMove);
     };
-  }, [padding, disabled, magnetStrength]);
-
-  const transitionStyle = isActive ? activeTransition : inactiveTransition;
+  }, [padding, disabled, magnetStrength, activeTransition, inactiveTransition]);
 
   return (
     <div
-      ref={magnetRef}
+      ref={wrapperRef}
       className={wrapperClassName}
       style={{ position: 'relative', display: 'inline-block' }}
       {...props}
     >
       <div
+        ref={innerRef}
         className={innerClassName}
-        style={{
-          transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
-          transition: transitionStyle,
-          willChange: 'transform'
-        }}
+        style={{ willChange: 'transform' }}
       >
         {children}
       </div>
