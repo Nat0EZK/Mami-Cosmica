@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.bak
+.DS_Store
+Thumbs.db
+
+# Copias generadas de los assets de la raíz (ver "sync:assets" en app/package.json).
+# Evita duplicar 28 MB de vídeo en el historial de git.
+app/public/img/
+app/public/videos/
