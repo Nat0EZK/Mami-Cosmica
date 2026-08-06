@@ -7,6 +7,7 @@ import { Services } from "@/components/site/Services";
 import { Taller } from "@/components/site/Taller";
 import { Talleres } from "@/components/site/Talleres";
 import { Contacto } from "@/components/site/Contacto";
+import { Productos } from "@/components/site/Productos";
 
 export default function App() {
     return (
@@ -27,6 +28,7 @@ export default function App() {
                 <Services />
                 <Taller />
                 <Talleres />
+                <Productos />
                 <Contacto />
             </main>
         </ClickSpark>
