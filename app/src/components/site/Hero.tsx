@@ -1,69 +1,11 @@
-import { useCallback, useEffect, useRef } from "react";
 import SplitText from "@/components/SplitText";
+import { SparklesText } from "@/components/ui/sparkles-text";
 import Magnet from "@/components/Magnet";
 import FadeContent from "@/components/FadeContent";
 import { StarRule } from "./Ornament";
 import { hero } from "@/content";
 
-const AURORA =
-    "linear-gradient(100deg, #402E63 0%, #6D4E9C 22%, #A8842F 46%, #6D4E9C 70%, #402E63 100%)";
-
 export function Hero() {
-    const wrapRef = useRef<HTMLDivElement>(null);
-
-    /**
-     * SplitText reparte el título en un <div.split-char> por letra, así que un
-     * `background-clip: text` sobre el h1 no llega a pintarlas (heredan el
-     * relleno transparente y se vuelven invisibles).
-     *
-     * Solución: pintar el degradado en cada letra y desplazar su
-     * `background-position` según su posición dentro de la palabra, de modo que
-     * la aurora se lea continua a lo largo de "Mami Cósmica".
-     *
-     * El h1 conserva un lavanda sólido de base: si esto no llega a ejecutarse,
-     * el título sigue siendo perfectamente legible.
-     */
-    const paintAurora = useCallback(() => {
-        const root = wrapRef.current?.querySelector<HTMLElement>(".split-parent");
-        if (!root) return;
-
-        const chars = root.querySelectorAll<HTMLElement>(".split-char");
-        if (!chars.length) return;
-
-        const rootBox = root.getBoundingClientRect();
-        if (!rootBox.width) return;
-
-        chars.forEach((char) => {
-            const box = char.getBoundingClientRect();
-            char.style.backgroundImage = AURORA;
-            char.style.backgroundSize = `${rootBox.width}px 100%`;
-            char.style.backgroundPosition = `${-(box.left - rootBox.left)}px 0`;
-            char.style.backgroundRepeat = "no-repeat";
-            char.style.webkitBackgroundClip = "text";
-            char.style.backgroundClip = "text";
-            char.style.webkitTextFillColor = "transparent";
-            char.style.color = "transparent";
-        });
-    }, []);
-
-    useEffect(() => {
-        let frame = 0;
-        const repaint = () => {
-            cancelAnimationFrame(frame);
-            frame = requestAnimationFrame(paintAurora);
-        };
-
-        // Las métricas cambian cuando termina de cargar la tipografía.
-        document.fonts?.ready.then(repaint).catch(() => {});
-        repaint();
-
-        window.addEventListener("resize", repaint);
-        return () => {
-            cancelAnimationFrame(frame);
-            window.removeEventListener("resize", repaint);
-        };
-    }, [paintAurora]);
-
     return (
         <section
             id="inicio"
@@ -84,20 +26,29 @@ export function Hero() {
                 <StarRule className="mb-8" />
 
                 {/* El momento principal: la marca se escribe sola, letra a letra */}
-                <div ref={wrapRef}>
-                    <SplitText
-                        text={hero.title}
-                        tag="h1"
+                <div>
+                    {/* SparklesText aporta el destello; SplitText, el revelado
+                        letra a letra. El h1 vive en el envoltorio para no
+                        perder la semántica del título. */}
+                    <SparklesText
+                        as="h1"
+                        sparklesCount={14}
+                        colors={{ first: "#C9A227", second: "#8F79B8" }}
                         className="font-display text-[clamp(3rem,11vw,6.5rem)] font-medium leading-[1.02] tracking-[-0.02em] text-lav-800"
-                        splitType="chars"
-                        delay={55}
-                        duration={1.1}
-                        ease="power3.out"
-                        from={{ opacity: 0, y: 46, filter: "blur(8px)" }}
-                        to={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                        threshold={0.1}
-                        onLetterAnimationComplete={paintAurora}
-                    />
+                    >
+                        <SplitText
+                            text={hero.title}
+                            tag="span"
+                            className="inline-block"
+                            splitType="chars"
+                            delay={55}
+                            duration={1.1}
+                            ease="power3.out"
+                            from={{ opacity: 0, y: 46, filter: "blur(8px)" }}
+                            to={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                            threshold={0.1}
+                        />
+                    </SparklesText>
                 </div>
 
                 <FadeContent blur duration={900} delay={520} initialOpacity={0}>
