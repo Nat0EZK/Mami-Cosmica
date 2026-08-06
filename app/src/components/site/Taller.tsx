@@ -99,18 +99,15 @@ export function Taller() {
                 </FadeContent>
 
                 <FadeContent blur duration={800} delay={160} initialOpacity={0}>
-                    <div className="relative w-[230px] shrink-0">
-                        {/* Anillo orbital */}
-                        <span
-                            aria-hidden="true"
-                            className="orbit-ring absolute -inset-[18px] rounded-full border border-dashed border-gold-600/35"
-                        />
+                    <div className="w-[280px] shrink-0">
+                        {/* Sin marco circular: la ilustración se muestra
+                            entera, sin recorte ni borde. */}
                         <img
                             src={taller.illustration.src}
                             alt={taller.illustration.alt}
                             loading="lazy"
                             decoding="async"
-                            className="aspect-square w-full rounded-full border-[5px] border-cream-50 object-cover shadow-[0_18px_45px_rgba(64,46,99,.22)]"
+                            className="h-auto w-full object-contain drop-shadow-[0_14px_30px_rgba(64,46,99,.20)]"
                         />
                     </div>
                 </FadeContent>

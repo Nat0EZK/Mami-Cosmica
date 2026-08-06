@@ -99,7 +99,7 @@ export const taller = {
             "Cupos limitados",
         ],
     },
-    illustration: { src: "img/utero.png", alt: "Reconexión Uterina Cósmica" },
+    illustration: { src: "img/utero-taller.png", alt: "Reconexión Uterina Cósmica" },
     meta: {
         heading: "Detalles",
         items: [

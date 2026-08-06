@@ -337,12 +337,6 @@
 
 .twinkle { animation: twinkle 5s ease-in-out infinite; }
 
-@keyframes orbit {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-}
-
-.orbit-ring { animation: orbit 44s linear infinite; }
 
 /* Destello de SparklesText (Magic UI) */
 @keyframes sparkle-pop {
