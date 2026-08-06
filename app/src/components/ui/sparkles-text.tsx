@@ -56,7 +56,7 @@ export function SparklesText({
                     {sparkles.map((s) => (
                         <svg
                             key={s.id}
-                            className="pointer-events-none absolute z-20"
+                            className="sparkle-star pointer-events-none absolute z-20"
                             style={
                                 {
                                     left: s.left,

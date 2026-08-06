@@ -351,3 +351,14 @@
     50%  { opacity: 1; transform: scale(1) rotate(120deg); }
     100% { opacity: 0; transform: scale(0) rotate(150deg); }
 }
+
+/* Con movimiento reducido, la regla global dejaba los destellos en
+   opacity 0 para siempre: se perdía la decoración entera. Mejor
+   mostrarlos fijos, visibles pero quietos. */
+@media (prefers-reduced-motion: reduce) {
+    .sparkle-star {
+        animation: none !important;
+        opacity: .8 !important;
+        transform: rotate(115deg);
+    }
+}
