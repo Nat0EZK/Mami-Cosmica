@@ -64,7 +64,7 @@ export function Taller() {
                     {taller.badges.map((b) => (
                         <span
                             key={b}
-                            className="inline-flex items-center gap-2 rounded-full border border-lav-600/28 bg-cream-50/80 px-6 py-2 text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-lav-700 shadow-sm"
+                            className="inline-flex items-center gap-2 rounded-full border border-lav-600/28 bg-cream-50/93 px-6 py-2 text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-lav-700 shadow-sm"
                         >
                             <span aria-hidden="true" className="text-gold-600">✦</span>
                             {b}
@@ -83,7 +83,7 @@ export function Taller() {
             {/* Vistazo · ilustración · detalles */}
             <div className="mx-auto mt-16 flex max-w-[1040px] flex-wrap items-center justify-center gap-8">
                 <FadeContent blur duration={800} delay={80} initialOpacity={0} className="min-w-[230px] max-w-[290px] flex-1">
-                    <div className="rounded-3xl border border-lav-600/15 bg-cream-50/80 p-8 text-left shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)] backdrop-blur-md">
+                    <div className="rounded-3xl border border-lav-600/15 bg-cream-50/93 p-8 text-left shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)]">
                         <h4 className="mb-6 text-center text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-gold-700">
                             {taller.glance.heading}
                         </h4>
@@ -113,7 +113,7 @@ export function Taller() {
                 </FadeContent>
 
                 <FadeContent blur duration={800} delay={240} initialOpacity={0} className="min-w-[230px] max-w-[290px] flex-1">
-                    <div className="rounded-3xl border border-lav-600/15 bg-cream-50/80 p-8 text-left shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)] backdrop-blur-md">
+                    <div className="rounded-3xl border border-lav-600/15 bg-cream-50/93 p-8 text-left shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)]">
                         <h4 className="mb-6 text-center text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-gold-700">
                             {taller.meta.heading}
                         </h4>
@@ -166,7 +166,7 @@ export function Taller() {
                         <FadeContent key={p.title} blur duration={800} delay={i * 90} initialOpacity={0}>
                             {/* La luz sigue al cursor sobre la tarjeta */}
                             <SpotlightCard
-                                className="h-full rounded-3xl border border-lav-600/15 bg-cream-50/82 px-6 py-12 text-center backdrop-blur-md transition-transform duration-300 hover:-translate-y-1.5"
+                                className="h-full rounded-3xl border border-lav-600/15 bg-cream-50/93 px-6 py-12 text-center transition-transform duration-300 hover:-translate-y-1.5"
                                 spotlightColor="rgba(201, 162, 39, 0.18)"
                             >
                                 <div className="mb-6 text-[1.15rem] text-gold-600">✦</div>
@@ -204,7 +204,7 @@ export function Taller() {
                     </FadeContent>
 
                     <FadeContent blur duration={800} delay={120} initialOpacity={0} className="min-w-[265px] max-w-[350px] flex-1">
-                        <div className="h-full rounded-3xl border border-lav-600/15 bg-cream-50/85 p-12 shadow-sm">
+                        <div className="h-full rounded-3xl border border-lav-600/15 bg-cream-50/94 p-12 shadow-sm">
                             <h4 className="mb-6 text-center text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-gold-700">
                                 {taller.includes.heading}
                             </h4>

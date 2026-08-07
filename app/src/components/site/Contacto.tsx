@@ -60,7 +60,7 @@ export function Contacto() {
                         <FadeContent key={faq.q} blur duration={800} delay={i * 90} initialOpacity={0}>
                             <div
                                 className={cn(
-                                    "overflow-hidden rounded-3xl border bg-cream-50/70 shadow-sm backdrop-blur-md transition-all duration-300",
+                                    "overflow-hidden rounded-3xl border bg-cream-50/92 shadow-sm transition-all duration-300",
                                     isOpen
                                         ? "border-lav-600/32 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)]"
                                         : "border-lav-600/15 hover:border-lav-600/26 hover:shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)]",

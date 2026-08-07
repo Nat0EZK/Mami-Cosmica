@@ -42,7 +42,7 @@ export function Services() {
                             </div>
 
                             {/* Lista */}
-                            <div className="w-full min-w-0 flex-1 rounded-3xl border border-lav-600/15 bg-cream-50/72 p-8 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)] backdrop-blur-md md:p-12">
+                            <div className="w-full min-w-0 flex-1 rounded-3xl border border-lav-600/15 bg-cream-50/92 p-8 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)] md:p-12">
                                 <h3 className="text-center font-display text-[clamp(1.6rem,3.4vw,2.15rem)] font-medium tracking-[0.06em] text-lav-800">
                                     {group.title}
                                 </h3>

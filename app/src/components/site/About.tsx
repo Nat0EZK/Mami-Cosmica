@@ -43,7 +43,7 @@ export function About() {
 
                 {/* Relato */}
                 <FadeContent blur duration={900} delay={160} initialOpacity={0}>
-                    <div className="relative rounded-3xl border border-lav-600/15 bg-cream-50/70 px-6 py-14 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)] backdrop-blur-md sm:px-10 md:px-16">
+                    <div className="relative rounded-3xl border border-lav-600/15 bg-cream-50/92 px-6 py-14 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)] sm:px-10 md:px-16">
                         {/* Ornamento floral arriba y abajo */}
                         {["-top-[31px]", "-bottom-[31px]"].map((pos) => (
                             <img
