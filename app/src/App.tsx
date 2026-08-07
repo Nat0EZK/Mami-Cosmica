@@ -23,30 +23,38 @@ const VIEWS: Record<string, React.ComponentType> = {
     "#contacto": Contacto,
 };
 
-export default function App() {
-    const [active, setActive] = useState<string | null>(null);
+/** La sección abierta se refleja en el hash de la URL, así que un enlace como
+ *  …/#taller-presencial abre directamente el taller. */
+function viewFromHash(): string | null {
+    const hash = window.location.hash;
+    return hash in VIEWS ? hash : null;
+}
 
-    const navigate = useCallback((href: string) => {
-        if (href in VIEWS) {
-            setActive(href);
-            // Esperar a que la sección exista antes de desplazarse hasta ella.
-            window.setTimeout(() => {
-                document
-                    .querySelector(href)
-                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }, 60);
-            return;
+function scrollTo(href: string) {
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+export default function App() {
+    // Estado inicial tomado de la URL: permite compartir enlaces directos.
+    const [active, setActive] = useState<string | null>(viewFromHash);
+
+    const navigate = useCallback((href: string, updateUrl = true) => {
+        const isView = href in VIEWS;
+        setActive(isView ? href : null);
+
+        if (updateUrl) {
+            const url = isView ? href : window.location.pathname + window.location.search;
+            if (window.location.hash !== (isView ? href : "")) {
+                window.history.pushState(null, "", url);
+            }
         }
 
-        // Inicio / Sobre Mí: se cierra la vista abierta y se vuelve al flujo.
-        setActive(null);
+        // Esperar a que la sección exista antes de desplazarse hasta ella.
         window.setTimeout(() => {
             if (href === "#inicio" || href === "#") {
                 window.scrollTo({ top: 0, behavior: "smooth" });
             } else {
-                document
-                    .querySelector(href)
-                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                scrollTo(href);
             }
         }, 60);
     }, []);
@@ -74,6 +82,23 @@ export default function App() {
         document.addEventListener("click", onClick);
         return () => document.removeEventListener("click", onClick);
     }, [navigate]);
+
+    /** Atrás y adelante del navegador vuelven a funcionar. */
+    useEffect(() => {
+        function onPopState() {
+            setActive(viewFromHash());
+        }
+        window.addEventListener("popstate", onPopState);
+        return () => window.removeEventListener("popstate", onPopState);
+    }, []);
+
+    /** Si se entra con un hash, desplazarse hasta esa sección una vez montada. */
+    useEffect(() => {
+        const initial = viewFromHash();
+        if (!initial) return;
+        const timer = window.setTimeout(() => scrollTo(initial), 260);
+        return () => clearTimeout(timer);
+    }, []);
 
     const ActiveView = active ? VIEWS[active] : null;
 
