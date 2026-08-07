@@ -94,7 +94,7 @@ export const taller = {
         heading: "En un vistazo",
         items: [
             "Taller presencial e íntimo",
-            "Grupos reducidos",
+            "Conexión Espiritual",
             "Incluye PDF + cuarzo activado",
             "Cupos limitados",
         ],
@@ -166,7 +166,7 @@ export const taller = {
         { tag: "Regular", price: "S/ 444", cta: "Regular" },
     ],
     ctaLabel: "Reserva Tu Lugar Ahora",
-    ctaSub: "Cupos Limitados — Grupos Íntimos",
+    ctaSub: "Cupos Limitados",
     footerQuote: "Tu útero es tu poder, tu guía, tu origen.",
 };
 
@@ -227,7 +227,7 @@ export const productos = {
         includesHeading: "Lo que incluye:",
         includes: [
             "44 Cartas Ilustradas a mano",
-            "Presentación en cajita",
+            "Presentación en bolsita sublimada",
             "Folleto informativo y libro digital",
         ],
         media: [
