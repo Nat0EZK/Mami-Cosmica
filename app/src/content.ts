@@ -3,6 +3,9 @@
    Editar una frase no obliga a tocar ningún componente.
    ========================================================================== */
 
+/** Contacto directo por WhatsApp. Los botones del taller apuntan aquí. */
+export const whatsapp = "https://wa.me/message/4T7CI7BQ5PPDO1";
+
 export const nav = [
     { href: "#inicio", label: "Inicio" },
     { href: "#sobre-mi", label: "Sobre Mí" },
@@ -18,7 +21,7 @@ export const hero = {
     subtitle: "Guía espiritual & sanadora cósmica",
     slogan:
         "La verdadera magia es la que se crea cuando decides profundizar en ti",
-    cta: { label: "Empieza", href: "#taller-presencial" },
+    cta: { label: "Taller Presencial", href: "#taller-presencial" },
 };
 
 export const about = {

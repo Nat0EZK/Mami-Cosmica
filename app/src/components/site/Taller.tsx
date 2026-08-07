@@ -13,7 +13,7 @@ import {
 import FadeContent from "@/components/FadeContent";
 import SpotlightCard from "@/components/SpotlightCard";
 import Magnet from "@/components/Magnet";
-import { taller } from "@/content";
+import { taller, whatsapp } from "@/content";
 import { cn } from "@/lib/utils";
 
 /* Iconografía real en lugar de emoji sueltos */
@@ -267,7 +267,7 @@ export function Taller() {
                                 )}
 
                                 <a
-                                    href="#contacto"
+                                    href={whatsapp} target="_blank" rel="noopener noreferrer"
                                     className="relative mt-auto inline-flex min-h-11 w-full items-center justify-center rounded-full bg-gradient-to-br from-lav-600 to-lav-700 px-6 py-3 text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-white shadow-[0_3px_12px_rgba(64,46,99,.24)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(64,46,99,.32)]"
                                 >
                                     {p.cta}
@@ -283,7 +283,7 @@ export function Taller() {
                 <div className="mt-24">
                     <Magnet padding={80} magnetStrength={7} className="inline-block">
                         <a
-                            href="#contacto"
+                            href={whatsapp} target="_blank" rel="noopener noreferrer"
                             className="group relative inline-block overflow-hidden rounded-full bg-gradient-to-br from-lav-600 to-lav-700 px-14 py-[1.15rem] text-[1.0625rem] font-semibold uppercase tracking-[0.1em] text-white shadow-[0_8px_20px_rgba(155,114,207,.45)] transition-all duration-300 hover:-translate-y-0.5"
                         >
                             <span className="relative z-10">{taller.ctaLabel}</span>
