@@ -19,14 +19,15 @@ Todos se ejecutan dentro de `app/`:
 
 ```bash
 npm install        # dependencias
-npm run dev        # servidor de desarrollo
-npm run build      # tsc -b && vite build → app/dist/
+npm run dev        # servidor de desarrollo (ejecuta sync:assets antes)
+npm run build      # tsc -b && vite build → app/dist/ (ejecuta sync:assets antes)
 npm run preview    # sirve el build de producción
+npm run lint        # oxlint
 npm run sync:assets # copia img/ y videos/ de la raíz a app/public/
 ```
 
-No hay tests. Para validar un cambio: `npx tsc -b --noEmit` y revisarlo en el
-navegador con `npm run dev`.
+No hay tests. Para validar un cambio: `npx tsc -b --noEmit`, `npm run lint` y
+revisarlo en el navegador con `npm run dev`.
 
 ## Estructura
 
@@ -51,6 +52,17 @@ dejaría casi 60 MB permanentes en el historial de git.
 
 **Añade imágenes nuevas en `img/` de la raíz**, nunca directamente en
 `app/public/`: esa carpeta se sobrescribe.
+
+## Navegación: secciones como vistas, no rutas
+
+No hay React Router. `App.tsx` mapea hashes (`#servicios`, `#taller-presencial`,
+`#talleres`, `#productos`, `#contacto`) a un `VIEWS` record; sólo una vista está
+montada a la vez y se renderiza bajo Inicio + Sobre Mí, que siempre están
+visibles. Los enlaces internos (`a[href^="#"]`) se capturan con un único
+listener delegado en `document`, no con `onClick` por componente. El hash de
+la URL es la fuente de verdad — permite compartir enlaces directos y hace que
+atrás/adelante del navegador funcionen vía `popstate`. Si añades una sección
+nueva que deba comportarse como vista, regístrala en `VIEWS`.
 
 ## Sistema visual — "Cielo Sereno"
 

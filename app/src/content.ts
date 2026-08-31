@@ -66,10 +66,28 @@ export const services: {
                     body: "Entender y comprender mejor las energías de tu hij@, su misión de alma, sus necesidades específicas; te ayudará a vivir una maternidad más armónica y a generar un apego seguro con salud emocional y equilibrio espiritual. Primero, es importante que como mujer puedas estar contenta y cumpliendo los planes de tu alma, al tú estar bien podrás estar lista para entregarle lo mejor a tu bebé.",
                 },
             },
-            { label: "Carta astral familiar" },
-            { label: "Carta astral infaltin" },
+            {
+                label: "Carta astral familiar",
+                detail: {
+                    title: "Carta astral familiar",
+                    body: "Cuando comprendemos la info en conjunto de cada miembro de la familia, tendremos más ideas de cómo se relacionan, los puntos en común y las diferentes. Al ver la carta de los papás y los hij@s podremos entender cómo mejorar la convivencia en el día a día y entender la dinámica familiar y los roles de cada uno.",
+                },
+            },
+            {
+                label: "Carta astral infantil",
+                detail: {
+                    title: "Carta astral infantil",
+                    body: "Esta sesión varía según la edad del niñ@, si es bebé es una oportunidad maravillosa de aprender a formar el apego seguro y entender la energía de ese pequeño humanito que todavía no puede expresarse ni regularse por sí solo. De los 3 a 8 años, la lectura va más orientada a su crianza, educación, talentos, posibles bloqueos, linaje familiar y necesidades. A partir de los 9 años se pueden hacer lecturas personalizadas y además se puede volver a leer la carta para ver cómo está su energía y misión de alma.",
+                },
+            },
             { label: "Revolución Solar" },
-            { label: "Astrocouching/ tarot" },
+            {
+                label: "Astrocouching/ tarot",
+                detail: {
+                    title: "Astrocouching/ tarot",
+                    body: "Esta sesión es para personas que ya conocen su carta astral y están buscando una guía que les permita conocer y entender la evolución de su alma actual.",
+                },
+            },
             { label: "Biodescodificación astral" },
             { label: "Carta dracónica y oráculo" },
         ],
