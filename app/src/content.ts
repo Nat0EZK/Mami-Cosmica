@@ -10,9 +10,9 @@ export const nav = [
     { href: "#inicio", label: "Inicio" },
     { href: "#sobre-mi", label: "Sobre Mí" },
     { href: "#servicios", label: "Servicios" },
-    { href: "#taller-presencial", label: "Útero Cósmico" },
     { href: "#talleres", label: "Talleres" },
     { href: "#productos", label: "Productos" },
+    { href: "#pre-venta", label: "Journal Cósmico" },
     { href: "#contacto", label: "Contacto" },
 ] as const;
 
@@ -21,7 +21,7 @@ export const hero = {
     subtitle: "Guía espiritual & sanadora cósmica",
     slogan:
         "La verdadera magia es la que se crea cuando decides profundizar en ti",
-    cta: { label: "Taller Presencial", href: "#taller-presencial" },
+    cta: { label: "Journal Cósmico", href: "#pre-venta" },
 };
 
 export const about = {
@@ -107,90 +107,6 @@ export const services: {
     },
 ];
 
-export const taller = {
-    badges: ["Taller Presencial", "Lima"],
-    title: "Reconexión Uterina Cósmica",
-    subtitle: "Útero Cósmico",
-    glance: {
-        heading: "En un vistazo",
-        items: [
-            "Taller presencial e íntimo",
-            "Conexión Espiritual",
-            "Incluye PDF + cuarzo activado",
-            "Cupos limitados",
-        ],
-    },
-    illustration: { src: "img/utero-taller.png", alt: "Reconexión Uterina Cósmica" },
-    meta: {
-        heading: "Detalles",
-        items: [
-            { icon: "calendar", text: "Domingo 6 de setiembre" },
-            { icon: "clock", text: "10:00 am – 3:00 pm" },
-            { icon: "pin", text: "Lima" },
-        ],
-    },
-    aboutHeading: "Sobre el Taller",
-    about: [
-        "¿Crees que es posible vivir una experiencia que regenere tu biología, tu alma y transforme tu espíritu? Después de varios encuentros exitosos, íntimos y transformadores, he tomado la decisión de compartirte algo que antes me daba un poco de miedo por el qué dirán, jeje. Pero aquí una muestra de que estamos en crecimiento, y eso es hermoso.",
-        "Se habla mucho de sanar, del linaje, de la infancia, de la concepción, de la gestación; pero quizás no se entiende todavía cómo activar y transformar la realidad para que no quede solamente en un evento, un momento de reflexión que después no se pueda materializar en tu día a día.",
-        "Desde niña he tenido recuerdos de mis vidas “pasadas”, siempre los mismos sueños. Cuando activé mi canal médium y decidí conectar con mis dones, comprendí que en mis manos sostenía un gran poder: el sentir, liberar y transformar la energía.",
-        "Recordé los rituales que compartía como sacerdotisa y guardiana de los cristales: cada cristal guarda una frecuencia vibratoria que nos permite conectar con el Quantum y, poco a poco, regenerar y activar nuevas fibras de nuestro ADN. Los científicos solo conocen un pequeño porcentaje de su potencial, ¡y el de nuestra biología es una locura! Literalmente, esas cosas que ves en películas de ciencia ficción las haremos realidad en el taller.",
-        "En este espacio podrás comprender cómo funciona esto, activar tu propio cristal, sanar tu pasado y, de una vez por todas, conectar con la línea de tiempo que deseas. Porque tenemos que hacernos cargo de nuestra vida.",
-    ],
-    quote: "“Regálate este espacio sagrado.\nTu útero es tu poder, tu guía, tu origen.”",
-    pillarsHeading: "Pilares & Beneficios",
-    pillars: [
-        {
-            title: "Sanación Uterina",
-            body: "Un ritual de sanación uterina cósmica para liberar y transformar la memoria de tu cuerpo y tu linaje.",
-        },
-        {
-            title: "Reconexión Espiritual",
-            body: "Astrología y física cuántica se unen para reconectarte con tu energía, tu cuerpo y tu espíritu.",
-        },
-        {
-            title: "Memoria Cósmica",
-            body: "Activa el recuerdo de tus vidas “pasadas” y conecta con la línea de tiempo que deseas vivir.",
-        },
-        {
-            title: "Poder y Transformación",
-            body: "Activa tu propio cristal y aprende a transformar la energía para materializarla en tu día a día.",
-        },
-    ],
-    programHeading: "Actividades del Taller",
-    activities: [
-        { icon: "sun", text: "Teoría astral sobre la energía, el cuerpo y espíritu. Astrología y física cuántica." },
-        { icon: "heart", text: "Ritual de sanación uterina cósmica" },
-        { icon: "sparkle", text: "Meditación y activación de códigos sagrados de regeneración celular" },
-        { icon: "music", text: "Danza somática y arte terapia" },
-        { icon: "flower", text: "Limpieza energética y astral profunda" },
-        { icon: "dragon", text: "Oráculo y hechizo" },
-    ],
-    includes: {
-        heading: "Incluye",
-        items: [
-            "Material en PDF y ejercicios para practicar post taller",
-            "Cuarzo personal activado, para seguir la sanación uterina en casa",
-        ],
-    },
-    pricingHeading: "Inversión",
-    prices: [
-        { tag: "Pre-venta Secreta", price: "S/ 355", ribbon: "Promo", cta: "Pre-venta" },
-        {
-            tag: "Promo Dupla",
-            price: "S/ 611",
-            ribbon: "Promo",
-            note: "Amigas, mamá e hija, hermanas — 2 cupos",
-            cta: "Reservar dupla",
-            featured: true,
-        },
-        { tag: "Regular", price: "S/ 444", cta: "Regular" },
-    ],
-    ctaLabel: "Reserva Tu Lugar Ahora",
-    ctaSub: "Cupos Limitados",
-    footerQuote: "Tu útero es tu poder, tu guía, tu origen.",
-};
-
 export const talleres = {
     heading: "Talleres",
     cards: [
@@ -257,4 +173,57 @@ export const productos = {
             { type: "video" as const, src: "videos/oraculo2.MOV" },
         ],
     },
+};
+
+export const preventa = {
+    badge: "Pre-venta · hasta el 30 de setiembre",
+    heading: "Journal Cósmico",
+    subheading: "Planifica · Conecta · Manifiesta",
+    tagline: "Un año para volver a ti",
+    intro:
+        "Nos acompañan los unicornios, dragones y elfas: una energía femenina, envolvente y transformadora para materializar y comprenderte en esta encarnación.",
+    editionsHeading: "Elige tu edición",
+    editions: [
+        {
+            image: "img/journal-unicornio.png",
+            name: "Edición Unicornio",
+            subtitle: "Recuerda tu magia y poder",
+            body: "Elígela si quieres traer ternura, amor, inspiración y activar tu visión estelar.",
+        },
+        {
+            image: "img/journal-dragona.png",
+            name: "Edición Dragona",
+            subtitle: "Integración y transformación",
+            body: "Elígela si quieres fuerza y poder para transformar tus miedos en deseos.",
+        },
+    ],
+    includesHeading: "Qué incluye",
+    includes: [
+        "Hojas sin fecha para tu journal diario: ciclo lunar, elementos, gratitud, deseos y la carta del oráculo del día.",
+        "Calendario lunar 2027–2028: lunas nuevas, lunas llenas y eclipses.",
+        "Los tránsitos astrológicos más importantes del año.",
+        "Rituales, secretos y hechizos de magia cósmica.",
+    ],
+    bonusHeading: "Regalos exclusivos",
+    bonusSubheading: "Para las primeras 11 personas de la pre-venta",
+    bonus: [
+        {
+            icon: "pencil",
+            title: "Nombre personalizado",
+            body: "Grabado en la portada de tu journal.",
+        },
+        {
+            icon: "postcard",
+            title: "Postal ilustrada",
+            body: "Con una ilustración original de la edición.",
+        },
+        {
+            icon: "moon",
+            title: 'Clase magistral "Crea tu año"',
+            body: "Acceso libre a la clase astrológica en vivo.",
+        },
+    ],
+    price: { pre: "S/ 111", regular: "S/ 133" },
+    priceNote: "Pre-venta válida hasta el 30 de setiembre · Entregas a partir del 29 de octubre",
+    ctaLabel: "Reservar por WhatsApp",
 };

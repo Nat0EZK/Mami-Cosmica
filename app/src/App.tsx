@@ -5,9 +5,9 @@ import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { About } from "@/components/site/About";
 import { Services } from "@/components/site/Services";
-import { Taller } from "@/components/site/Taller";
 import { Talleres } from "@/components/site/Talleres";
 import { Productos } from "@/components/site/Productos";
+import { Preventa } from "@/components/site/Preventa";
 import { Contacto } from "@/components/site/Contacto";
 
 /**
@@ -17,14 +17,14 @@ import { Contacto } from "@/components/site/Contacto";
  */
 const VIEWS: Record<string, React.ComponentType> = {
     "#servicios": Services,
-    "#taller-presencial": Taller,
     "#talleres": Talleres,
     "#productos": Productos,
+    "#pre-venta": Preventa,
     "#contacto": Contacto,
 };
 
 /** La sección abierta se refleja en el hash de la URL, así que un enlace como
- *  …/#taller-presencial abre directamente el taller. */
+ *  …/#pre-venta abre directamente esa sección. */
 function viewFromHash(): string | null {
     const hash = window.location.hash;
     return hash in VIEWS ? hash : null;

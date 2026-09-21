@@ -42,6 +42,7 @@ revisarlo en el navegador con `npm run dev`.
 - `app/src/index.css` — tema de shadcn + **capa de marca** al final
   (tokens, tipografía, decoración). Es donde vive el sistema visual.
 - `img/`, `videos/` — **assets en la raíz, no en `app/public/`**.
+- Alias `@/` → `app/src/` (definido en `tsconfig.app.json` y `vite.config.ts`).
 
 ### Assets: la raíz manda
 
@@ -82,8 +83,11 @@ Crema tibia, lavanda espiritual y oro astral. Los tokens están en el bloque
 
 ## Componentes de terceros: están parcheados
 
-Los componentes de React Bits y Magic UI se editan al instalarlos. Si
-reinstalas alguno, estos arreglos se pierden:
+Se instalan con la CLI de shadcn contra los registries declarados en
+`app/components.json` (`@react-bits` y `@magicui`), p. ej.
+`npx shadcn@latest add @react-bits/magnet`. Los componentes de React Bits y
+Magic UI se editan a mano después de instalarlos. Si reinstalas alguno (o
+corres `shadcn add` de nuevo sobre él), estos arreglos se pierden:
 
 - **`Magnet`** y **`SpotlightCard`** — guardaban la posición del cursor en
   estado de React y re-renderizaban en cada `mousemove`. Ahora escriben
