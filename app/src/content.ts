@@ -175,6 +175,15 @@ export const productos = {
     },
 };
 
+export type PreventaEdition = {
+    image: string;
+    name: string;
+    subtitle: string;
+    body: string;
+    /** Vista previa en vídeo al pasar el cursor. No todas las ediciones la tienen todavía. */
+    video?: string;
+};
+
 export const preventa = {
     badge: "Pre-venta · hasta el 30 de setiembre",
     heading: "Journal Cósmico",
@@ -195,8 +204,9 @@ export const preventa = {
             name: "Edición Dragona",
             subtitle: "Integración y transformación",
             body: "Elígela si quieres fuerza y poder para transformar tus miedos en deseos.",
+            video: "videos/journal1.MP4",
         },
-    ],
+    ] satisfies PreventaEdition[],
     includesHeading: "Qué incluye",
     includes: [
         "Hojas sin fecha para tu journal diario: ciclo lunar, elementos, gratitud, deseos y la carta del oráculo del día.",

@@ -1,8 +1,10 @@
-import { PenLine, Image as ImageIcon, Moon, type LucideIcon } from "lucide-react";
+import { useState } from "react";
+import { PenLine, Image as ImageIcon, Moon, Play, type LucideIcon } from "lucide-react";
 import FadeContent from "@/components/FadeContent";
 import SpotlightCard from "@/components/SpotlightCard";
 import Magnet from "@/components/Magnet";
-import { preventa, whatsapp } from "@/content";
+import { preventa, whatsapp, type PreventaEdition } from "@/content";
+import { cn } from "@/lib/utils";
 
 const ICONS: Record<string, LucideIcon> = {
     pencil: PenLine,
@@ -55,30 +57,7 @@ export function Preventa() {
 
                 <div className="mt-12 grid gap-8 sm:grid-cols-2">
                     {preventa.editions.map((edition, i) => (
-                        <FadeContent key={edition.name} blur duration={800} delay={i * 90} initialOpacity={0}>
-                            <article className="group h-full overflow-hidden rounded-3xl border border-lav-600/15 bg-cream-50/93 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)]">
-                                <div className="overflow-hidden">
-                                    <img
-                                        src={edition.image}
-                                        alt={`Portada del Journal Cósmico, ${edition.name}`}
-                                        loading="lazy"
-                                        decoding="async"
-                                        className="h-[380px] w-full object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                                    />
-                                </div>
-                                <div className="px-8 py-8 text-left">
-                                    <h4 className="font-display text-[1.5rem] font-semibold text-lav-800">
-                                        {edition.name}
-                                    </h4>
-                                    <p className="mt-1 font-display text-[1.0625rem] italic text-lav-600">
-                                        {edition.subtitle}
-                                    </p>
-                                    <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-soft">
-                                        {edition.body}
-                                    </p>
-                                </div>
-                            </article>
-                        </FadeContent>
+                        <EditionCard key={edition.name} edition={edition} delay={i * 90} />
                     ))}
                 </div>
             </div>
@@ -174,4 +153,66 @@ export function Preventa() {
 function Icon({ name, className }: { name: string; className?: string }) {
     const Cmp = ICONS[name] ?? Moon;
     return <Cmp aria-hidden="true" className={className ?? "size-5"} />;
+}
+
+/**
+ * Al pasar el cursor (o tocar en móvil) sobre una edición con vídeo, la
+ * portada cede el paso a una vista previa muda en bucle. Las ediciones sin
+ * vídeo se quedan tal cual: no todos los productos necesitan el mismo trato.
+ */
+function EditionCard({ edition, delay }: { edition: PreventaEdition; delay: number }) {
+    const [playing, setPlaying] = useState(false);
+    const hasVideo = Boolean(edition.video);
+
+    return (
+        <FadeContent blur duration={800} delay={delay} initialOpacity={0}>
+            <article
+                className="group h-full overflow-hidden rounded-3xl border border-lav-600/15 bg-cream-50/93 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)]"
+                onMouseEnter={() => hasVideo && setPlaying(true)}
+                onMouseLeave={() => setPlaying(false)}
+                onFocus={() => hasVideo && setPlaying(true)}
+                onBlur={() => setPlaying(false)}
+                onClick={() => hasVideo && setPlaying(true)}
+                tabIndex={hasVideo ? 0 : undefined}
+            >
+                <div className="relative h-[380px] w-full overflow-hidden bg-night-900">
+                    <img
+                        src={edition.image}
+                        alt={`Portada del Journal Cósmico, ${edition.name}`}
+                        loading="lazy"
+                        decoding="async"
+                        className={cn(
+                            "absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105",
+                            playing && hasVideo && "opacity-0",
+                        )}
+                    />
+
+                    {hasVideo && playing && (
+                        <video
+                            key={edition.video}
+                            src={edition.video}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="absolute inset-0 h-full w-full object-cover"
+                        />
+                    )}
+
+                    {hasVideo && !playing && (
+                        <span className="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-night-900/70 px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-cream-50 backdrop-blur-sm">
+                            <Play aria-hidden="true" className="size-3 translate-x-px fill-current" />
+                            Ver video
+                        </span>
+                    )}
+                </div>
+
+                <div className="px-8 py-8 text-left">
+                    <h4 className="font-display text-[1.5rem] font-semibold text-lav-800">{edition.name}</h4>
+                    <p className="mt-1 font-display text-[1.0625rem] italic text-lav-600">{edition.subtitle}</p>
+                    <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-soft">{edition.body}</p>
+                </div>
+            </article>
+        </FadeContent>
+    );
 }
