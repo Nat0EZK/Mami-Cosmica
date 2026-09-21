@@ -3,9 +3,11 @@ import { SparklesText } from "@/components/ui/sparkles-text";
 import Magnet from "@/components/Magnet";
 import FadeContent from "@/components/FadeContent";
 import { StarRule } from "./Ornament";
-import { hero } from "@/content";
+import { useContent } from "@/lib/locale";
 
 export function Hero() {
+    const { hero } = useContent();
+
     return (
         <section
             id="inicio"

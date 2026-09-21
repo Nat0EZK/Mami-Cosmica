@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FadeContent from "@/components/FadeContent";
-import { talleres } from "@/content";
+import { useContent } from "@/lib/locale";
 
 /* Formas orgánicas: cada tarjeta muta suavemente al pasar el cursor */
 const BLOBS = [
@@ -9,6 +9,7 @@ const BLOBS = [
 ];
 
 export function Talleres() {
+    const { talleres } = useContent();
     const [hovered, setHovered] = useState<number | null>(null);
 
     return (
@@ -85,7 +86,7 @@ export function Talleres() {
                                     href="#contacto"
                                     className="inline-flex min-h-11 items-center justify-center rounded-full bg-gradient-to-br from-lav-600 to-lav-700 px-8 py-3 text-[0.9375rem] font-semibold uppercase tracking-[0.1em] text-white shadow-[0_3px_12px_rgba(64,46,99,.24)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(64,46,99,.32)]"
                                 >
-                                    Consulta
+                                    {talleres.ctaLabel}
                                 </a>
                             </div>
                         </article>

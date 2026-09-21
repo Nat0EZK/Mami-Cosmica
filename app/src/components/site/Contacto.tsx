@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import FadeContent from "@/components/FadeContent";
-import { contacto } from "@/content";
+import { useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
 /* lucide-react ya no incluye logotipos de marca, así que va en línea. */
@@ -25,6 +25,7 @@ function InstagramGlyph({ className }: { className?: string }) {
 }
 
 export function Contacto() {
+    const { contacto } = useContent();
     const [open, setOpen] = useState<number | null>(null);
 
     return (
@@ -139,7 +140,7 @@ export function Contacto() {
                         />
                         <img
                             src={contacto.instagram.image}
-                            alt="Mami Cósmica en Instagram"
+                            alt={contacto.instagram.imageAlt}
                             loading="lazy"
                             decoding="async"
                             className="relative z-10 size-full rounded-full border-[5px] border-cream-50 object-cover shadow-[0_10px_30px_rgba(47,32,71,.18)]"

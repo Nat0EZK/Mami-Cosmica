@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowLeft, Play } from "lucide-react";
 import FadeContent from "@/components/FadeContent";
 import { SectionHeading } from "./Ornament";
-import { productos } from "@/content";
+import { useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
 /** Imagen con marcador cuando el archivo todavía no existe. */
@@ -41,6 +41,7 @@ function Media({ src, alt, className }: { src: string; alt: string; className?: 
 }
 
 export function Productos() {
+    const { productos } = useContent();
     const [showDetail, setShowDetail] = useState(false);
     const [active, setActive] = useState(0);
     const media = productos.detail.media[active];
@@ -87,7 +88,7 @@ export function Productos() {
                                                     : "cursor-not-allowed border border-lav-600/30 text-lav-700/70",
                                             )}
                                         >
-                                            {item.hasDetail ? "Ver Detalles" : "Próximamente"}
+                                            {item.hasDetail ? productos.ui.viewDetails : productos.ui.comingSoon}
                                         </button>
                                     </div>
                                 </article>
@@ -124,7 +125,7 @@ export function Productos() {
                                         key={m.src}
                                         type="button"
                                         onClick={() => setActive(i)}
-                                        aria-label={`Ver ${m.type === "video" ? "vídeo" : "imagen"} ${i + 1}`}
+                                        aria-label={`${m.type === "video" ? productos.ui.viewVideo : productos.ui.viewImage} ${i + 1}`}
                                         aria-current={active === i}
                                         className={cn(
                                             "relative h-[104px] flex-1 overflow-hidden rounded-2xl border-2 bg-night-900 transition-all duration-300 hover:-translate-y-0.5",
@@ -182,7 +183,7 @@ export function Productos() {
                                 className="group mt-8 inline-flex min-h-11 items-center gap-2 rounded-full border border-lav-600/38 px-7 py-3 text-[0.9375rem] font-semibold text-lav-700 transition-all duration-300 hover:border-lav-600 hover:bg-lav-100/80"
                             >
                                 <ArrowLeft aria-hidden="true" className="size-4 transition-transform duration-300 group-hover:-translate-x-1" />
-                                Volver al Catálogo
+                                {productos.ui.back}
                             </button>
                         </div>
                     </div>

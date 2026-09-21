@@ -1,20 +1,22 @@
 /* ==========================================================================
-   Todo el texto del sitio vive aquí, separado de la maquetación.
-   Editar una frase no obliga a tocar ningún componente.
+   Todo el texto del sitio en español vive aquí, separado de la maquetación.
+   Editar una frase, un precio o una fecha se hace aquí, no en los componentes.
    ========================================================================== */
+import type { PreventaEdition, ServiceGroup } from "./types";
 
-/** Contacto directo por WhatsApp. Los botones del taller apuntan aquí. */
-export const whatsapp = "https://wa.me/message/4T7CI7BQ5PPDO1";
-
-export const nav = [
-    { href: "#inicio", label: "Inicio" },
-    { href: "#sobre-mi", label: "Sobre Mí" },
-    { href: "#servicios", label: "Servicios" },
-    { href: "#talleres", label: "Talleres" },
-    { href: "#productos", label: "Productos" },
-    { href: "#pre-venta", label: "Journal Cósmico" },
-    { href: "#contacto", label: "Contacto" },
-] as const;
+export const nav = {
+    items: [
+        { href: "#inicio", label: "Inicio" },
+        { href: "#sobre-mi", label: "Sobre Mí" },
+        { href: "#servicios", label: "Servicios" },
+        { href: "#talleres", label: "Talleres" },
+        { href: "#productos", label: "Productos" },
+        { href: "#pre-venta", label: "Journal Cósmico" },
+        { href: "#contacto", label: "Contacto" },
+    ],
+    openMenu: "Abrir menú",
+    closeMenu: "Cerrar menú",
+};
 
 export const hero = {
     title: "Mami Cósmica",
@@ -38,77 +40,72 @@ export const about = {
     ],
 };
 
-export type ServiceItem = {
-    label: string;
-    detail?: { title: string; body: string };
+export const services = {
+    heading: "Servicios",
+    groups: [
+        {
+            title: "Lecturas",
+            image: { src: "img/lecturas.jpg", alt: "Lecturas Mami Cósmica" },
+            items: [
+                {
+                    label: "Carta astral natal",
+                    detail: {
+                        title: "Carta astral natal",
+                        body: "(Reprograma tu configuración matrix) Conocer tu programa astral, esa configuración que tu alma decidió experimentar, te ayudará a comprender cuáles son las misiones, funciones, patrones, heridas e incluso traumas que te toca aprender en esta vida.",
+                    },
+                },
+                {
+                    label: "Carta astral mamá y bebé",
+                    detail: {
+                        title: "Carta astral mamá y bebé",
+                        body: "Entender y comprender mejor las energías de tu hij@, su misión de alma, sus necesidades específicas; te ayudará a vivir una maternidad más armónica y a generar un apego seguro con salud emocional y equilibrio espiritual. Primero, es importante que como mujer puedas estar contenta y cumpliendo los planes de tu alma, al tú estar bien podrás estar lista para entregarle lo mejor a tu bebé.",
+                    },
+                },
+                {
+                    label: "Carta astral familiar",
+                    detail: {
+                        title: "Carta astral familiar",
+                        body: "Cuando comprendemos la info en conjunto de cada miembro de la familia, tendremos más ideas de cómo se relacionan, los puntos en común y las diferentes. Al ver la carta de los papás y los hij@s podremos entender cómo mejorar la convivencia en el día a día y entender la dinámica familiar y los roles de cada uno.",
+                    },
+                },
+                {
+                    label: "Carta astral infantil",
+                    detail: {
+                        title: "Carta astral infantil",
+                        body: "Esta sesión varía según la edad del niñ@, si es bebé es una oportunidad maravillosa de aprender a formar el apego seguro y entender la energía de ese pequeño humanito que todavía no puede expresarse ni regularse por sí solo. De los 3 a 8 años, la lectura va más orientada a su crianza, educación, talentos, posibles bloqueos, linaje familiar y necesidades. A partir de los 9 años se pueden hacer lecturas personalizadas y además se puede volver a leer la carta para ver cómo está su energía y misión de alma.",
+                    },
+                },
+                { label: "Revolución Solar" },
+                {
+                    label: "Astrocouching/ tarot",
+                    detail: {
+                        title: "Astrocouching/ tarot",
+                        body: "Esta sesión es para personas que ya conocen su carta astral y están buscando una guía que les permita conocer y entender la evolución de su alma actual.",
+                    },
+                },
+                { label: "Biodescodificación astral" },
+                { label: "Carta dracónica y oráculo" },
+            ],
+        },
+        {
+            title: "Terapias",
+            image: { src: "img/terapias.jpg", alt: "Terapias Mami Cósmica" },
+            items: [
+                { label: "Limpieza astral en Registros Akashicos" },
+                { label: "Reconexión del alma/origen estelar" },
+                { label: "Liberación de karmas de vidas “pasadas”" },
+                { label: "Reprogramación Uterina" },
+                { label: "Sanación Uterina Lemurianar" },
+                { label: "Reprogramación niña interior" },
+                { label: "Reprogramación maternidad" },
+            ],
+        },
+    ] satisfies ServiceGroup[],
 };
-
-export const services: {
-    title: string;
-    image: { src: string; alt: string };
-    items: ServiceItem[];
-}[] = [
-    {
-        title: "Lecturas",
-        image: { src: "img/lecturas.jpg", alt: "Lecturas Mami Cósmica" },
-        items: [
-            {
-                label: "Carta astral natal",
-                detail: {
-                    title: "Carta astral natal",
-                    body: "(Reprograma tu configuración matrix) Conocer tu programa astral, esa configuración que tu alma decidió experimentar, te ayudará a comprender cuáles son las misiones, funciones, patrones, heridas e incluso traumas que te toca aprender en esta vida.",
-                },
-            },
-            {
-                label: "Carta astral mamá y bebé",
-                detail: {
-                    title: "Carta astral mamá y bebé",
-                    body: "Entender y comprender mejor las energías de tu hij@, su misión de alma, sus necesidades específicas; te ayudará a vivir una maternidad más armónica y a generar un apego seguro con salud emocional y equilibrio espiritual. Primero, es importante que como mujer puedas estar contenta y cumpliendo los planes de tu alma, al tú estar bien podrás estar lista para entregarle lo mejor a tu bebé.",
-                },
-            },
-            {
-                label: "Carta astral familiar",
-                detail: {
-                    title: "Carta astral familiar",
-                    body: "Cuando comprendemos la info en conjunto de cada miembro de la familia, tendremos más ideas de cómo se relacionan, los puntos en común y las diferentes. Al ver la carta de los papás y los hij@s podremos entender cómo mejorar la convivencia en el día a día y entender la dinámica familiar y los roles de cada uno.",
-                },
-            },
-            {
-                label: "Carta astral infantil",
-                detail: {
-                    title: "Carta astral infantil",
-                    body: "Esta sesión varía según la edad del niñ@, si es bebé es una oportunidad maravillosa de aprender a formar el apego seguro y entender la energía de ese pequeño humanito que todavía no puede expresarse ni regularse por sí solo. De los 3 a 8 años, la lectura va más orientada a su crianza, educación, talentos, posibles bloqueos, linaje familiar y necesidades. A partir de los 9 años se pueden hacer lecturas personalizadas y además se puede volver a leer la carta para ver cómo está su energía y misión de alma.",
-                },
-            },
-            { label: "Revolución Solar" },
-            {
-                label: "Astrocouching/ tarot",
-                detail: {
-                    title: "Astrocouching/ tarot",
-                    body: "Esta sesión es para personas que ya conocen su carta astral y están buscando una guía que les permita conocer y entender la evolución de su alma actual.",
-                },
-            },
-            { label: "Biodescodificación astral" },
-            { label: "Carta dracónica y oráculo" },
-        ],
-    },
-    {
-        title: "Terapias",
-        image: { src: "img/terapias.jpg", alt: "Terapias Mami Cósmica" },
-        items: [
-            { label: "Limpieza astral en Registros Akashicos" },
-            { label: "Reconexión del alma/origen estelar" },
-            { label: "Liberación de karmas de vidas “pasadas”" },
-            { label: "Reprogramación Uterina" },
-            { label: "Sanación Uterina Lemurianar" },
-            { label: "Reprogramación niña interior" },
-            { label: "Reprogramación maternidad" },
-        ],
-    },
-];
 
 export const talleres = {
     heading: "Talleres",
+    ctaLabel: "Consulta",
     cards: [
         {
             icon: { src: "img/bebe.png", alt: "Magia para Mamas" },
@@ -151,6 +148,7 @@ export const contacto = {
     instagram: {
         url: "https://www.instagram.com/mamicosmica/?hl=es-la",
         image: "img/aboutme.jpg",
+        imageAlt: "Mami Cósmica en Instagram",
         label: "Agenda tu Cita en Instagram",
     },
 };
@@ -179,15 +177,13 @@ export const productos = {
             { type: "video" as const, src: "videos/oraculo2.MOV" },
         ],
     },
-};
-
-export type PreventaEdition = {
-    image: string;
-    name: string;
-    subtitle: string;
-    body: string;
-    /** Vista previa en vídeo al pasar el cursor. No todas las ediciones la tienen todavía. */
-    video?: string;
+    ui: {
+        viewDetails: "Ver Detalles",
+        comingSoon: "Próximamente",
+        back: "Volver al Catálogo",
+        viewVideo: "Ver vídeo",
+        viewImage: "Ver imagen",
+    },
 };
 
 export const preventa = {
@@ -198,6 +194,8 @@ export const preventa = {
     intro:
         "Nos acompañan los unicornios, dragones y elfas: una energía femenina, envolvente y transformadora para materializar y comprenderte en esta encarnación.",
     editionsHeading: "Elige tu edición",
+    coverAltPrefix: "Portada del Journal Cósmico",
+    watchVideoLabel: "Ver video",
     editions: [
         {
             image: "img/journal-unicornio.png",
@@ -239,6 +237,7 @@ export const preventa = {
             body: "Acceso libre a la clase astrológica en vivo.",
         },
     ],
+    priceLabel: "Valor de pre-venta",
     price: { pre: "S/ 111", regular: "S/ 133" },
     priceNote: "Pre-venta válida hasta el 30 de setiembre · Entregas a partir del 29 de octubre",
     ctaLabel: "Reservar por WhatsApp",

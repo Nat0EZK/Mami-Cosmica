@@ -3,7 +3,8 @@ import { PenLine, Image as ImageIcon, Moon, Play, type LucideIcon } from "lucide
 import FadeContent from "@/components/FadeContent";
 import SpotlightCard from "@/components/SpotlightCard";
 import Magnet from "@/components/Magnet";
-import { preventa, whatsapp, type PreventaEdition } from "@/content";
+import { whatsapp, type PreventaEdition } from "@/content";
+import { useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
 const ICONS: Record<string, LucideIcon> = {
@@ -13,6 +14,8 @@ const ICONS: Record<string, LucideIcon> = {
 };
 
 export function Preventa() {
+    const { preventa } = useContent();
+
     return (
         <section
             id="pre-venta"
@@ -116,7 +119,7 @@ export function Preventa() {
             <FadeContent blur duration={900} initialOpacity={0}>
                 <div className="night-stars relative mx-auto mt-24 max-w-[640px] overflow-hidden rounded-3xl bg-[linear-gradient(150deg,#33284F,#1C1630)] px-8 py-16 shadow-[0_4px_10px_rgba(47,32,71,.05),0_22px_55px_rgba(47,32,71,.12)]">
                     <p className="relative z-10 text-[0.8125rem] font-semibold uppercase tracking-[0.2em] text-gold-300">
-                        Valor de pre-venta
+                        {preventa.priceLabel}
                     </p>
                     <div className="relative z-10 mt-5 flex flex-wrap items-baseline justify-center gap-4">
                         <span className="font-display text-[clamp(2.6rem,7vw,3.6rem)] font-semibold text-gold-300">
@@ -161,6 +164,7 @@ function Icon({ name, className }: { name: string; className?: string }) {
  * vídeo se quedan tal cual: no todos los productos necesitan el mismo trato.
  */
 function EditionCard({ edition, delay }: { edition: PreventaEdition; delay: number }) {
+    const { preventa } = useContent();
     const [playing, setPlaying] = useState(false);
     const hasVideo = Boolean(edition.video);
 
@@ -178,7 +182,7 @@ function EditionCard({ edition, delay }: { edition: PreventaEdition; delay: numb
                 <div className="relative h-[380px] w-full overflow-hidden bg-night-900">
                     <img
                         src={edition.image}
-                        alt={`Portada del Journal Cósmico, ${edition.name}`}
+                        alt={`${preventa.coverAltPrefix}, ${edition.name}`}
                         loading="lazy"
                         decoding="async"
                         className={cn(
@@ -202,7 +206,7 @@ function EditionCard({ edition, delay }: { edition: PreventaEdition; delay: numb
                     {hasVideo && !playing && (
                         <span className="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-night-900/70 px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-cream-50 backdrop-blur-sm">
                             <Play aria-hidden="true" className="size-3 translate-x-px fill-current" />
-                            Ver video
+                            {preventa.watchVideoLabel}
                         </span>
                     )}
                 </div>

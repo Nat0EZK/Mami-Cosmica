@@ -1,21 +1,22 @@
 import { useState } from "react";
 import FadeContent from "@/components/FadeContent";
 import { SectionHeading } from "./Ornament";
-import { services } from "@/content";
+import { useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
 export function Services() {
+    const { services } = useContent();
     // Un solo detalle abierto a la vez en toda la sección
     const [open, setOpen] = useState<string | null>(null);
 
     return (
         <section id="servicios" className="mx-auto w-[min(92%,1240px)] py-24 md:py-32">
             <FadeContent blur duration={800} initialOpacity={0}>
-                <SectionHeading>Servicios</SectionHeading>
+                <SectionHeading>{services.heading}</SectionHeading>
             </FadeContent>
 
             <div className="mt-16 space-y-24">
-                {services.map((group, index) => (
+                {services.groups.map((group, index) => (
                     <FadeContent
                         key={group.title}
                         blur

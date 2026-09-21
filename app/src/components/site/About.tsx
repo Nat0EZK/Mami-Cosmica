@@ -1,7 +1,9 @@
 import FadeContent from "@/components/FadeContent";
-import { about } from "@/content";
+import { useContent } from "@/lib/locale";
 
 export function About() {
+    const { about } = useContent();
+
     return (
         <section
             id="sobre-mi"

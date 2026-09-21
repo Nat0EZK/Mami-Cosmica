@@ -1,0 +1,43 @@
+target_language: en
+default_mode: refined
+audience: business
+style: elegant
+
+# Custom glossary — brand-specific terms that should not be translated literally
+glossary:
+  - from: "Mami Cósmica"
+    to: "Mami Cósmica"
+    note: "Brand name, keep as-is"
+  - from: "Journal Cósmico"
+    to: "Cosmic Journal"
+    note: "Product name"
+  - from: "Oráculo Cósmico"
+    to: "Cosmic Oracle"
+    note: "Product name"
+  - from: "Útero Cósmico"
+    to: "Cosmic Womb"
+    note: "Program/workshop name (historical reference only, section removed)"
+  - from: "Valle Sagrado"
+    to: "Sacred Valley"
+    note: "Place name, Cusco region, Peru"
+  - from: "Cusco"
+    to: "Cusco"
+    note: "Place name, do not translate"
+  - from: "Plin"
+    to: "Plin"
+    note: "Peruvian P2P payment app, keep name as-is; gloss inline as a local instant-payment app on first mention if needed"
+  - from: "S/"
+    to: "S/"
+    note: "Peruvian sol currency symbol, keep as-is, do not convert"
+  - from: "carta astral"
+    to: "birth chart"
+    note: "Astrology term (natal chart)"
+  - from: "revolución solar"
+    to: "solar return"
+    note: "Astrology term"
+  - from: "registros akashicos"
+    to: "Akashic records"
+    note: "Spiritual/esoteric term"
+  - from: "sanación uterina"
+    to: "womb healing"
+    note: "Therapy modality name"
