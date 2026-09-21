@@ -129,9 +129,15 @@ export const contacto = {
         {
             q: "¿Cómo Agendar?",
             a: [
-                "El tiempo de espera para agendar tu sesión es aproximadamente entre 2 a 4 semanas según disponibilidad.",
-                'En el caso de que sea una sesión o terapia de "urgencia", puedes elegir la opción "Botiquín Cósmico".',
-                "Para confirmar la cita se deberá abonar el monto total de preferencia o el 50% y el restante hasta 24 horas antes de la fecha pactada.",
+                "Para agendar y separar tu fecha, realiza el pago por Plin y confirma. El turno solo se guardará por 24 horas.",
+                'El tiempo de espera de la agenda es de aproximadamente 2 semanas. Si es muy urgente, puedes elegir la opción "Botiquín Cósmico": una sesión terapéutica de emergencia con un valor adicional.',
+            ],
+        },
+        {
+            q: "Reprogramaciones y Penalidades",
+            a: [
+                "Las reprogramaciones se permiten hasta con 2 días de anticipación. La nueva fecha se agendará según disponibilidad, aproximadamente 2 semanas después.",
+                "Si no llegas a la sesión, se podrá reprogramar con una penalidad del 55%.",
             ],
         },
         {
