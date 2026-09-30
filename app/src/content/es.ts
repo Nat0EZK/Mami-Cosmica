@@ -23,11 +23,18 @@ export const hero = {
     subtitle: "Guía espiritual & sanadora cósmica",
     slogan:
         "La verdadera magia es la que se crea cuando decides profundizar en ti",
-    cta: { label: "Journal Cósmico", href: "#pre-venta" },
+    cta: { label: "Reservar Journal", href: "#pre-venta" },
+    ctaSession: { label: "Agendar sesión", href: "#contacto" },
+    deckLabel: "Saca una carta",
 };
 
 export const about = {
     heading: "Sobre Mami Cósmica",
+    facts: [
+        "Valle Sagrado, Cusco",
+        "Sesiones por Zoom y presenciales",
+        "Mamás, mujeres, niños y familias",
+    ],
     photos: [
         { src: "img/aboutme.jpg", alt: "Sobre Mami Cósmica" },
         { src: "img/aboutme2.jpg", alt: "Sobre Mami Cósmica 2" },
@@ -42,6 +49,8 @@ export const about = {
 
 export const services = {
     heading: "Servicios",
+    note: "Sesiones por Zoom o presenciales en el Valle Sagrado · Espera aproximada: 2 semanas",
+    ctaLabel: "Agendar sesión",
     groups: [
         {
             title: "Lecturas",
@@ -122,6 +131,15 @@ export const talleres = {
 
 export const contacto = {
     heading: "Contacto & FAQ",
+    stepsHeading: "Cómo agendar",
+    steps: [
+        { title: "Paga por Plin", body: "Separa tu fecha con el pago y envía la confirmación." },
+        { title: "Tu turno se guarda", body: "La reserva se mantiene por 24 horas hasta confirmar." },
+        { title: "Tu sesión", body: "Por Zoom o presencial, en unas 2 semanas. ¿Urgente? Pide el Botiquín Cósmico." },
+        { title: "Tu grabación", body: "Tienes 7 días para descargar el video de la sesión." },
+    ],
+    faqHeading: "Preguntas frecuentes",
+    whatsappLabel: "Escribir por WhatsApp",
     faqs: [
         {
             q: "¿Cómo Agendar?",

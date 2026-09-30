@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { PenLine, Image as ImageIcon, Moon, Play, type LucideIcon } from "lucide-react";
-import FadeContent from "@/components/FadeContent";
-import SpotlightCard from "@/components/SpotlightCard";
-import Magnet from "@/components/Magnet";
+import { Check, Image as ImageIcon, Moon, PenLine, Play, type LucideIcon } from "lucide-react";
 import { whatsapp, type PreventaEdition } from "@/content";
 import { useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
+import { ViewHeader, wrap } from "./Card";
+import { MoonPhases } from "./Magic";
 
 const ICONS: Record<string, LucideIcon> = {
     pencil: PenLine,
@@ -17,180 +16,113 @@ export function Preventa() {
     const { preventa } = useContent();
 
     return (
-        <section
-            id="pre-venta"
-            className="relative overflow-hidden px-6 py-24 text-center md:py-32"
-            style={{
-                background:
-                    "radial-gradient(ellipse at 14% 10%, rgba(143,121,184,.12) 0%, transparent 45%), radial-gradient(ellipse at 86% 90%, rgba(201,162,39,.10) 0%, transparent 45%), #FAF6EF",
-            }}
-        >
-            {/* Cabecera */}
-            <FadeContent blur duration={800} initialOpacity={0}>
-                <span className="inline-flex items-center gap-2 rounded-full border border-lav-600/28 bg-cream-50/93 px-6 py-2 text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-lav-700 shadow-sm">
-                    <span aria-hidden="true" className="text-gold-600">✦</span>
+        <section id="pre-venta">
+            <ViewHeader id="#pre-venta" title={preventa.heading}>
+                <p className="font-display text-[1.5rem] leading-snug text-white">{preventa.tagline}</p>
+                <p className="mt-2">{preventa.subheading}</p>
+                <p className="mt-5 inline-flex rounded-full px-4 py-1.5 text-[0.875rem] font-semibold text-white ring-1 ring-white/45">
                     {preventa.badge}
-                </span>
-
-                <h2 className="mt-8 font-display text-[clamp(2.4rem,7vw,4rem)] font-medium leading-[1.08] text-lav-800">
-                    {preventa.heading}
-                </h2>
-                <p className="mt-5 text-[0.9375rem] font-medium uppercase tracking-[0.26em] text-gold-700">
-                    {preventa.subheading}
                 </p>
-                <p className="mx-auto mt-6 max-w-[30ch] font-display text-[clamp(1.25rem,3.2vw,1.6rem)] italic text-lav-700">
-                    {preventa.tagline}
-                </p>
-                <p className="mx-auto mt-6 max-w-[62ch] text-[1.0625rem] leading-[1.85] text-ink-soft">
-                    {preventa.intro}
-                </p>
-            </FadeContent>
+                <MoonPhases className="mt-7 block w-[200px] text-[var(--tone-mark)]" />
+            </ViewHeader>
 
-            {/* Ediciones */}
-            <div className="mx-auto mt-20 max-w-[1040px]">
-                <FadeContent blur duration={800} initialOpacity={0}>
-                    <h3 className="font-display text-[clamp(1.6rem,3.4vw,2.3rem)] font-medium text-lav-800">
-                        {preventa.editionsHeading}
-                    </h3>
-                    <span
-                        aria-hidden="true"
-                        className="mx-auto mt-4 block h-px w-14 bg-gradient-to-r from-transparent via-gold-500 to-transparent"
-                    />
-                </FadeContent>
+            <div className={`${wrap} py-16 md:py-24`}>
+                <p className="max-w-[60ch] text-[1.1875rem] leading-[1.7] text-ink">{preventa.intro}</p>
 
-                <div className="mt-12 grid gap-8 sm:grid-cols-2">
-                    {preventa.editions.map((edition, i) => (
-                        <EditionCard key={edition.name} edition={edition} delay={i * 90} />
+                {/* Ediciones */}
+                <h3 className="mt-16 text-[clamp(1.75rem,3.5vw,2.5rem)] text-ink">{preventa.editionsHeading}</h3>
+                <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-10">
+                    {preventa.editions.map((edition) => (
+                        <EditionCard key={edition.name} edition={edition} />
                     ))}
                 </div>
-            </div>
 
-            {/* Qué incluye */}
-            <div className="mx-auto mt-20 max-w-[860px]">
-                <FadeContent blur duration={800} initialOpacity={0}>
-                    <div className="rounded-3xl border border-lav-600/15 bg-lav-100/45 p-10 text-left md:p-12">
-                        <h4 className="mb-6 text-center text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-gold-700">
-                            {preventa.includesHeading}
-                        </h4>
-                        <ul className="grid gap-x-10 gap-y-4 sm:grid-cols-2">
+                {/* Qué incluye + regalos */}
+                <div className="mt-20 grid gap-14 lg:grid-cols-2 lg:gap-16">
+                    <div>
+                        <h3 className="text-[clamp(1.75rem,3.5vw,2.5rem)] text-ink">{preventa.includesHeading}</h3>
+                        <ul className="mt-6 border-t border-line">
                             {preventa.includes.map((item) => (
-                                <li key={item} className="flex gap-2 text-[0.9375rem] leading-relaxed text-ink-soft">
-                                    <span aria-hidden="true" className="mt-1 shrink-0 text-[0.7rem] text-gold-600">✦</span>
+                                <li key={item} className="flex items-start gap-3 border-b border-line py-4 leading-relaxed text-ink-soft">
+                                    <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-aqua" strokeWidth={2} />
                                     {item}
                                 </li>
                             ))}
                         </ul>
                     </div>
-                </FadeContent>
-            </div>
 
-            {/* Regalos exclusivos */}
-            <div className="mt-20">
-                <FadeContent blur duration={800} initialOpacity={0}>
-                    <h3 className="font-display text-[clamp(1.6rem,3.4vw,2.3rem)] font-medium text-lav-800">
-                        {preventa.bonusHeading}
-                    </h3>
-                    <p className="mt-3 text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-ink-muted">
-                        {preventa.bonusSubheading}
-                    </p>
-                </FadeContent>
-
-                <div className="mx-auto mt-12 grid max-w-[900px] gap-6 sm:grid-cols-3">
-                    {preventa.bonus.map((item, i) => (
-                        <FadeContent key={item.title} blur duration={800} delay={i * 90} initialOpacity={0}>
-                            <SpotlightCard
-                                className="h-full rounded-3xl border border-lav-600/15 bg-cream-50/93 px-6 py-10 text-center"
-                                spotlightColor="rgba(201, 162, 39, 0.18)"
-                            >
-                                <span className="mx-auto mb-5 grid size-14 place-items-center rounded-full bg-lav-100/85 text-lav-700">
-                                    <Icon name={item.icon} />
-                                </span>
-                                <h4 className="font-display text-[1.25rem] font-semibold text-lav-800">
-                                    {item.title}
-                                </h4>
-                                <p className="mt-2 text-[0.9rem] leading-relaxed text-ink-muted">{item.body}</p>
-                            </SpotlightCard>
-                        </FadeContent>
-                    ))}
-                </div>
-            </div>
-
-            {/* Inversión + CTA */}
-            <FadeContent blur duration={900} initialOpacity={0}>
-                <div className="night-stars relative mx-auto mt-24 max-w-[640px] overflow-hidden rounded-3xl bg-[linear-gradient(150deg,#33284F,#1C1630)] px-8 py-16 shadow-[0_4px_10px_rgba(47,32,71,.05),0_22px_55px_rgba(47,32,71,.12)]">
-                    <p className="relative z-10 text-[0.8125rem] font-semibold uppercase tracking-[0.2em] text-gold-300">
-                        {preventa.priceLabel}
-                    </p>
-                    <div className="relative z-10 mt-5 flex flex-wrap items-baseline justify-center gap-4">
-                        <span className="font-display text-[clamp(2.6rem,7vw,3.6rem)] font-semibold text-gold-300">
-                            {preventa.price.pre}
-                        </span>
-                        <span className="text-[1.1rem] text-lav-300 line-through">{preventa.price.regular}</span>
-                    </div>
-                    <p className="relative z-10 mx-auto mt-5 max-w-[38ch] text-[0.9375rem] leading-relaxed text-lav-200">
-                        {preventa.priceNote}
-                    </p>
-
-                    <div className="relative z-10 mt-10">
-                        <Magnet padding={70} magnetStrength={7} className="inline-block">
-                            <a
-                                href={whatsapp}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group relative inline-block overflow-hidden rounded-full bg-gradient-to-br from-lav-600 to-lav-700 px-12 py-[1.05rem] text-[0.9375rem] font-semibold uppercase tracking-[0.1em] text-white shadow-[0_4px_14px_rgba(64,46,99,.26),0_14px_40px_rgba(64,46,99,.18)] transition-all duration-300 hover:shadow-[0_8px_20px_rgba(64,46,99,.30),0_20px_50px_rgba(64,46,99,.24),0_0_45px_rgba(143,121,184,.3)]"
-                            >
-                                <span className="relative z-10">{preventa.ctaLabel}</span>
-                                <span
-                                    aria-hidden="true"
-                                    className="absolute inset-0 -translate-x-full bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,.32)_50%,transparent_75%)] transition-transform duration-[900ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-full"
-                                />
-                            </a>
-                        </Magnet>
+                    <div>
+                        <h3 className="text-[clamp(1.75rem,3.5vw,2.5rem)] text-ink">{preventa.bonusHeading}</h3>
+                        <p className="mt-2 font-medium text-rose">{preventa.bonusSubheading}</p>
+                        <ul className="mt-6 border-t border-line">
+                            {preventa.bonus.map((item) => {
+                                const Icon = ICONS[item.icon] ?? Moon;
+                                return (
+                                    <li key={item.title} className="flex items-start gap-3 border-b border-line py-4">
+                                        <Icon aria-hidden="true" className="mt-1 size-4 shrink-0 text-rose" strokeWidth={2} />
+                                        <span className="leading-relaxed text-ink-soft">
+                                            <span className="font-semibold text-ink">{item.title}.</span> {item.body}
+                                        </span>
+                                    </li>
+                                );
+                            })}
+                        </ul>
                     </div>
                 </div>
-            </FadeContent>
+
+                {/* Precio y reserva */}
+                <div className="card-back tone-shop mt-20 grid gap-8 px-7 py-10 text-white md:grid-cols-[1fr_auto] md:items-center md:px-12 md:py-12">
+                    <div>
+                        <p className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                            <span className="font-display text-[clamp(3rem,8vw,4.5rem)] leading-none tabular-nums">
+                                {preventa.price.pre}
+                            </span>
+                            <s className="text-[1.25rem] tabular-nums text-rose-soft">{preventa.price.regular}</s>
+                        </p>
+                        <p className="mt-4 max-w-[46ch] text-[0.9375rem] text-rose-soft">
+                            {preventa.priceLabel} · {preventa.priceNote}
+                        </p>
+                    </div>
+                    <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-white on-tone">
+                        {preventa.ctaLabel}
+                    </a>
+                </div>
+            </div>
         </section>
     );
 }
 
-function Icon({ name, className }: { name: string; className?: string }) {
-    const Cmp = ICONS[name] ?? Moon;
-    return <Cmp aria-hidden="true" className={className ?? "size-5"} />;
-}
-
 /**
  * Al pasar el cursor (o tocar en móvil) sobre una edición con vídeo, la
- * portada cede el paso a una vista previa muda en bucle. Las ediciones sin
- * vídeo se quedan tal cual: no todos los productos necesitan el mismo trato.
+ * portada cede el paso a una vista previa muda en bucle.
  */
-function EditionCard({ edition, delay }: { edition: PreventaEdition; delay: number }) {
+function EditionCard({ edition }: { edition: PreventaEdition }) {
     const { preventa } = useContent();
     const [playing, setPlaying] = useState(false);
     const hasVideo = Boolean(edition.video);
 
     return (
-        <FadeContent blur duration={800} delay={delay} initialOpacity={0}>
-            <article
-                className="group h-full overflow-hidden rounded-3xl border border-lav-600/15 bg-cream-50/93 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)]"
-                onMouseEnter={() => hasVideo && setPlaying(true)}
-                onMouseLeave={() => setPlaying(false)}
-                onFocus={() => hasVideo && setPlaying(true)}
-                onBlur={() => setPlaying(false)}
-                onClick={() => hasVideo && setPlaying(true)}
-                tabIndex={hasVideo ? 0 : undefined}
-            >
-                <div className="relative h-[380px] w-full overflow-hidden bg-night-900">
+        <article
+            className="group"
+            onMouseEnter={() => hasVideo && setPlaying(true)}
+            onMouseLeave={() => setPlaying(false)}
+            onFocus={() => hasVideo && setPlaying(true)}
+            onBlur={() => setPlaying(false)}
+            onClick={() => hasVideo && setPlaying(true)}
+            tabIndex={hasVideo ? 0 : undefined}
+        >
+            <div className="card-face aspect-[3/4] overflow-hidden">
+                <div className="absolute inset-[15px] overflow-hidden rounded-[4px] bg-ink">
                     <img
                         src={edition.image}
                         alt={`${preventa.coverAltPrefix}, ${edition.name}`}
                         loading="lazy"
                         decoding="async"
                         className={cn(
-                            "absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105",
+                            "absolute inset-0 size-full object-cover transition-opacity duration-300",
                             playing && hasVideo && "opacity-0",
                         )}
                     />
-
                     {hasVideo && playing && (
                         <video
                             key={edition.video}
@@ -199,24 +131,20 @@ function EditionCard({ edition, delay }: { edition: PreventaEdition; delay: numb
                             muted
                             loop
                             playsInline
-                            className="absolute inset-0 h-full w-full object-cover"
+                            className="absolute inset-0 size-full object-cover"
                         />
                     )}
-
                     {hasVideo && !playing && (
-                        <span className="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-night-900/70 px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-cream-50 backdrop-blur-sm">
+                        <span className="pointer-events-none absolute right-3 bottom-3 inline-flex items-center gap-1.5 rounded-full bg-ink px-3.5 py-2 text-[0.8125rem] font-semibold text-stock">
                             <Play aria-hidden="true" className="size-3 translate-x-px fill-current" />
                             {preventa.watchVideoLabel}
                         </span>
                     )}
                 </div>
-
-                <div className="px-8 py-8 text-left">
-                    <h4 className="font-display text-[1.5rem] font-semibold text-lav-800">{edition.name}</h4>
-                    <p className="mt-1 font-display text-[1.0625rem] italic text-lav-600">{edition.subtitle}</p>
-                    <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-soft">{edition.body}</p>
-                </div>
-            </article>
-        </FadeContent>
+            </div>
+            <h4 className="mt-6 text-[1.75rem] text-ink">{edition.name}</h4>
+            <p className="mt-1 font-medium text-rose">{edition.subtitle}</p>
+            <p className="mt-3 max-w-[48ch] leading-relaxed text-ink-soft">{edition.body}</p>
+        </article>
     );
 }

@@ -1,85 +1,64 @@
-import FadeContent from "@/components/FadeContent";
+import { HeartHandshake, MapPin, Video, type LucideIcon } from "lucide-react";
 import { useContent } from "@/lib/locale";
+import { wrap } from "./Card";
+import { MoonPhases } from "./Magic";
+
+const FACT_ICONS: LucideIcon[] = [MapPin, Video, HeartHandshake];
 
 export function About() {
     const { about } = useContent();
+    // La foto real va al frente; la ilustración, detrás
+    const [illustration, portrait] = about.photos;
+    const [lead, ...rest] = about.paragraphs;
 
     return (
-        <section
-            id="sobre-mi"
-            className="relative py-24 md:py-32"
-            style={{
-                background:
-                    "linear-gradient(180deg, transparent 0%, rgba(244,237,226,.85) 12%, rgba(244,237,226,.85) 88%, transparent 100%)",
-            }}
-        >
-            <div className="mx-auto grid w-[min(92%,1240px)] items-start gap-10 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-16">
-                {/* Retratos */}
-                <div className="flex gap-4 sm:gap-6 lg:flex-col">
-                    {about.photos.map((photo, i) => (
-                        <FadeContent
-                            key={photo.src}
-                            blur
-                            duration={800}
-                            delay={i * 120}
-                            initialOpacity={0}
-                            className="flex-1"
-                        >
-                            <figure className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-lav-600/15 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_4px_10px_rgba(47,32,71,.05),0_22px_55px_rgba(47,32,71,.12)]">
-                                <img
-                                    src={photo.src}
-                                    alt={photo.alt}
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="size-full object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]"
-                                />
-                                {/* Velo lavanda que se retira al pasar el cursor */}
-                                <span
-                                    aria-hidden="true"
-                                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(143,121,184,.14),transparent_55%)] transition-opacity duration-500 group-hover:opacity-0"
-                                />
-                            </figure>
-                        </FadeContent>
-                    ))}
+        <section id="sobre-mi" className="bg-stock py-20 md:py-28">
+            <div className={`${wrap} grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20`}>
+                {/* Retrato enmarcado como una carta, con su ilustración detrás */}
+                <div className="relative mx-auto w-full max-w-[420px] lg:sticky lg:top-24 lg:self-start">
+                    <figure className="card-face relative z-10 p-[15px]">
+                        <img
+                            src={portrait.src}
+                            alt={portrait.alt}
+                            loading="lazy"
+                            decoding="async"
+                            className="block h-auto w-full rounded-[4px]"
+                        />
+                    </figure>
+                    <figure className="card-face absolute -right-4 -bottom-8 z-0 hidden w-[46%] rotate-[6deg] p-[15px] sm:block lg:-right-10">
+                        <img
+                            src={illustration.src}
+                            alt={illustration.alt}
+                            loading="lazy"
+                            decoding="async"
+                            className="block h-auto w-full rounded-[4px]"
+                        />
+                    </figure>
                 </div>
 
-                {/* Relato */}
-                <FadeContent blur duration={900} delay={160} initialOpacity={0}>
-                    <div className="relative rounded-3xl border border-lav-600/15 bg-cream-50/92 px-6 py-14 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)] sm:px-10 md:px-16">
-                        {/* Ornamento floral arriba y abajo */}
-                        {["-top-[31px]", "-bottom-[31px]"].map((pos) => (
-                            <img
-                                key={pos}
-                                src="img/flor.png"
-                                alt=""
-                                aria-hidden="true"
-                                loading="lazy"
-                                className={`absolute ${pos} left-1/2 size-[62px] -translate-x-1/2 object-contain opacity-85 drop-shadow-[0_4px_10px_rgba(47,32,71,.12)]`}
-                            />
-                        ))}
+                <div className="min-w-0">
+                    <MoonPhases className="mb-6 block w-[170px] text-lilac" />
+                    <h2 className="text-[clamp(2.25rem,5vw,3.5rem)] text-ink">{about.heading}</h2>
 
-                        <h2 className="text-center font-display text-[clamp(1.75rem,3.6vw,2.5rem)] font-medium uppercase tracking-[0.12em] text-lav-800">
-                            {about.heading}
-                        </h2>
-                        <span
-                            aria-hidden="true"
-                            className="mx-auto mt-4 mb-8 block h-px w-16 bg-gradient-to-r from-transparent via-gold-500 to-transparent"
-                        />
+                    <ul className="mt-8 grid gap-3 border-y border-line py-5 sm:grid-cols-3 sm:gap-6">
+                        {about.facts.map((fact, i) => {
+                            const Icon = FACT_ICONS[i] ?? MapPin;
+                            return (
+                                <li key={fact} className="flex items-start gap-2.5 text-[0.9375rem] leading-snug font-medium text-ink-soft">
+                                    <Icon aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-violet" strokeWidth={1.75} />
+                                    {fact}
+                                </li>
+                            );
+                        })}
+                    </ul>
 
-                        {about.paragraphs.map((text, i) => (
-                            <p
-                                key={i}
-                                className={`mb-6 max-w-[68ch] text-[1.0625rem] leading-[1.85] text-ink-soft last:mb-0 ${
-                                    i === 0
-                                        ? "first-letter:float-left first-letter:pr-2 first-letter:font-display first-letter:text-[3.6rem] first-letter:font-semibold first-letter:leading-[0.82] first-letter:text-lav-600"
-                                        : ""
-                                }`}
-                            >
-                                {text}
-                            </p>
-                        ))}
-                    </div>
-                </FadeContent>
+                    <p className="mt-10 max-w-[66ch] leading-[1.8] text-ink">{lead}</p>
+                    {rest.map((text, i) => (
+                        <p key={i} className="mt-6 max-w-[66ch] leading-[1.8] text-ink-soft">
+                            {text}
+                        </p>
+                    ))}
+                </div>
             </div>
         </section>
     );

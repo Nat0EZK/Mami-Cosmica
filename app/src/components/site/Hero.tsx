@@ -1,95 +1,176 @@
-import SplitText from "@/components/SplitText";
-import { SparklesText } from "@/components/ui/sparkles-text";
-import Magnet from "@/components/Magnet";
-import FadeContent from "@/components/FadeContent";
-import { StarRule } from "./Ornament";
 import { useContent } from "@/lib/locale";
+import { cn } from "@/lib/utils";
+import { CardBack, NUMERALS, toneOf } from "./Card";
+import { AstroWheel, DrawSparks, StarField } from "./Magic";
 
-export function Hero() {
-    const { hero } = useContent();
+/**
+ * Anverso de cada carta de la tirada: una imagen real de esa sección. Las
+ * ilustraciones llevan título dentro, así que se muestran enteras ("contain");
+ * las fotos pueden llenar la carta ("cover").
+ */
+const FACES: Record<string, { src: string; fit: "contain" | "cover" }> = {
+    "#servicios": { src: "img/lecturas.jpg", fit: "contain" },
+    "#talleres": { src: "img/utero-taller.png", fit: "contain" },
+    "#productos": { src: "img/oraculomain.jpg", fit: "cover" },
+    "#pre-venta": { src: "img/journal-unicornio.png", fit: "cover" },
+    "#contacto": { src: "img/aboutme.jpg", fit: "contain" },
+};
+
+type DeckItem = { href: string; label: string };
+
+function DeckCard({
+    item,
+    drawn,
+    rest,
+    className,
+}: {
+    item: DeckItem;
+    drawn: boolean;
+    rest: string;
+    className?: string;
+}) {
+    return (
+        <a
+            href={item.href}
+            aria-current={drawn ? "page" : undefined}
+            data-drawn={drawn}
+            className={cn("deck-card on-tone block aspect-[5/8]", className)}
+            style={{ "--rest": rest } as React.CSSProperties}
+        >
+            {drawn && <DrawSparks />}
+            <span className="deck-flip relative block size-full">
+                {/* Reverso: boca abajo hasta que se saca */}
+                <span className="deck-side absolute inset-0">
+                    <CardBack numeral={NUMERALS[item.href]} label={item.label} tone={toneOf(item.href)} className="size-full" />
+                </span>
+
+                {/* Anverso */}
+                <span className="deck-side deck-side--face card-face absolute inset-0 flex flex-col overflow-hidden">
+                    <span className="relative m-[15px] mb-0 flex-1 overflow-hidden rounded-t-[4px] bg-paper">
+                        <img
+                            src={FACES[item.href].src}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            className={cn(
+                                "absolute inset-0 size-full",
+                                FACES[item.href].fit === "cover" ? "object-cover" : "object-contain",
+                            )}
+                        />
+                    </span>
+                    <span className="px-3 pt-2 pb-[14px] text-center">
+                        <span className="block font-display text-[0.95em] leading-none text-violet">
+                            {NUMERALS[item.href]}
+                        </span>
+                        <span className="mt-1 block truncate text-[0.72em] font-semibold uppercase tracking-[0.08em] text-ink">
+                            {item.label}
+                        </span>
+                    </span>
+                </span>
+            </span>
+        </a>
+    );
+}
+
+export function Hero({ active }: { active: string | null }) {
+    const { hero, nav } = useContent();
+    const deck = nav.items.filter((item) => item.href in NUMERALS);
+    const mid = (deck.length - 1) / 2;
 
     return (
-        <section
-            id="inicio"
-            className="relative grid min-h-[min(94vh,900px)] place-items-center overflow-hidden px-6 pt-[calc(76px+6rem)] pb-24 text-center"
-        >
-            {/* Halo suave detrás del título */}
-            <div
-                aria-hidden="true"
-                className="pointer-events-none absolute left-1/2 top-[42%] size-[min(760px,92vw)] -translate-x-1/2 -translate-y-1/2 blur-[20px]"
-                style={{
-                    background:
-                        "radial-gradient(circle, rgba(143,121,184,.16) 0%, rgba(226,199,124,.08) 42%, transparent 68%)",
-                    animation: "halo-breathe 11s ease-in-out infinite",
-                }}
-            />
-
-            <div className="relative z-10 max-w-4xl">
-                <StarRule className="mb-8" />
-
-                {/* El momento principal: la marca se escribe sola, letra a letra */}
-                <div>
-                    {/* SparklesText aporta el destello; SplitText, el revelado
-                        letra a letra. El h1 vive en el envoltorio para no
-                        perder la semántica del título. */}
-                    <SparklesText
-                        as="h1"
-                        sparklesCount={14}
-                        colors={{ first: "#C9A227", second: "#8F79B8" }}
-                        className="font-display text-[clamp(3rem,11vw,6.5rem)] font-medium leading-[1.02] tracking-[-0.02em] text-lav-800"
-                    >
-                        <SplitText
-                            text={hero.title}
-                            tag="span"
-                            className="inline-block"
-                            splitType="chars"
-                            delay={55}
-                            duration={1.1}
-                            ease="power3.out"
-                            from={{ opacity: 0, y: 46, filter: "blur(8px)" }}
-                            to={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                            threshold={0.1}
-                        />
-                    </SparklesText>
-                </div>
-
-                <FadeContent blur duration={900} delay={520} initialOpacity={0}>
-                    <p className="mt-6 text-[clamp(.9rem,2.1vw,1.05rem)] uppercase tracking-[0.22em] text-ink-muted">
-                        {hero.subtitle}
-                    </p>
-                </FadeContent>
-
-                <StarRule className="my-8" />
-
-                <FadeContent blur duration={900} delay={760} initialOpacity={0}>
-                    <p className="mx-auto max-w-[30ch] font-display text-[clamp(1.35rem,3.6vw,2.05rem)] italic leading-[1.45] text-lav-700">
+        <section id="inicio" className="relative pt-16 lg:grid lg:min-h-[min(100svh,880px)] lg:grid-cols-[minmax(0,1fr)_minmax(0,46%)]">
+            {/* Presentación */}
+            <div className="flex items-center">
+                <div className="mx-auto w-[min(100%-2.5rem,600px)] py-14 lg:mr-12 lg:ml-auto lg:w-[min(100%-6rem,600px)] lg:py-20">
+                    <h1 className="text-[clamp(3.4rem,11vw,6rem)] leading-[0.92] tracking-[-0.025em] text-ink">
+                        {hero.title}
+                    </h1>
+                    <p className="mt-5 text-[1.125rem] font-medium text-ink-soft">{hero.subtitle}</p>
+                    <p className="mt-8 max-w-[26ch] border-l border-lilac pl-5 font-display text-[clamp(1.35rem,3vw,1.65rem)] leading-[1.3] text-violet">
                         {hero.slogan}
                     </p>
-                </FadeContent>
 
-                <FadeContent blur duration={900} delay={1000} initialOpacity={0}>
-                    {/* El botón se inclina hacia el cursor: invita sin gritar */}
-                    <Magnet padding={90} magnetStrength={6} className="mt-12 inline-block">
-                        <a
-                            href={hero.cta.href}
-                            className="group relative inline-block overflow-hidden rounded-full bg-gradient-to-br from-lav-600 to-lav-700 px-12 py-[1.05rem] text-[0.9375rem] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_4px_14px_rgba(64,46,99,.26),0_14px_40px_rgba(64,46,99,.18)] transition-all duration-300 hover:shadow-[0_8px_20px_rgba(64,46,99,.30),0_20px_50px_rgba(64,46,99,.24),0_0_45px_rgba(143,121,184,.3)]"
-                        >
-                            <span className="relative z-10">{hero.cta.label}</span>
-                            <span
-                                aria-hidden="true"
-                                className="absolute inset-0 -translate-x-full bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,.32)_50%,transparent_75%)] transition-transform duration-[900ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-full"
-                            />
+                    <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                        <a href={hero.ctaSession.href} className="btn btn-violet">
+                            {hero.ctaSession.label}
                         </a>
-                    </Magnet>
-                </FadeContent>
+                        <a href={hero.cta.href} className="btn btn-rose">
+                            {hero.cta.label}
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <style>{`
-                @keyframes halo-breathe {
-                    0%, 100% { opacity: .75; transform: translate(-50%,-50%) scale(1); }
-                    50%      { opacity: 1;   transform: translate(-50%,-50%) scale(1.07); }
-                }
-            `}</style>
+            {/* La tirada */}
+            <div className="tone-session tone-field relative overflow-hidden pt-6 pb-8 lg:flex lg:flex-col lg:items-center lg:justify-center lg:pt-0 lg:pb-0">
+                <StarField />
+                <AstroWheel className="astro-wheel absolute top-1/2 left-1/2 -mt-[260px] -ml-[260px] size-[520px] text-[var(--tone-mark)] opacity-55 max-lg:top-[-120px] max-lg:left-auto max-lg:right-[-200px] max-lg:m-0" />
+                {/* Escritorio: abanico */}
+                {/* --card: ancho de carta; --step: separación en el abanico; --gap: lo
+                    que se corren las cartas a la derecha de la sacada para que su
+                    índice (esquina superior izquierda) quede a la vista. */}
+                <nav
+                    aria-label={hero.deckLabel}
+                    className="relative hidden h-[290px] w-full max-w-[640px] [--card:132px] [--gap:72px] [--step:50px] lg:block xl:h-[320px] xl:[--card:156px] xl:[--gap:82px] xl:[--step:64px] min-[1400px]:h-[350px] min-[1400px]:[--card:176px] min-[1400px]:[--gap:100px] min-[1400px]:[--step:70px] 2xl:h-[360px] 2xl:[--card:184px] 2xl:[--gap:104px] 2xl:[--step:76px]"
+                >
+                    {deck.map((item, i) => {
+                        const o = i - mid;
+                        const drawnAt = deck.findIndex((d) => d.href === active);
+                        // Una carta inclinada adelanta su esquina superior hacia la sacada
+                        // (alto de carta = 1.6 × ancho): eso se suma a su hueco.
+                        const lean = (n: number) => 1.6 * Math.sin((Math.abs(n) * 6 * Math.PI) / 180);
+                        const nl = drawnAt - 1 - mid;
+                        const nr = drawnAt + 1 - mid;
+                        // Hueco a la izquierda: la vecina deja ver ~60 % de su ancho (su índice)
+                        const left =
+                            drawnAt > 0 ? `(0.6 * var(--card) - var(--step) + ${(nl > 0 ? lean(nl) : 0).toFixed(3)} * var(--card))` : "0px";
+                        // Hueco a la derecha: la vecina queda casi fuera de la sacada
+                        const right =
+                            drawnAt >= 0 && drawnAt < deck.length - 1
+                                ? `(var(--gap) + ${(nr < 0 ? lean(nr) : 0).toFixed(3)} * var(--card))`
+                                : "0px";
+                        const shift = drawnAt < 0 ? 0 : (i >= drawnAt ? 1 : 0);
+                        const shiftR = drawnAt < 0 ? 0 : (i > drawnAt ? 1 : 0);
+                        // …y todo el abanico se recentra
+                        const x = `calc(-50% + ${o} * var(--step) + ${shift} * ${left} + ${shiftR} * ${right} - 0.5 * (${left} + ${right}))`;
+                        const drawn = active === item.href;
+                        const rest = drawn
+                            ? `translateX(${x}) translateY(-44px) rotate(0deg)`
+                            : `translateX(${x}) translateY(${Math.abs(o) * 12}px) rotate(${o * 6}deg)`;
+                        return (
+                            <DeckCard
+                                key={item.href}
+                                item={item}
+                                drawn={drawn}
+                                rest={rest}
+                                className={cn(
+                                    "absolute top-0 left-1/2 w-[var(--card)] origin-bottom text-[12px] xl:text-[15px] [&_.card-index]:max-w-[42%] [&_.card-index>span+span]:text-[0.6em] [&_.card-index>span+span]:tracking-[0.04em]",
+                                    drawn && "z-10",
+                                )}
+                            />
+                        );
+                    })}
+                </nav>
+
+                {/* Móvil: fila deslizable */}
+                <nav aria-label={hero.deckLabel} className="lg:hidden">
+                    <ul className="flex snap-x snap-mandatory scroll-px-5 gap-3 [&>li:first-child]:ml-auto [&>li:last-child]:mr-auto overflow-x-auto px-5 pt-5 pb-2 [scrollbar-width:none]">
+                        {deck.map((item) => {
+                            const drawn = active === item.href;
+                            return (
+                                <li key={item.href} className="shrink-0 snap-start">
+                                    <DeckCard
+                                        item={item}
+                                        drawn={drawn}
+                                        rest={drawn ? "translateY(-10px)" : "none"}
+                                        className="relative w-[104px] text-[12px]"
+                                    />
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </nav>
+            </div>
         </section>
     );
 }

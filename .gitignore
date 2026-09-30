@@ -8,3 +8,7 @@ Thumbs.db
 # Evita duplicar 28 MB de vídeo en el historial de git.
 app/public/img/
 app/public/videos/
+
+# Capturas y registros de trabajo de la skill impeccable
+.impeccable/review/
+.impeccable/questions/

@@ -1,6 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import ClickSpark from "@/components/ClickSpark";
-import { Starfield } from "@/components/site/Starfield";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { About } from "@/components/site/About";
@@ -9,6 +7,7 @@ import { Talleres } from "@/components/site/Talleres";
 import { Productos } from "@/components/site/Productos";
 import { Preventa } from "@/components/site/Preventa";
 import { Contacto } from "@/components/site/Contacto";
+import { Footer } from "@/components/site/Footer";
 
 /**
  * Secciones que funcionan como "vistas": están ocultas hasta que se pulsa su
@@ -103,19 +102,11 @@ export default function App() {
     const ActiveView = active ? VIEWS[active] : null;
 
     return (
-        // Un destello discreto allí donde la visitante toca la página
-        <ClickSpark
-            sparkColor="#A8842F"
-            sparkCount={7}
-            sparkSize={9}
-            sparkRadius={18}
-            duration={520}
-        >
-            <Starfield />
+        <>
             <Nav active={active} />
 
-            <main className="relative z-10">
-                <Hero />
+            <main>
+                <Hero active={active} />
                 <About />
 
                 {ActiveView && (
@@ -126,6 +117,8 @@ export default function App() {
                     </div>
                 )}
             </main>
-        </ClickSpark>
+
+            <Footer />
+        </>
     );
 }

@@ -1,0 +1,133 @@
+{
+  "title": "Elige el mundo visual de Mami Cósmica",
+  "question": "Tres direcciones para el rediseño. Quédate con la primera, elige otra, o pide otra tanda.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "El Mazo",
+      "kicker": "THE ROLL",
+      "lineage": "Su propio Oráculo Cósmico: cartas numeradas, reverso de color, marco impreso",
+      "thesis": "El sitio es su mazo: cada sección es una carta que se saca y se lee.",
+      "palette": ["#2A2447", "#F6F2F8", "#B79AD9", "#2F7F80", "#D9759C"],
+      "materials": ["cartulina de carta mate", "reverso índigo con patrón", "filete doble impreso"],
+      "viewport": "Kamilla y su nombre a gran escala a la izquierda; a la derecha, la tirada: cinco cartas boca abajo (Servicios, Talleres, Productos, Journal, Contacto) con número romano; dos botones: Agendar sesión y Reservar Journal.",
+      "risk": "Si las cartas se tratan como tarjetas de UI genéricas, vuelve a parecer plantilla; tienen que tener proporción, numeración y reverso reales.",
+      "raised": [
+        { "from": "challenger-passport", "raise": "Cada carta lleva datos oficiales impresos (modalidad, duración, precio cuando existe): la confianza se gana con hechos, no con adornos." },
+        { "from": "challenger-elbow", "raise": "Campos de color planos y totales: nada de brillos, degradados ni estrellas titilantes." },
+        { "from": "challenger-darkroom", "raise": "Agendar se muestra como estaciones en orden (pago Plin → confirmación → sesión Zoom → 7 días de video)." },
+        { "from": "challenger-specimen", "raise": "Jerarquía sólo por escala tipográfica; el ornamento sale de la página." }
+      ],
+      "comp": ".impeccable/mocks/decision/assigned.webp"
+    },
+    {
+      "id": "model-pick",
+      "label": "Mayu, el río celeste",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Constelaciones andinas de nube oscura (la Llama, el Sapo, la Serpiente) en la Vía Láctea",
+      "thesis": "Astrología vista desde el Valle Sagrado: el cielo andino como mapa del sitio.",
+      "palette": ["#141733", "#E9E4F2", "#8C7BB5", "#D9A441"],
+      "materials": ["planisferio grabado", "polvo de estrellas", "tinta de lámina astronómica"],
+      "viewport": "Un planisferio nocturno a pantalla completa; las secciones son constelaciones andinas etiquetadas; nombre y dos CTA sobre el río de la Vía Láctea.",
+      "risk": "Fondo nocturno con estrellas es justo donde aterrizan casi todos los sitios de astrología; también choca con sus ilustraciones pastel.",
+      "comp": ".impeccable/mocks/decision/model-pick.webp"
+    },
+    {
+      "id": "challenger-akari",
+      "label": "Taller de faroles",
+      "verdict": "competitive",
+      "lineage": "Lámparas akari: papel washi sobre costillas de bambú",
+      "thesis": "Cada sección es un farol de papel que se enciende cuando lo abres.",
+      "palette": ["#F3EBDC", "#C9A77A", "#2E2A28", "#D2462E"],
+      "materials": ["papel washi translúcido", "costillas de bambú", "sello bermellón"],
+      "viewport": "Una sala tenue con lunas de papel encendidas a distintas alturas; la de Kamilla al centro.",
+      "case": "Gana en calidez e identificación (lunas, luz suave, hecho a mano); pierde en claridad y es un mundo japonés, ajeno a su territorio andino.",
+      "risk": "Crema cálido + papel es el look por defecto de la IA para bienestar.",
+      "hero": "https://impeccable.style/worlds/cards/paper-folds-pleats-deployable-akari-light-sculpture-hero.webp",
+      "comp": ".impeccable/mocks/decision/challenger-akari.webp"
+    },
+    {
+      "id": "challenger-passport",
+      "label": "Pasaporte con sellos",
+      "verdict": "declined",
+      "lineage": "Pasaporte con visas y sellos acumulados",
+      "thesis": "Tu camino como un pasaporte sellado.",
+      "palette": ["#6B1F2B", "#E8D7D2", "#D7E3D4", "#C9A24A"],
+      "materials": ["papel de seguridad", "tinta de sello"],
+      "viewport": "Página de datos con sellos de cada servicio.",
+      "case": "Las mamás no se identifican con trámites fronterizos.",
+      "kept": "Datos concretos impresos como sello de confianza.",
+      "risk": "Burocrático y frío.",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-well-traveled-passport-hero.webp"
+    },
+    {
+      "id": "challenger-elbow",
+      "label": "Panel de nave",
+      "verdict": "declined",
+      "lineage": "Consola de nave con codos pastel",
+      "thesis": "Secciones como bancos de color en un panel.",
+      "palette": ["#000000", "#C9A6E8", "#F2B38A", "#E8C15A"],
+      "materials": ["bloques planos", "cristal negro"],
+      "viewport": "Marco de codos que es la retícula.",
+      "case": "Referencia de ciencia ficción ajena a sanación y maternidad.",
+      "kept": "Compromiso total con campos de color planos.",
+      "risk": "Parodia.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-elbow-panel-console-hero.webp"
+    },
+    {
+      "id": "challenger-darkroom",
+      "label": "Cuarto oscuro",
+      "verdict": "declined",
+      "lineage": "Laboratorio de revelado bajo luz ámbar",
+      "thesis": "La sanación como revelado lento.",
+      "palette": ["#C8641E", "#1A1A1A", "#9A9A9A", "#F2F0EA"],
+      "materials": ["luz de seguridad", "papel fotográfico"],
+      "viewport": "Estaciones de revelado en fila.",
+      "case": "Metáfora forzada; oscurece el servicio.",
+      "kept": "Procesos como estaciones en orden.",
+      "risk": "Críptico.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-darkroom-safelight-bay-hero.webp"
+    },
+    {
+      "id": "challenger-specimen",
+      "label": "Espécimen tipográfico",
+      "verdict": "declined",
+      "lineage": "Espécimen interactivo de fuente variable",
+      "thesis": "La letra como protagonista.",
+      "palette": ["#FAFAF7", "#111111", "#6C4BD1"],
+      "materials": ["papel liso", "retícula de glifos"],
+      "viewport": "Una letra gigante que respira.",
+      "case": "No habla de ella ni de su trabajo.",
+      "kept": "Jerarquía sólo por escala.",
+      "risk": "Frío, de diseñador para diseñadores.",
+      "hero": "https://impeccable.style/worlds/cards/variable-font-specimen-hero.webp"
+    },
+    {
+      "id": "challenger-film",
+      "label": "Película revelada a mano",
+      "verdict": "declined",
+      "lineage": "Tira de 16 mm con rayones y fugas de luz",
+      "thesis": "El sitio como película artesanal.",
+      "palette": ["#111111", "#9A9A9A", "#E8742A"],
+      "materials": ["emulsión", "grano"],
+      "viewport": "Fotogramas en tira.",
+      "case": "Ni la audiencia ni el producto se reconocen ahí.",
+      "kept": "Nada material; sólo la idea de artesanía visible.",
+      "risk": "Ruidoso y oscuro.",
+      "hero": "https://impeccable.style/worlds/cards/cinema-cinematography-editing-hand-processed-film-bloom-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code", "toggle": false },
+  "canon": true,
+  "canonCard": {
+    "label": "Estándar de terapeutas holísticas",
+    "thesis": "Sitio de práctica de bienestar clásico, hecho con oficio.",
+    "palette": ["#FBF8F4", "#2B2B2B", "#8A7BA8"],
+    "materials": ["foto grande de la terapeuta", "retícula limpia"],
+    "viewport": "Foto de Kamilla a pantalla, nombre, dos CTA; debajo servicios en grilla.",
+    "risk": "Indistinguible de cualquier otra terapeuta por diseño.",
+    "comp": ".impeccable/mocks/decision/canon.webp"
+  },
+  "steer": true
+}

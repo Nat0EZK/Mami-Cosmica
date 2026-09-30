@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T00:13:13.344Z",
+  "title": "Design System: Mami Cósmica",
+  "extensions": {
+    "colorMeta": {
+      "violet": {
+        "role": "primary",
+        "displayName": "Violeta de Sesión",
+        "canonical": "oklch(50.0% 0.138 295)",
+        "tonalRamp": [
+          "#120030",
+          "#2B0D56",
+          "#482A7E",
+          "#6549A1",
+          "#886DC9",
+          "#AC92F0",
+          "#D1BBFF",
+          "#F4E1FF"
+        ]
+      },
+      "violet-2": {
+        "role": "primary",
+        "displayName": "Violeta Hondo",
+        "canonical": "oklch(44.4% 0.128 294)",
+        "tonalRamp": [
+          "#110030",
+          "#2A0F55",
+          "#462C7B",
+          "#644B9D",
+          "#866FC4",
+          "#AA93EC",
+          "#D0BBFF",
+          "#F3E2FF"
+        ]
+      },
+      "violet-soft": {
+        "role": "primary",
+        "displayName": "Violeta Velado",
+        "canonical": "oklch(93.6% 0.025 303)",
+        "tonalRamp": [
+          "#0D0814",
+          "#26212E",
+          "#423D4B",
+          "#605A6A",
+          "#837D8D",
+          "#A8A1B2",
+          "#CEC7D8",
+          "#F2EBFD"
+        ]
+      },
+      "violet-mark": {
+        "role": "primary",
+        "displayName": "Violeta de Filete",
+        "canonical": "oklch(82.8% 0.070 299)",
+        "tonalRamp": [
+          "#100223",
+          "#291B40",
+          "#45375F",
+          "#63547F",
+          "#8677A4",
+          "#AB9BCA",
+          "#D1C1F2",
+          "#F5E5FF"
+        ]
+      },
+      "rose": {
+        "role": "secondary",
+        "displayName": "Rosa de Compra",
+        "canonical": "oklch(52.7% 0.149 354)",
+        "tonalRamp": [
+          "#27000E",
+          "#4B0027",
+          "#720F44",
+          "#992F63",
+          "#C25486",
+          "#E77DAA",
+          "#FFA8CF",
+          "#FFD1F3"
+        ]
+      },
+      "rose-2": {
+        "role": "secondary",
+        "displayName": "Rosa Hondo",
+        "canonical": "oklch(46.5% 0.135 352)",
+        "tonalRamp": [
+          "#25000F",
+          "#4A0029",
+          "#701346",
+          "#943664",
+          "#BC5A87",
+          "#E47FAC",
+          "#FFAAD1",
+          "#FFD2F5"
+        ]
+      },
+      "rose-soft": {
+        "role": "secondary",
+        "displayName": "Rosa Velado",
+        "canonical": "oklch(94.8% 0.023 353)",
+        "tonalRamp": [
+          "#13070C",
+          "#2D2025",
+          "#4A3B41",
+          "#68595F",
+          "#8C7B81",
+          "#B19FA6",
+          "#D7C5CC",
+          "#FCE9F0"
+        ]
+      },
+      "rose-mark": {
+        "role": "secondary",
+        "displayName": "Rosa de Filete",
+        "canonical": "oklch(83.0% 0.071 353)",
+        "tonalRamp": [
+          "#1F000D",
+          "#3D1327",
+          "#5C2F43",
+          "#7D4D61",
+          "#A26F84",
+          "#C893A8",
+          "#F0B8CE",
+          "#FFDCF2"
+        ]
+      },
+      "aqua": {
+        "role": "tertiary",
+        "displayName": "Aguamarina de Detalle",
+        "canonical": "oklch(57.0% 0.083 190)",
+        "tonalRamp": [
+          "#001413",
+          "#002F2D",
+          "#004D4A",
+          "#006C69",
+          "#39908C",
+          "#61B5B1",
+          "#87DCD7",
+          "#ABFFFC"
+        ]
+      },
+      "lilac": {
+        "role": "tertiary",
+        "displayName": "Lila de Mesa",
+        "canonical": "oklch(80.7% 0.074 302)",
+        "tonalRamp": [
+          "#120124",
+          "#2B1941",
+          "#473560",
+          "#665380",
+          "#8976A5",
+          "#AD9ACB",
+          "#D4C0F3",
+          "#F8E3FF"
+        ]
+      },
+      "stock": {
+        "role": "neutral",
+        "displayName": "Cartulina",
+        "canonical": "oklch(98.7% 0.004 314)",
+        "tonalRamp": [
+          "#0C0B0C",
+          "#252325",
+          "#413F41",
+          "#5E5D5F",
+          "#817F82",
+          "#A6A4A6",
+          "#CBCACC",
+          "#EFEEF0"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Mesa Lila",
+        "canonical": "oklch(95.6% 0.014 308)",
+        "tonalRamp": [
+          "#0D0A10",
+          "#262229",
+          "#423E46",
+          "#605C64",
+          "#827E87",
+          "#A7A2AC",
+          "#CDC8D2",
+          "#F1ECF6"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Filete Impreso",
+        "canonical": "oklch(88.3% 0.035 306)",
+        "tonalRamp": [
+          "#0F0717",
+          "#282031",
+          "#443B4E",
+          "#62596D",
+          "#857B91",
+          "#AA9FB6",
+          "#D0C5DD",
+          "#F4E9FF"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta Ciruela",
+        "canonical": "oklch(27.3% 0.057 306)",
+        "tonalRamp": [
+          "#11041E",
+          "#2B1C3A",
+          "#473858",
+          "#665577",
+          "#89789C",
+          "#AD9CC1",
+          "#D4C2E9",
+          "#F8E5FF"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Tinta Suave",
+        "canonical": "oklch(42.1% 0.063 302)",
+        "tonalRamp": [
+          "#110320",
+          "#2A1B3D",
+          "#46375B",
+          "#64557B",
+          "#8777A0",
+          "#AC9CC6",
+          "#D2C1ED",
+          "#F6E5FF"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Tinta Apagada",
+        "canonical": "oklch(50.4% 0.057 301)",
+        "tonalRamp": [
+          "#10041F",
+          "#291D3B",
+          "#453859",
+          "#635679",
+          "#86799D",
+          "#AB9DC3",
+          "#D1C3EA",
+          "#F5E6FF"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Sólo el nombre en el hero."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Numeral romano de cada cabecera de vista."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de vista y de Sobre Mí."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Subtítulos dentro de una vista."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido, 62 a 66ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Botones y enlaces de acción."
+      },
+      "card-index": {
+        "displayName": "Card Index",
+        "purpose": "Índice en mayúsculas en la esquina de cada carta de la tirada."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-face",
+        "value": "0 1px 2px rgb(46 31 61 / 0.08), 0 14px 30px -14px rgb(46 31 61 / 0.35)",
+        "purpose": "Anverso de cartulina descansando en la mesa."
+      },
+      {
+        "name": "card-back",
+        "value": "0 1px 2px rgb(46 31 61 / 0.18), 0 16px 32px -14px rgb(46 31 61 / 0.45)",
+        "purpose": "Reverso de color y caja de precio."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Curva por defecto: carta que se saca, entradas, subrayados, acordeones."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Sólo el giro de la carta a su anverso."
+      },
+      {
+        "name": "draw",
+        "value": "420ms",
+        "purpose": "La carta sale del abanico."
+      },
+      {
+        "name": "flip",
+        "value": "520ms",
+        "purpose": "La carta gira 180° a su anverso."
+      },
+      {
+        "name": "view-enter",
+        "value": "380ms",
+        "purpose": "La vista que se abre se asienta desde 12px más abajo."
+      },
+      {
+        "name": "disclosure",
+        "value": "300ms",
+        "purpose": "Acordeones, cajón móvil y subrayado del menú."
+      },
+      {
+        "name": "press",
+        "value": "160ms",
+        "purpose": "El botón escala a 0.97 al presionar."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Violet Button",
+      "kind": "button",
+      "refersTo": "button-violet",
+      "description": "Acción del camino de sesiones: Agendar, Instagram, Servicios.",
+      "html": "<a class=\"ds-btn-violet\" href=\"#\">Agendar sesión</a>",
+      "css": ".ds-btn-violet{display:inline-flex;min-height:3rem;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:999px;padding:.75rem 1.6rem;font:600 .9375rem/1 \"Hanken Grotesk\",system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;text-decoration:none;transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color 200ms ease,color 200ms ease;background:var(--color-violet,#6B4FA8);color:#fff;} .ds-btn-violet:hover{background:var(--color-violet-2,#5A4192);} .ds-btn-violet:focus-visible{outline:2px solid var(--color-violet,#6B4FA8);outline-offset:3px;} .ds-btn-violet:active{transform:scale(.97);}"
+    },
+    {
+      "name": "Rose Button",
+      "kind": "button",
+      "refersTo": "button-rose",
+      "description": "Acción del camino de compra: Journal, Oráculo, productos.",
+      "html": "<a class=\"ds-btn-rose\" href=\"#\">Reservar Journal</a>",
+      "css": ".ds-btn-rose{display:inline-flex;min-height:3rem;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:999px;padding:.75rem 1.6rem;font:600 .9375rem/1 \"Hanken Grotesk\",system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;text-decoration:none;transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color 200ms ease,color 200ms ease;background:var(--color-rose,#A93E70);color:#fff;} .ds-btn-rose:hover{background:var(--color-rose-2,#8F3260);} .ds-btn-rose:focus-visible{outline:2px solid var(--color-violet,#6B4FA8);outline-offset:3px;} .ds-btn-rose:active{transform:scale(.97);}"
+    },
+    {
+      "name": "White Button on Tone",
+      "kind": "button",
+      "refersTo": "button-white-shop",
+      "description": "Botón blanco sobre un campo de color; el texto toma el tono del campo.",
+      "html": "<div class=\"ds-tone-shop ds-field\"><a class=\"ds-btn-white\" href=\"#\">Reservar por WhatsApp</a></div>",
+      "css": ".ds-tone-session{--tone:var(--color-violet,#6B4FA8);--tone-soft:var(--color-violet-soft,#EDE6F8);--tone-mark:var(--color-violet-mark,#CDBDEE);} .ds-tone-shop{--tone:var(--color-rose,#A93E70);--tone-soft:var(--color-rose-soft,#FBE8EF);--tone-mark:var(--color-rose-mark,#EDB5CB);} .ds-field{background:var(--tone);padding:24px;border-radius:14px;} .ds-btn-white{display:inline-flex;min-height:3rem;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:999px;padding:.75rem 1.6rem;font:600 .9375rem/1 \"Hanken Grotesk\",system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;text-decoration:none;transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color 200ms ease,color 200ms ease;background:#fff;color:var(--tone);} .ds-btn-white:hover{background:var(--tone-soft);} .ds-btn-white:focus-visible{outline:2px solid #fff;outline-offset:3px;} .ds-btn-white:active{transform:scale(.97);}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Canal alternativo junto a una acción de color.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">WhatsApp</a>",
+      "css": ".ds-btn-ghost{display:inline-flex;min-height:3rem;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:999px;padding:.75rem 1.6rem;font:600 .9375rem/1 \"Hanken Grotesk\",system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;text-decoration:none;transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color 200ms ease,color 200ms ease;background:transparent;box-shadow:inset 0 0 0 1px var(--color-line,#DED3EB);color:var(--color-ink,#2E1F3D);} .ds-btn-ghost:hover{background:var(--color-stock,#FCFAFD);} .ds-btn-ghost:focus-visible{outline:2px solid var(--color-violet,#6B4FA8);outline-offset:3px;} .ds-btn-ghost:active{transform:scale(.97);}"
+    },
+    {
+      "name": "Card Face",
+      "kind": "card",
+      "refersTo": "card-face",
+      "description": "Anverso de cartulina con doble filete impreso que enmarca una imagen real.",
+      "html": "<figure class=\"ds-card-face\"><div class=\"ds-card-face__img\"></div></figure>",
+      "css": ".ds-card-face{position:relative;margin:0;width:200px;aspect-ratio:5/8;background:var(--color-stock,#FCFAFD);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgb(46 31 61/.08),0 14px 30px -14px rgb(46 31 61/.35);} .ds-card-face::before,.ds-card-face::after{content:\"\";position:absolute;pointer-events:none;border:1px solid var(--color-line,#DED3EB);z-index:2;} .ds-card-face::before{inset:7px;border-radius:9px;} .ds-card-face::after{inset:11px;border-radius:6px;} .ds-card-face__img{position:absolute;inset:15px;border-radius:4px;background:var(--color-lilac,#C9B5E8);}"
+    },
+    {
+      "name": "Card Back (Session)",
+      "kind": "card",
+      "refersTo": "card-back-session",
+      "description": "Reverso violeta con chakana en filete e índice de esquina; se levanta al pasar el cursor.",
+      "html": "<div class=\"ds-card-back ds-tone-session\"><svg viewBox=\"0 0 100 160\" aria-hidden=\"true\"><g fill=\"none\" stroke=\"#CDBDEE\" stroke-width=\"0.6\"><rect x=\"5\" y=\"5\" width=\"90\" height=\"150\" rx=\"6\" opacity=\".55\"/><rect x=\"8\" y=\"8\" width=\"84\" height=\"144\" rx=\"4\" opacity=\".35\"/><polygon points=\"43,59 57,59 57,66 64,66 64,73 71,73 71,87 64,87 64,94 57,94 57,101 43,101 43,94 36,94 36,87 29,87 29,73 36,73 36,66 43,66\"/><circle cx=\"50\" cy=\"80\" r=\"4.5\"/></g></svg><span class=\"ds-card-back__index\"><span class=\"ds-card-back__num\">I</span><span class=\"ds-card-back__label\">Servicios</span></span></div>",
+      "css": ".ds-tone-session{--tone:var(--color-violet,#6B4FA8);--tone-soft:var(--color-violet-soft,#EDE6F8);--tone-mark:var(--color-violet-mark,#CDBDEE);} .ds-tone-shop{--tone:var(--color-rose,#A93E70);--tone-soft:var(--color-rose-soft,#FBE8EF);--tone-mark:var(--color-rose-mark,#EDB5CB);} .ds-card-back{position:relative;width:200px;aspect-ratio:5/8;background:var(--tone);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgb(46 31 61/.18),0 16px 32px -14px rgb(46 31 61/.45);transition:transform 420ms cubic-bezier(.23,1,.32,1);} .ds-card-back:hover{transform:translateY(-14px);} .ds-card-back svg{position:absolute;inset:0;width:100%;height:100%;} .ds-card-back__index{position:absolute;top:8%;left:11%;font-size:15px;} .ds-card-back__num{display:block;font:400 1.5em/1 Gloock,Georgia,serif;color:var(--tone-mark);} .ds-card-back__label{display:block;margin-top:6px;font:600 .72em/1.2 \"Hanken Grotesk\",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#fff;}"
+    },
+    {
+      "name": "Card Back (Shop)",
+      "kind": "card",
+      "refersTo": "card-back-shop",
+      "description": "Reverso rosa para las cartas de compra (Productos, Journal) y los productos sin foto.",
+      "html": "<div class=\"ds-card-back ds-tone-shop\"><svg viewBox=\"0 0 100 160\" aria-hidden=\"true\"><g fill=\"none\" stroke=\"#EDB5CB\" stroke-width=\"0.6\"><rect x=\"5\" y=\"5\" width=\"90\" height=\"150\" rx=\"6\" opacity=\".55\"/><rect x=\"8\" y=\"8\" width=\"84\" height=\"144\" rx=\"4\" opacity=\".35\"/><polygon points=\"43,59 57,59 57,66 64,66 64,73 71,73 71,87 64,87 64,94 57,94 57,101 43,101 43,94 36,94 36,87 29,87 29,73 36,73 36,66 43,66\"/><circle cx=\"50\" cy=\"80\" r=\"4.5\"/></g></svg><span class=\"ds-card-back__index\"><span class=\"ds-card-back__num\">IV</span><span class=\"ds-card-back__label\">Journal</span></span></div>",
+      "css": ".ds-tone-session{--tone:var(--color-violet,#6B4FA8);--tone-soft:var(--color-violet-soft,#EDE6F8);--tone-mark:var(--color-violet-mark,#CDBDEE);} .ds-tone-shop{--tone:var(--color-rose,#A93E70);--tone-soft:var(--color-rose-soft,#FBE8EF);--tone-mark:var(--color-rose-mark,#EDB5CB);} .ds-card-back{position:relative;width:200px;aspect-ratio:5/8;background:var(--tone);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgb(46 31 61/.18),0 16px 32px -14px rgb(46 31 61/.45);transition:transform 420ms cubic-bezier(.23,1,.32,1);} .ds-card-back:hover{transform:translateY(-14px);} .ds-card-back svg{position:absolute;inset:0;width:100%;height:100%;} .ds-card-back__index{position:absolute;top:8%;left:11%;font-size:15px;} .ds-card-back__num{display:block;font:400 1.5em/1 Gloock,Georgia,serif;color:var(--tone-mark);} .ds-card-back__label{display:block;margin-top:6px;font:600 .72em/1.2 \"Hanken Grotesk\",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#fff;}"
+    },
+    {
+      "name": "View Header",
+      "kind": "custom",
+      "refersTo": "view-header-shop",
+      "description": "Campo a sangre en el tono del camino, con el numeral romano de la vista y su título.",
+      "html": "<header class=\"ds-view-header ds-tone-shop\"><span class=\"ds-view-header__num\" aria-hidden=\"true\">III</span><h2 class=\"ds-view-header__title\">Productos</h2></header>",
+      "css": ".ds-tone-session{--tone:var(--color-violet,#6B4FA8);--tone-soft:var(--color-violet-soft,#EDE6F8);--tone-mark:var(--color-violet-mark,#CDBDEE);} .ds-tone-shop{--tone:var(--color-rose,#A93E70);--tone-soft:var(--color-rose-soft,#FBE8EF);--tone-mark:var(--color-rose-mark,#EDB5CB);} .ds-view-header{display:flex;align-items:baseline;gap:2rem;background:var(--tone);padding:80px 20px;} .ds-view-header__num{font:400 clamp(3rem,8vw,5.5rem)/1 Gloock,Georgia,serif;color:var(--tone-mark);} .ds-view-header__title{margin:0;font:400 clamp(2.25rem,5.5vw,4rem)/1.08 Gloock,Georgia,serif;letter-spacing:-.015em;color:#fff;}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Barra fija y opaca sobre la mesa lila; el enlace activo se subraya desde la izquierda.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav__brand\" href=\"#\">Mami Cósmica</a><a class=\"ds-nav__link\" href=\"#\">Servicios</a><a class=\"ds-nav__link\" aria-current=\"page\" href=\"#\">Productos</a><a class=\"ds-nav__link\" href=\"#\">Contacto</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:1.75rem;height:64px;padding:0 20px;background:var(--color-paper,#F3EEF8);border-bottom:1px solid var(--color-line,#DED3EB);} .ds-nav__brand{margin-right:auto;font:400 1.375rem/1 Gloock,Georgia,serif;color:var(--color-ink,#2E1F3D);text-decoration:none;} .ds-nav__link{position:relative;padding:8px 0;font:500 .9375rem \"Hanken Grotesk\",system-ui,sans-serif;color:var(--color-ink-soft,#54456A);text-decoration:none;transition:color 200ms;} .ds-nav__link::after{content:\"\";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--color-ink,#2E1F3D);transform:scaleX(0);transform-origin:left;transition:transform 300ms cubic-bezier(.23,1,.32,1);} .ds-nav__link:hover,.ds-nav__link[aria-current=\"page\"]{color:var(--color-ink,#2E1F3D);} .ds-nav__link[aria-current=\"page\"]::after{transform:scaleX(1);} .ds-nav__link:focus-visible{outline:2px solid var(--color-violet,#6B4FA8);outline-offset:3px;border-radius:4px;}"
+    },
+    {
+      "name": "Accordion Item",
+      "kind": "custom",
+      "refersTo": "accordion",
+      "description": "Fila con filetes; el círculo con más gira 45° y se rellena de violeta al abrir.",
+      "html": "<button class=\"ds-acc\" aria-expanded=\"true\"><span class=\"ds-acc__q\">¿Las sesiones son online?</span><span class=\"ds-acc__icon\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg></span></button>",
+      "css": ".ds-acc{display:flex;width:100%;min-height:4rem;align-items:center;justify-content:space-between;gap:1rem;padding:20px 0;background:none;border:0;border-bottom:1px solid var(--color-line,#DED3EB);text-align:left;cursor:pointer;} .ds-acc__q{font:400 1.375rem/1.35 Gloock,Georgia,serif;color:var(--color-ink,#2E1F3D);transition:color 200ms;} .ds-acc:hover .ds-acc__q{color:var(--color-violet,#6B4FA8);} .ds-acc__icon{display:grid;place-items:center;width:32px;height:32px;flex-shrink:0;border-radius:999px;color:var(--color-violet,#6B4FA8);box-shadow:0 0 0 1px var(--color-line,#DED3EB);transition:transform 300ms cubic-bezier(.23,1,.32,1),background-color 300ms;} .ds-acc[aria-expanded=\"true\"] .ds-acc__icon{transform:rotate(45deg);background:var(--color-violet,#6B4FA8);color:#fff;box-shadow:0 0 0 1px var(--color-violet,#6B4FA8);} .ds-acc:focus-visible{outline:2px solid var(--color-violet,#6B4FA8);outline-offset:3px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Mazo",
+    "overview": "El sitio es su mazo de oráculo. Cada vista es una carta numerada (I Servicios, II Talleres, III Productos, IV Journal, V Contacto) que se saca de la tirada, gira a su anverso y se lee. Todo el sistema sale de dos caras de una misma carta: el reverso, un campo de color plano con la chakana dibujada en filete; y el anverso, cartulina clara con doble filete impreso que enmarca una fotografía real. La página es lila pálido, como la mesa donde se tiende el mazo, y la tinta es ciruela.\n\nEl color dice el camino. Todo lo que lleva a una sesión (agendar, servicios, talleres, contacto) es violeta; todo lo que se compra (el Journal, el Oráculo, los productos) es rosa. El reverso de cada carta, la cabecera de cada vista y cada botón toman el tono del camino al que pertenecen, así que la visitante sabe si va a reservar tiempo o a comprar algo antes de leer. La aguamarina queda para detalles pequeños.\n\nLa densidad es de impreso, no de pantalla: datos concretos (modalidad, espera, precio, pasos) en listas con filetes, títulos grandes en una serif de alto contraste, texto sobrio en grotesca. El color es plano por principio. Rechaza expresamente el \"cielo estrellado + cursiva dorada + tarjetas redondeadas\" genérico de la astrología: sin brillos, sin degradados, sin estrellas titilando. El movimiento se concentra en un solo gesto, sacar la carta.",
+    "keyCharacteristics": [
+      "Dos caras: reverso de color con chakana geométrica, anverso de cartulina con doble filete.",
+      "Color por camino: violeta para sesiones, rosa para compras.",
+      "Numerales romanos como sistema de navegación: el orden del menú es el orden del mazo.",
+      "Campos de color planos; la profundidad sólo la dan las cartas.",
+      "Proporción de carta 5:8 en la tirada y en las imágenes de sección."
+    ],
+    "rules": [
+      {
+        "name": "The Path-Coding Rule",
+        "body": "El color dice el camino: violeta para todo lo que lleva a una sesión, rosa para todo lo que se compra. Una vista, carta o botón toma el tono de su camino y nunca el del otro; la aguamarina sólo marca listas y nunca es fondo ni botón.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tone Family Rule",
+        "body": "Cada camino es una familia completa (base, hondo, velado, filete) que se aplica en bloque con el tono de sesión o de compra. Sobre un campo de color, el título y los botones son blancos, el texto de apoyo usa el velado y la chakana y el numeral usan el filete.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat Field Rule",
+        "body": "Todo color se aplica como campo plano. Sin degradados, sin brillos, sin texturas de cielo, sin desenfoques; la única figura sobre un campo es la chakana en filete.",
+        "section": "colors"
+      },
+      {
+        "name": "The Hierarchy-by-Scale Rule",
+        "body": "Gloock trabaja siempre en peso 400; la jerarquía se hace con tamaño, nunca con negritas ni cursivas.",
+        "section": "typography"
+      },
+      {
+        "name": "The Roman Numeral Rule",
+        "body": "Los numerales romanos son navegación, no decoración: cada uno corresponde a una vista fija del mazo (I a V). No se inventan numerales para otras secciones.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Cards Cast Shadows Rule",
+        "body": "Si algo proyecta sombra, es una carta. Botones, listas, cabeceras y bandas quedan planos.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** asignar a toda vista, carta y botón nuevo el tono de su camino: violeta si lleva a una sesión, rosa si es algo que se compra.",
+      "**Do** presentar las dos rutas de conversión (Agendar sesión y Reservar Journal) como botones de igual tamaño, violeta y rosa.",
+      "**Do** usar el botón blanco sólo sobre un campo de color, con el texto en el tono del campo.",
+      "**Do** enmarcar toda imagen de sección como anverso de carta: cartulina, doble filete, imagen a 15px, esquinas de 4px.",
+      "**Do** abrir cada vista nueva con la cabecera de color y su numeral romano, y registrar su camino si debe aparecer en la tirada.",
+      "**Do** mostrar lo que aún no existe como una carta boca abajo.",
+      "**Do** mantener el movimiento en el gesto de sacar la carta y en entradas de 380ms con la curva `cubic-bezier(0.23, 1, 0.32, 1)`; todo decorado animado necesita un estado visible en reposo para `prefers-reduced-motion`."
+    ],
+    "donts": [
+      "**Don't** usar degradados, brillos, desenfoques, cielos estrellados, estrellas titilando ni cursiva dorada.",
+      "**Don't** mezclar caminos: nada de rosa en una acción de sesión ni violeta en una de compra.",
+      "**Don't** usar la aguamarina ni el lila como fondo o como botón.",
+      "**Don't** poner sombra a nada que no sea una carta.",
+      "**Don't** usar Gloock en negrita o cursiva; la jerarquía es de escala.",
+      "**Don't** usar colores sueltos: todo color sale de los tokens de `@theme` en `index.css`."
+    ]
+  }
+}

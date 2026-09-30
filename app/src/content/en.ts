@@ -22,11 +22,18 @@ export const hero = {
     title: "Mami Cósmica",
     subtitle: "Spiritual guide & cosmic healer",
     slogan: "True magic is created the moment you choose to go deeper within yourself",
-    cta: { label: "Cosmic Journal", href: "#pre-venta" },
+    cta: { label: "Reserve the Journal", href: "#pre-venta" },
+    ctaSession: { label: "Book a session", href: "#contacto" },
+    deckLabel: "Draw a card",
 };
 
 export const about = {
     heading: "About Mami Cósmica",
+    facts: [
+        "Sacred Valley, Cusco",
+        "Sessions on Zoom and in person",
+        "Mothers, women, children & families",
+    ],
     photos: [
         { src: "img/aboutme.jpg", alt: "About Mami Cósmica" },
         { src: "img/aboutme2.jpg", alt: "About Mami Cósmica 2" },
@@ -41,6 +48,8 @@ export const about = {
 
 export const services = {
     heading: "Services",
+    note: "Sessions on Zoom or in person in the Sacred Valley · Typical wait: 2 weeks",
+    ctaLabel: "Book a session",
     groups: [
         {
             title: "Readings",
@@ -121,6 +130,15 @@ export const talleres = {
 
 export const contacto = {
     heading: "Contact & FAQ",
+    stepsHeading: "How to book",
+    steps: [
+        { title: "Pay via Plin", body: "Hold your date with the payment and send your confirmation." },
+        { title: "Your spot is held", body: "Your booking is kept for 24 hours until confirmed." },
+        { title: "Your session", body: "On Zoom or in person, in about 2 weeks. Urgent? Ask for the “Botiquín Cósmico”." },
+        { title: "Your recording", body: "You have 7 days to download the session video." },
+    ],
+    faqHeading: "Frequently asked questions",
+    whatsappLabel: "Message on WhatsApp",
     faqs: [
         {
             q: "How Do I Book a Session?",

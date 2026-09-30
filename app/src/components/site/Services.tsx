@@ -1,8 +1,8 @@
 import { useState } from "react";
-import FadeContent from "@/components/FadeContent";
-import { SectionHeading } from "./Ornament";
+import { Plus } from "lucide-react";
 import { useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
+import { ViewHeader, wrap } from "./Card";
 
 export function Services() {
     const { services } = useContent();
@@ -10,129 +10,92 @@ export function Services() {
     const [open, setOpen] = useState<string | null>(null);
 
     return (
-        <section id="servicios" className="mx-auto w-[min(92%,1240px)] py-24 md:py-32">
-            <FadeContent blur duration={800} initialOpacity={0}>
-                <SectionHeading>{services.heading}</SectionHeading>
-            </FadeContent>
+        <section id="servicios">
+            <ViewHeader id="#servicios" title={services.heading}>
+                <p>{services.note}</p>
+            </ViewHeader>
 
-            <div className="mt-16 space-y-24">
-                {services.groups.map((group, index) => (
-                    <FadeContent
+            <div className={`${wrap} py-16 md:py-24`}>
+                {services.groups.map((group, gi) => (
+                    <div
                         key={group.title}
-                        blur
-                        duration={900}
-                        initialOpacity={0}
-                        threshold={0.05}
+                        className="grid gap-10 border-b border-line py-12 first:pt-0 last:border-0 last:pb-0 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-16 md:py-16"
                     >
-                        <div
-                            className={cn(
-                                "flex flex-col items-center gap-8 md:gap-12 lg:gap-16",
-                                // Alterna el lado de la imagen para dar ritmo
-                                index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row",
-                            )}
-                        >
-                            {/* Imagen */}
-                            <div className="group w-full max-w-[420px] shrink-0 overflow-hidden rounded-3xl border border-lav-600/10 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)] md:w-[clamp(280px,34%,430px)]">
-                                <img
-                                    src={group.image.src}
-                                    alt={group.image.alt}
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                                />
-                            </div>
+                        <figure className="card-face mx-auto w-full max-w-[300px] p-[15px] md:sticky md:top-24 md:self-start">
+                            <img
+                                src={group.image.src}
+                                alt={group.image.alt}
+                                loading="lazy"
+                                decoding="async"
+                                className="block h-auto w-full rounded-[4px]"
+                            />
+                        </figure>
 
-                            {/* Lista */}
-                            <div className="w-full min-w-0 flex-1 rounded-3xl border border-lav-600/15 bg-cream-50/92 p-8 shadow-[0_2px_4px_rgba(47,32,71,.04),0_10px_28px_rgba(47,32,71,.08)] md:p-12">
-                                <h3 className="text-center font-display text-[clamp(1.6rem,3.4vw,2.15rem)] font-medium tracking-[0.06em] text-lav-800">
-                                    {group.title}
-                                </h3>
-                                <span
-                                    aria-hidden="true"
-                                    className="mx-auto mt-4 mb-8 block h-px w-12 bg-gradient-to-r from-transparent via-gold-500 to-transparent"
-                                />
+                        <div className="min-w-0">
+                            <h3 className="text-[clamp(2rem,4vw,2.75rem)] text-ink">{group.title}</h3>
 
-                                <ul>
-                                    {group.items.map((item) => {
-                                        const id = `${group.title}-${item.label}`;
-                                        const isOpen = open === id;
+                            <ul className="mt-6 border-t border-line">
+                                {group.items.map((item, ii) => {
+                                    const id = `servicio-${gi}-${ii}`;
+                                    const isOpen = open === id;
 
-                                        return (
-                                            <li
-                                                key={item.label}
-                                                className="border-b border-lav-600/8 last:border-0"
-                                            >
-                                                {item.detail ? (
-                                                    <>
-                                                        <button
-                                                            type="button"
-                                                            onClick={() =>
-                                                                setOpen(isOpen ? null : id)
-                                                            }
-                                                            aria-expanded={isOpen}
-                                                            className="group/item relative flex w-full min-h-11 items-center justify-between gap-3 rounded-xl py-3 pl-8 pr-3 text-left text-[1.0625rem] font-semibold text-lav-700 transition-colors hover:bg-lav-100/60 hover:text-lav-800"
-                                                        >
-                                                            <span
-                                                                aria-hidden="true"
-                                                                className={cn(
-                                                                    "absolute left-0 top-1/2 -translate-y-1/2 text-sm text-gold-600 transition-transform duration-300",
-                                                                    isOpen && "rotate-90 scale-110",
-                                                                )}
-                                                            >
-                                                                ✧
-                                                            </span>
+                                    return (
+                                        <li key={item.label} className="border-b border-line">
+                                            {item.detail ? (
+                                                <>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => setOpen(isOpen ? null : id)}
+                                                        aria-expanded={isOpen}
+                                                        aria-controls={`${id}-detalle`}
+                                                        className="group flex min-h-14 w-full items-center justify-between gap-4 py-4 text-left text-[1.125rem] font-semibold text-ink"
+                                                    >
+                                                        <span className="transition-colors duration-200 group-hover:text-violet">
                                                             {item.label}
-                                                            <span
-                                                                aria-hidden="true"
-                                                                className={cn(
-                                                                    "shrink-0 text-[0.7rem] text-lav-500 transition-transform duration-300",
-                                                                    isOpen && "rotate-180",
-                                                                )}
-                                                            >
-                                                                ▼
-                                                            </span>
-                                                        </button>
-
-                                                        {/* Expansión sin números mágicos de altura */}
-                                                        <div
+                                                        </span>
+                                                        <span
                                                             className={cn(
-                                                                "grid transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)]",
-                                                                isOpen
-                                                                    ? "grid-rows-[1fr] opacity-100"
-                                                                    : "grid-rows-[0fr] opacity-0",
+                                                                "grid size-8 shrink-0 place-items-center rounded-full text-violet ring-1 ring-line transition-[transform,background-color] duration-300 ease-[var(--ease-out)]",
+                                                                isOpen && "rotate-45 bg-violet text-white ring-violet",
                                                             )}
                                                         >
-                                                            <div className="overflow-hidden">
-                                                                <div className="night-stars relative my-3 overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#251D3C,#1C1630)] p-8 shadow-[0_4px_10px_rgba(47,32,71,.05),0_22px_55px_rgba(47,32,71,.12)]">
-                                                                    <h4 className="relative z-10 mb-3 font-display text-2xl font-medium text-gold-300">
-                                                                        {item.detail.title}
-                                                                    </h4>
-                                                                    <p className="relative z-10 text-[1.0625rem] leading-[1.8] text-cream-200/90">
-                                                                        {item.detail.body}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </>
-                                                ) : (
-                                                    <div className="relative py-3 pl-8 text-[1.0625rem] leading-relaxed text-ink-soft">
-                                                        <span
-                                                            aria-hidden="true"
-                                                            className="absolute left-0 top-[0.95rem] text-sm text-gold-600"
-                                                        >
-                                                            ✧
+                                                            <Plus aria-hidden="true" className="size-4" strokeWidth={1.75} />
                                                         </span>
-                                                        {item.label}
+                                                    </button>
+
+                                                    <div
+                                                        id={`${id}-detalle`}
+                                                        inert={!isOpen}
+                                                        className={cn(
+                                                            "grid transition-[grid-template-rows] duration-300 ease-[var(--ease-out)]",
+                                                            isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                                                        )}
+                                                    >
+                                                        <div className="overflow-hidden">
+                                                            <p className="max-w-[62ch] pb-6 leading-[1.8] text-ink-soft">
+                                                                {item.detail.body}
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                )}
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            </div>
+                                                </>
+                                            ) : (
+                                                <p className="flex min-h-14 items-center py-4 text-[1.125rem] font-semibold text-ink">
+                                                    {item.label}
+                                                </p>
+                                            )}
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         </div>
-                    </FadeContent>
+                    </div>
                 ))}
+
+                <div className="mt-16 flex justify-center">
+                    <a href="#contacto" className="btn btn-violet">
+                        {services.ctaLabel}
+                    </a>
+                </div>
             </div>
         </section>
     );

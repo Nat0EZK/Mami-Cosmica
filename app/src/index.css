@@ -1,267 +1,296 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
-
-@theme inline {
-    --font-heading: var(--font-sans);
-    --font-sans: 'Geist Variable', sans-serif;
-    --color-sidebar-ring: var(--sidebar-ring);
-    --color-sidebar-border: var(--sidebar-border);
-    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-    --color-sidebar-accent: var(--sidebar-accent);
-    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-    --color-sidebar-primary: var(--sidebar-primary);
-    --color-sidebar-foreground: var(--sidebar-foreground);
-    --color-sidebar: var(--sidebar);
-    --color-chart-5: var(--chart-5);
-    --color-chart-4: var(--chart-4);
-    --color-chart-3: var(--chart-3);
-    --color-chart-2: var(--chart-2);
-    --color-chart-1: var(--chart-1);
-    --color-ring: var(--ring);
-    --color-input: var(--input);
-    --color-border: var(--border);
-    --color-destructive: var(--destructive);
-    --color-accent-foreground: var(--accent-foreground);
-    --color-accent: var(--accent);
-    --color-muted-foreground: var(--muted-foreground);
-    --color-muted: var(--muted);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-secondary: var(--secondary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-primary: var(--primary);
-    --color-popover-foreground: var(--popover-foreground);
-    --color-popover: var(--popover);
-    --color-card-foreground: var(--card-foreground);
-    --color-card: var(--card);
-    --color-foreground: var(--foreground);
-    --color-background: var(--background);
-    --radius-sm: calc(var(--radius) * 0.6);
-    --radius-md: calc(var(--radius) * 0.8);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) * 1.4);
-    --radius-2xl: calc(var(--radius) * 1.8);
-    --radius-3xl: calc(var(--radius) * 2.2);
-    --radius-4xl: calc(var(--radius) * 2.6);
-    --animate-aurora: aurora 8s ease-in-out infinite alternate;
-  @keyframes aurora {
-  0% {
-    background-position: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);
-        }
-  25% {
-    background-position: 50% 100%;
-    transform: rotate(5deg) scale(1.1);
-        }
-  50% {
-    background-position: 100% 50%;
-    transform: rotate(-3deg) scale(0.95);
-        }
-  75% {
-    background-position: 50% 0%;
-    transform: rotate(3deg) scale(1.05);
-        }
-  100% {
-    background-position: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);
-        }
-    }
-}
-
-:root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
-  html {
-    @apply font-sans;
-    }
-}
 /* ==========================================================================
-   MAMI CÓSMICA — capa de marca
-   Sobrescribe el tema por defecto de shadcn con el sistema "Cielo Sereno":
-   crema tibia · lavanda espiritual · oro astral.
+   MAMI CÓSMICA — "El Mazo"
+   El sitio se compone como su oráculo: reverso violeta o rosa, anverso de cartulina
+   con doble filete, numerales romanos. Campos de color planos: sin brillos,
+   sin degradados, sin estrellas titilando.
    ========================================================================== */
 
 @theme {
-    /* Tipografía */
-    --font-display: "Cormorant Garamond", Georgia, serif;
-    --font-sans: "Raleway", system-ui, sans-serif;
+    --font-display: "Gloock", Georgia, serif;
+    --font-sans: "Hanken Grotesk", system-ui, sans-serif;
 
-    /* Crema */
-    --color-cream-50:  #FDFBF7;
-    --color-cream-100: #FAF6EF;
-    --color-cream-200: #F4EDE2;
-    --color-cream-300: #EDE3D5;
+    /* Página y anverso de la carta */
+    --color-paper: #F3EEF8;
+    --color-stock: #FCFAFD;
+    --color-line: #DED3EB;
+    --color-lilac: #C9B5E8;
 
-    /* Tinta */
-    --color-ink:       #33283F;
-    --color-ink-soft:  #574A66;
-    --color-ink-muted: #6B5D78;
+    /* Tinta ciruela */
+    --color-ink: #2E1F3D;
+    --color-ink-soft: #54456A;
+    --color-ink-muted: #6A5D80;
 
-    /* Lavanda */
-    --color-lav-900: #2F2047;
-    --color-lav-800: #402E63;
-    --color-lav-700: #5B4189;
-    --color-lav-600: #6D4E9C;
-    --color-lav-500: #8F79B8;
-    --color-lav-400: #A791C8;
-    --color-lav-300: #C3B0DC;
-    --color-lav-200: #DDD0EC;
-    --color-lav-100: #EFE7F7;
+    /* Un color por camino. Violeta: sesiones (agendar, servicios, contacto) */
+    --color-violet: #6B4FA8;
+    --color-violet-2: #5A4192;
+    --color-violet-soft: #EDE6F8;
+    --color-violet-mark: #CDBDEE;
 
-    /* Oro astral */
-    --color-gold-700: #8A6A2F;
-    --color-gold-600: #A8842F;
-    --color-gold-500: #C9A227;
-    --color-gold-300: #E2C77C;
-    --color-gold-100: #F3E6C4;
+    /* Rosa: lo que se compra (Journal, Oráculo, productos) */
+    --color-rose: #A93E70;
+    --color-rose-2: #8F3260;
+    --color-rose-soft: #FBE8EF;
+    --color-rose-mark: #EDB5CB;
 
-    /* Noche */
-    --color-night-900: #1C1630;
-    --color-night-800: #251D3C;
-    --color-night-700: #33284F;
+    /* Aguamarina: sólo detalles (marcas de lista) */
+    --color-aqua: #2E8783;
 
-    /* Curvas de movimiento */
-    --ease-out-soft: cubic-bezier(.16, 1, .3, 1);
-}
-
-:root {
-    --radius: 1rem;
-
-    --background: var(--color-cream-100);
-    --foreground: var(--color-ink);
-
-    --card: var(--color-cream-50);
-    --card-foreground: var(--color-ink);
-    --popover: var(--color-cream-50);
-    --popover-foreground: var(--color-ink);
-
-    --primary: var(--color-lav-600);
-    --primary-foreground: #ffffff;
-    --secondary: var(--color-lav-100);
-    --secondary-foreground: var(--color-lav-800);
-
-    --muted: var(--color-cream-200);
-    --muted-foreground: var(--color-ink-muted);
-    --accent: var(--color-gold-500);
-    --accent-foreground: var(--color-night-900);
-
-    --border: rgba(109, 78, 156, .16);
-    --input: rgba(109, 78, 156, .22);
-    --ring: var(--color-lav-600);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 @layer base {
     html {
         scroll-behavior: smooth;
+        scroll-padding-top: 72px;
+        accent-color: var(--color-violet);
+        scrollbar-color: var(--color-lilac) var(--color-paper);
     }
 
     body {
         font-family: var(--font-sans);
-        background: var(--color-cream-100);
+        background: var(--color-paper);
         color: var(--color-ink);
+        font-size: 1.0625rem;
         line-height: 1.7;
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
+        caret-color: var(--color-violet);
     }
 
     h1, h2, h3, h4 {
         font-family: var(--font-display);
-        font-weight: 600;
-        line-height: 1.15;
+        font-weight: 400;
+        line-height: 1.08;
+        letter-spacing: -0.015em;
         text-wrap: balance;
-        color: var(--color-lav-800);
     }
 
     p { text-wrap: pretty; }
 
     ::selection {
-        background: var(--color-lav-200);
-        color: var(--color-lav-900);
+        background: var(--color-lilac);
+        color: var(--color-ink);
     }
 
     :focus-visible {
-        outline: 2px solid var(--color-lav-600);
+        outline: 2px solid var(--color-violet);
         outline-offset: 3px;
         border-radius: 4px;
     }
+
+    /* Sobre un campo de color, el foco se ve en blanco */
+    .tone-field :focus-visible,
+    .on-tone:focus-visible {
+        outline-color: #fff;
+    }
+
+    a { text-underline-offset: 0.2em; }
 }
 
-/* Respeta la preferencia de movimiento reducido en todo el sitio */
+/* ==========================================================================
+   Botones: dos caminos con el mismo peso
+   ========================================================================== */
+
+@utility btn {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding: 0.75rem 1.6rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: transform 160ms var(--ease-out), background-color 200ms ease, color 200ms ease;
+    &:active { transform: scale(0.97); }
+}
+
+@utility btn-violet {
+    background: var(--color-violet);
+    color: #fff;
+    @media (hover: hover) { &:hover { background: var(--color-violet-2); } }
+}
+
+@utility btn-rose {
+    background: var(--color-rose);
+    color: #fff;
+    @media (hover: hover) { &:hover { background: var(--color-rose-2); } }
+}
+
+/* Sobre un campo de color */
+@utility btn-white {
+    background: #fff;
+    color: var(--tone);
+    @media (hover: hover) { &:hover { background: var(--tone-soft); } }
+}
+
+@utility btn-ghost {
+    box-shadow: inset 0 0 0 1px var(--color-line);
+    color: var(--color-ink);
+    @media (hover: hover) { &:hover { background: var(--color-stock); } }
+}
+
+/* ==========================================================================
+   La carta: anverso de cartulina con doble filete impreso
+   ========================================================================== */
+
+@utility card-face {
+    position: relative;
+    background: var(--color-stock);
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgb(46 31 61 / 0.08), 0 14px 30px -14px rgb(46 31 61 / 0.35);
+    &::before, &::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+        border: 1px solid var(--color-line);
+        z-index: 2;
+    }
+    &::before { inset: 7px; border-radius: 9px; }
+    &::after { inset: 11px; border-radius: 6px; }
+}
+
+/* El tono decide el color del campo: violeta para sesiones, rosa para compras */
+.tone-session {
+    --tone: var(--color-violet);
+    --tone-soft: var(--color-violet-soft);
+    --tone-mark: var(--color-violet-mark);
+}
+
+.tone-shop {
+    --tone: var(--color-rose);
+    --tone-soft: var(--color-rose-soft);
+    --tone-mark: var(--color-rose-mark);
+}
+
+.tone-field {
+    background: var(--tone);
+    color: #fff;
+}
+
+@utility card-back {
+    position: relative;
+    background: var(--tone, var(--color-violet));
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgb(46 31 61 / 0.18), 0 16px 32px -14px rgb(46 31 61 / 0.45);
+}
+
+/* ==========================================================================
+   Movimiento: un solo momento, sacar la carta
+   ========================================================================== */
+
+.deck-card {
+    transform: var(--rest, none);
+    transition: transform 420ms var(--ease-out);
+}
+
+.deck-flip {
+    transform: perspective(900px) rotateY(0deg);
+    transform-style: preserve-3d;
+    transition: transform 520ms var(--ease-in-out);
+}
+
+.deck-card[data-drawn="true"] .deck-flip {
+    transform: perspective(900px) rotateY(180deg);
+}
+
+.deck-side {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.deck-side--face {
+    transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .deck-card:hover { transform: var(--rest) translateY(-14px); }
+}
+
+/* Magia: la rueda astral gira muy despacio, las estrellas respiran y la
+   carta sacada enciende su constelación. Todo es visible en reposo. */
+@keyframes wheel-turn {
+    to { transform: rotate(360deg); }
+}
+
+.astro-wheel {
+    animation: wheel-turn 240s linear infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: .85; }
+    50%      { opacity: .3; }
+}
+
+.twinkle-star {
+    color: var(--tone-mark, #fff);
+    animation: twinkle 6s ease-in-out infinite;
+}
+
+@keyframes draw-spark {
+    from { opacity: 0; transform: scale(.4) rotate(-40deg); }
+    60%  { opacity: 1; transform: scale(1.15) rotate(0); }
+}
+
+/* Sin 'to': la animación termina en el estilo propio, siempre visible */
+.draw-spark {
+    opacity: .9;
+    animation: draw-spark 700ms var(--ease-out) backwards, twinkle 6s ease-in-out 1.2s infinite;
+}
+
+/* Cambio de idioma: la página nueva crece como una luna desde el botón
+   ES/EN pulsado (Nav.tsx fija --moon-x/y/r). El borde de la luna es un
+   degradado de 160 px: dentro de esa franja el texto viejo y el nuevo se
+   funden, en vez de cortarse letra a letra con un borde duro. */
+@property --moon-radius {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+::view-transition-old(root) {
+    animation: none;
+}
+
+::view-transition-new(root) {
+    /* El navegador mezcla con plus-lighter por defecto: aclararía la franja */
+    mix-blend-mode: normal;
+    mask-image: radial-gradient(
+        circle at var(--moon-x, 100%) var(--moon-y, 0),
+        #000 calc(var(--moon-radius) - 160px),
+        transparent var(--moon-radius)
+    );
+    animation: moon-wax 700ms var(--ease-in-out) both;
+}
+
+@keyframes moon-wax {
+    from { --moon-radius: 0px; }
+    to   { --moon-radius: calc(var(--moon-r, 150vmax) + 160px); }
+}
+
+@keyframes lang-fade-in  { from { opacity: 0; } }
+@keyframes lang-fade-out { to   { opacity: 0; } }
+
+/* Con movimiento reducido: sólo un fundido breve, sin forma que se mueva */
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root) { animation: lang-fade-out 150ms ease both; }
+    ::view-transition-new(root) { mask-image: none; animation: lang-fade-in 150ms ease both; }
+}
+
+/* Entrada de la vista que se abre: la carta se asienta sobre la mesa */
+@keyframes view-enter {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.view-enter {
+    animation: view-enter 380ms var(--ease-out) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after {
@@ -269,106 +298,5 @@
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
     }
-}
-
-/* ==========================================================================
-   Decoración: polvo estelar, aurora del título, ornamentos
-   ========================================================================== */
-
-.star-layer {
-    position: absolute;
-    inset: -50%;
-    background-repeat: repeat;
-    will-change: transform;
-}
-
-.star-layer--1 {
-    background-image:
-        radial-gradient(1.6px 1.6px at 18% 22%, rgba(109, 78, 156, .55), transparent),
-        radial-gradient(1.4px 1.4px at 72% 14%, rgba(201, 162, 39, .45), transparent),
-        radial-gradient(1.2px 1.2px at 43% 67%, rgba(109, 78, 156, .40), transparent),
-        radial-gradient(1.8px 1.8px at 88% 78%, rgba(143, 121, 184, .50), transparent);
-    background-size: 340px 340px;
-    animation: star-drift 150s linear infinite;
-}
-
-.star-layer--2 {
-    background-image:
-        radial-gradient(1.1px 1.1px at 30% 45%, rgba(143, 121, 184, .40), transparent),
-        radial-gradient(1px 1px at 65% 30%, rgba(201, 162, 39, .35), transparent),
-        radial-gradient(1.3px 1.3px at 12% 82%, rgba(109, 78, 156, .35), transparent);
-    background-size: 220px 220px;
-    animation: star-drift 105s linear infinite reverse;
-    opacity: .75;
-}
-
-.star-layer--3 {
-    background-image:
-        radial-gradient(.9px .9px at 55% 58%, rgba(109, 78, 156, .30), transparent),
-        radial-gradient(.9px .9px at 20% 12%, rgba(226, 199, 124, .30), transparent);
-    background-size: 160px 160px;
-    animation: star-drift 200s linear infinite;
-    opacity: .6;
-}
-
-@keyframes star-drift {
-    from { transform: translate3d(0, 0, 0); }
-    to   { transform: translate3d(-340px, -340px, 0); }
-}
-
-/* Estrellas dentro de los bloques nocturnos */
-.night-stars::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-        radial-gradient(1.5px 1.5px at 22% 20%, rgba(255, 255, 255, .55), transparent),
-        radial-gradient(1.3px 1.3px at 74% 30%, rgba(226, 199, 124, .60), transparent),
-        radial-gradient(1.1px 1.1px at 38% 76%, rgba(255, 255, 255, .40), transparent),
-        radial-gradient(1.4px 1.4px at 84% 70%, rgba(195, 176, 220, .50), transparent);
-    background-size: 240px 240px;
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: .55; }
-    50%      { opacity: 1; }
-}
-
-.twinkle { animation: twinkle 5s ease-in-out infinite; }
-
-
-/* Destello de SparklesText (Magic UI) */
-@keyframes sparkle-pop {
-    0%   { opacity: 0; transform: scale(0) rotate(75deg); }
-    50%  { opacity: 1; transform: scale(1) rotate(120deg); }
-    100% { opacity: 0; transform: scale(0) rotate(150deg); }
-}
-
-/* Con movimiento reducido, la regla global dejaba los destellos en
-   opacity 0 para siempre: se perdía la decoración entera. Mejor
-   mostrarlos fijos, visibles pero quietos. */
-@media (prefers-reduced-motion: reduce) {
-    .sparkle-star {
-        animation: none !important;
-        opacity: .8 !important;
-        transform: rotate(115deg);
-    }
-}
-
-/* Entrada de las secciones que se abren desde el menú */
-@keyframes view-enter {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: none; }
-}
-
-.view-enter {
-    animation: view-enter 520ms cubic-bezier(.16, 1, .3, 1) both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .view-enter {
-        animation: none;
-        opacity: 1;
-    }
+    .view-enter { animation: none; }
 }
