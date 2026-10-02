@@ -4,6 +4,7 @@ import { useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 import { whatsapp } from "@/content";
 import { CardBack, ViewHeader, wrap } from "./Card";
+import { JournalDetail } from "./Journal";
 
 /**
  * Carta de producto. Si la foto todavía no existe, la carta queda boca abajo:
@@ -50,9 +51,10 @@ function ProductCard({
     );
 }
 
-export function Productos() {
+/** `initial` abre directamente el detalle de un producto (p. ej. desde #journal-cosmico). */
+export function Productos({ initial = null }: { initial?: string | null }) {
     const { productos, contacto } = useContent();
-    const [showDetail, setShowDetail] = useState(false);
+    const [open, setOpen] = useState<string | null>(initial);
     const [active, setActive] = useState(0);
     const media = productos.detail.media[active];
 
@@ -60,8 +62,10 @@ export function Productos() {
         <section id="productos">
             <ViewHeader id="#productos" title={productos.heading} />
 
-            {!showDetail ? (
-                <div className={`${wrap} grid gap-12 py-16 sm:grid-cols-2 md:py-24 lg:grid-cols-3 lg:gap-14`}>
+            {open === "journal" ? (
+                <JournalDetail onBack={() => setOpen(null)} />
+            ) : !open ? (
+                <div className={`${wrap} grid gap-12 py-16 sm:grid-cols-2 md:py-24 lg:grid-cols-4 lg:gap-10`}>
                     {productos.items.map((item) => (
                         <div key={item.id} className="mx-auto w-full max-w-[280px]">
                             <ProductCard
@@ -72,7 +76,7 @@ export function Productos() {
                                     item.hasDetail ? (
                                         <button
                                             type="button"
-                                            onClick={() => setShowDetail(true)}
+                                            onClick={() => setOpen(item.id)}
                                             className="btn btn-rose mt-4 self-center"
                                         >
                                             {productos.ui.viewDetails}
@@ -127,7 +131,7 @@ export function Productos() {
                     <div>
                         <button
                             type="button"
-                            onClick={() => setShowDetail(false)}
+                            onClick={() => setOpen(null)}
                             className="group -ml-1 inline-flex min-h-11 items-center gap-2 text-[0.9375rem] font-semibold text-ink-soft hover:text-ink"
                         >
                             <ArrowLeft aria-hidden="true" className="size-4 transition-transform duration-200 group-hover:-translate-x-1" />

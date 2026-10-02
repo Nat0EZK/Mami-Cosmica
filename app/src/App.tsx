@@ -5,7 +5,6 @@ import { About } from "@/components/site/About";
 import { Services } from "@/components/site/Services";
 import { Talleres } from "@/components/site/Talleres";
 import { Productos } from "@/components/site/Productos";
-import { Preventa } from "@/components/site/Preventa";
 import { Contacto } from "@/components/site/Contacto";
 import { Footer } from "@/components/site/Footer";
 
@@ -18,12 +17,23 @@ const VIEWS: Record<string, React.ComponentType> = {
     "#servicios": Services,
     "#talleres": Talleres,
     "#productos": Productos,
-    "#pre-venta": Preventa,
     "#contacto": Contacto,
+    // El Journal es un producto: su enlace abre Productos con su detalle.
+    // #pre-venta se mantiene para que los enlaces viejos sigan funcionando.
+    "#journal-cosmico": JournalView,
+    "#pre-venta": JournalView,
 };
 
+function JournalView() {
+    return <Productos initial="journal" />;
+}
+
+/** Sección a la que pertenece cada vista (para el menú, la tirada y el scroll). */
+const sectionOf = (hash: string | null) =>
+    hash === "#journal-cosmico" || hash === "#pre-venta" ? "#productos" : hash;
+
 /** La sección abierta se refleja en el hash de la URL, así que un enlace como
- *  …/#pre-venta abre directamente esa sección. */
+ *  …/#journal-cosmico abre directamente esa vista. */
 function viewFromHash(): string | null {
     const hash = window.location.hash;
     return hash in VIEWS ? hash : null;
@@ -53,7 +63,7 @@ export default function App() {
             if (href === "#inicio" || href === "#") {
                 window.scrollTo({ top: 0, behavior: "smooth" });
             } else {
-                scrollTo(href);
+                scrollTo(sectionOf(href) ?? href);
             }
         }, 60);
     }, []);
@@ -95,7 +105,7 @@ export default function App() {
     useEffect(() => {
         const initial = viewFromHash();
         if (!initial) return;
-        const timer = window.setTimeout(() => scrollTo(initial), 260);
+        const timer = window.setTimeout(() => scrollTo(sectionOf(initial) ?? initial), 260);
         return () => clearTimeout(timer);
     }, []);
 
@@ -103,10 +113,10 @@ export default function App() {
 
     return (
         <>
-            <Nav active={active} />
+            <Nav active={sectionOf(active)} />
 
             <main>
-                <Hero active={active} />
+                <Hero active={sectionOf(active)} />
                 <About />
 
                 {ActiveView && (

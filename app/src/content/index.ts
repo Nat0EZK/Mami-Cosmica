@@ -2,7 +2,7 @@ import * as es from "./es";
 import * as en from "./en";
 import type { Locale } from "./types";
 
-export type { Locale, ServiceItem, ServiceGroup, PreventaEdition } from "./types";
+export type { Locale, ServiceItem, ServiceGroup, JournalEdition } from "./types";
 
 /** Contacto directo por WhatsApp. Igual en ambos idiomas: no es texto, es un enlace. */
 export const whatsapp = "https://wa.me/message/4T7CI7BQ5PPDO1";

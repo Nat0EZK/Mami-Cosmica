@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Mami Cósmica** — sitio de una sola página (contenido en español) para una
 práctica de astrología y terapias holísticas: lecturas de carta astral,
-terapias, talleres, venta del Oráculo Cósmico y pre-venta del Journal Cósmico.
+terapias, talleres y venta del Oráculo Cósmico y del Journal Cósmico.
 Bilingüe: español (por defecto) e inglés.
 
 Es una aplicación **React + TypeScript + Vite + Tailwind v4**, dentro de `app/`.
@@ -62,13 +62,18 @@ dejaría casi 60 MB permanentes en el historial de git.
 ## Navegación: secciones como vistas, no rutas
 
 No hay React Router. `App.tsx` mapea hashes (`#servicios`, `#talleres`,
-`#productos`, `#pre-venta`, `#contacto`) a un `VIEWS` record; sólo una vista está
+`#productos`, `#contacto`) a un `VIEWS` record; sólo una vista está
 montada a la vez y se renderiza bajo Inicio + Sobre Mí, que siempre están
 visibles. Los enlaces internos (`a[href^="#"]`) se capturan con un único
 listener delegado en `document`, no con `onClick` por componente. El hash de
 la URL es la fuente de verdad — permite compartir enlaces directos y hace que
 atrás/adelante del navegador funcionen vía `popstate`. Si añades una sección
 nueva que deba comportarse como vista, regístrala en `VIEWS`.
+
+`#journal-cosmico` (y el viejo `#pre-venta`, para enlaces ya compartidos)
+abre Productos con el detalle del Journal (`Journal.tsx`, sus dos
+ediciones). `sectionOf()` en `App.tsx` traduce esos alias a `#productos`
+para el menú, la tirada y el scroll.
 
 ## Idiomas
 
@@ -86,7 +91,7 @@ vive en `content/index.ts`.
 ## Sistema visual — "El Mazo"
 
 El sitio se compone como su Oráculo Cósmico: cada vista es una carta
-numerada (I Servicios … V Contacto), con doble filete en el anverso y una
+numerada (I Servicios … IV Contacto), con doble filete en el anverso y una
 chakana en el reverso. La paleta sale de sus ilustraciones pastel y **cada
 color tiene un significado**:
 

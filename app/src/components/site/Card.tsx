@@ -6,13 +6,12 @@ export const NUMERALS: Record<string, string> = {
     "#servicios": "I",
     "#talleres": "II",
     "#productos": "III",
-    "#pre-venta": "IV",
-    "#contacto": "V",
+    "#contacto": "IV",
 };
 
 /** Camino al que pertenece cada vista: lo que se compra va en rosa, el resto en violeta. */
 export const toneOf = (href: string) =>
-    href === "#productos" || href === "#pre-venta" ? "tone-shop" : "tone-session";
+    href === "#productos" ? "tone-shop" : "tone-session";
 
 /* Chakana (cruz andina escalonada) centrada en (50, 80), módulo de 7 px. */
 const STEPS = [

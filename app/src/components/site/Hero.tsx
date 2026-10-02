@@ -12,7 +12,6 @@ const FACES: Record<string, { src: string; fit: "contain" | "cover" }> = {
     "#servicios": { src: "img/lecturas.jpg", fit: "contain" },
     "#talleres": { src: "img/utero-taller.png", fit: "contain" },
     "#productos": { src: "img/oraculomain.jpg", fit: "cover" },
-    "#pre-venta": { src: "img/journal-unicornio.png", fit: "cover" },
     "#contacto": { src: "img/aboutme.jpg", fit: "contain" },
 };
 

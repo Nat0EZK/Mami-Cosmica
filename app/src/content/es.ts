@@ -2,7 +2,7 @@
    Todo el texto del sitio en español vive aquí, separado de la maquetación.
    Editar una frase, un precio o una fecha se hace aquí, no en los componentes.
    ========================================================================== */
-import type { PreventaEdition, ServiceGroup } from "./types";
+import type { JournalEdition, ServiceGroup } from "./types";
 
 export const nav = {
     items: [
@@ -11,7 +11,6 @@ export const nav = {
         { href: "#servicios", label: "Servicios" },
         { href: "#talleres", label: "Talleres" },
         { href: "#productos", label: "Productos" },
-        { href: "#pre-venta", label: "Journal Cósmico" },
         { href: "#contacto", label: "Contacto" },
     ],
     openMenu: "Abrir menú",
@@ -23,7 +22,7 @@ export const hero = {
     subtitle: "Guía espiritual & sanadora cósmica",
     slogan:
         "La verdadera magia es la que se crea cuando decides profundizar en ti",
-    cta: { label: "Reservar Journal", href: "#pre-venta" },
+    cta: { label: "Journal Cósmico", href: "#journal-cosmico" },
     ctaSession: { label: "Agendar sesión", href: "#contacto" },
     deckLabel: "Saca una carta",
 };
@@ -175,6 +174,7 @@ export const productos = {
     heading: "Nuestros Productos Mágicos",
     items: [
         { id: "oraculo", name: "Oráculo Cósmico", image: "img/oraculomain.jpg", hasDetail: true },
+        { id: "journal", name: "Journal Cósmico", image: "img/journal-unicornio.png", hasDetail: true },
         { id: "kit", name: "Kit Ritual", image: "img/velas.jpg" },
         { id: "cristales", name: "Cristales", image: "img/cristales.jpg" },
     ],
@@ -204,8 +204,7 @@ export const productos = {
     },
 };
 
-export const preventa = {
-    badge: "Pre-venta · hasta el 30 de setiembre",
+export const journal = {
     heading: "Journal Cósmico",
     subheading: "Planifica · Conecta · Manifiesta",
     tagline: "Un año para volver a ti",
@@ -228,7 +227,7 @@ export const preventa = {
             body: "Elígela si quieres fuerza y poder para transformar tus miedos en deseos.",
             video: "videos/journal1.MP4",
         },
-    ] satisfies PreventaEdition[],
+    ] satisfies JournalEdition[],
     includesHeading: "Qué incluye",
     includes: [
         "Hojas sin fecha para tu journal diario: ciclo lunar, elementos, gratitud, deseos y la carta del oráculo del día.",
@@ -236,27 +235,8 @@ export const preventa = {
         "Los tránsitos astrológicos más importantes del año.",
         "Rituales, secretos y hechizos de magia cósmica.",
     ],
-    bonusHeading: "Regalos exclusivos",
-    bonusSubheading: "Para las primeras 11 personas de la pre-venta",
-    bonus: [
-        {
-            icon: "pencil",
-            title: "Nombre personalizado",
-            body: "Grabado en la portada de tu journal.",
-        },
-        {
-            icon: "postcard",
-            title: "Postal ilustrada",
-            body: "Con una ilustración original de la edición.",
-        },
-        {
-            icon: "moon",
-            title: 'Clase magistral "Crea tu año"',
-            body: "Acceso libre a la clase astrológica en vivo.",
-        },
-    ],
-    priceLabel: "Valor de pre-venta",
-    price: { pre: "S/ 111", regular: "S/ 133" },
-    priceNote: "Pre-venta válida hasta el 30 de setiembre · Entregas a partir del 29 de octubre",
-    ctaLabel: "Reservar por WhatsApp",
+    priceLabel: "Valor",
+    price: "S/ 133",
+    priceNote: "Entregas a partir del 29 de octubre",
+    ctaLabel: "Comprar por WhatsApp",
 };

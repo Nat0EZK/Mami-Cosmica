@@ -2,7 +2,7 @@
    English translation of the site copy. Shape must mirror es.ts exactly —
    this is a rewrite for tone/idiom, not a literal word-for-word rendering.
    ========================================================================== */
-import type { PreventaEdition, ServiceGroup } from "./types";
+import type { JournalEdition, ServiceGroup } from "./types";
 
 export const nav = {
     items: [
@@ -11,7 +11,6 @@ export const nav = {
         { href: "#servicios", label: "Services" },
         { href: "#talleres", label: "Workshops" },
         { href: "#productos", label: "Products" },
-        { href: "#pre-venta", label: "Cosmic Journal" },
         { href: "#contacto", label: "Contact" },
     ],
     openMenu: "Open menu",
@@ -22,7 +21,7 @@ export const hero = {
     title: "Mami Cósmica",
     subtitle: "Spiritual guide & cosmic healer",
     slogan: "True magic is created the moment you choose to go deeper within yourself",
-    cta: { label: "Reserve the Journal", href: "#pre-venta" },
+    cta: { label: "Cosmic Journal", href: "#journal-cosmico" },
     ctaSession: { label: "Book a session", href: "#contacto" },
     deckLabel: "Draw a card",
 };
@@ -174,6 +173,7 @@ export const productos = {
     heading: "Our Magical Products",
     items: [
         { id: "oraculo", name: "Cosmic Oracle", image: "img/oraculomain.jpg", hasDetail: true },
+        { id: "journal", name: "Cosmic Journal", image: "img/journal-unicornio.png", hasDetail: true },
         { id: "kit", name: "Ritual Kit", image: "img/velas.jpg" },
         { id: "cristales", name: "Crystals", image: "img/cristales.jpg" },
     ],
@@ -203,8 +203,7 @@ export const productos = {
     },
 };
 
-export const preventa = {
-    badge: "Pre-sale · through September 30",
+export const journal = {
     heading: "Cosmic Journal",
     subheading: "Plan · Connect · Manifest",
     tagline: "A year to come home to yourself",
@@ -227,7 +226,7 @@ export const preventa = {
             body: "Choose this one for the strength and power to transform your fears into desires.",
             video: "videos/journal1.MP4",
         },
-    ] satisfies PreventaEdition[],
+    ] satisfies JournalEdition[],
     includesHeading: "What's Included",
     includes: [
         "Undated pages for your daily journaling: lunar cycle, elements, gratitude, wishes, and your daily oracle card.",
@@ -235,27 +234,8 @@ export const preventa = {
         "The year's most important astrological transits.",
         "Rituals, secrets, and cosmic magic spells.",
     ],
-    bonusHeading: "Exclusive Gifts",
-    bonusSubheading: "For the first 11 people to pre-order",
-    bonus: [
-        {
-            icon: "pencil",
-            title: "Personalized Name",
-            body: "Engraved on your journal's cover.",
-        },
-        {
-            icon: "postcard",
-            title: "Illustrated Postcard",
-            body: "Featuring original artwork from your edition.",
-        },
-        {
-            icon: "moon",
-            title: '"Create Your Year" Masterclass',
-            body: "Free access to the live astrology class.",
-        },
-    ],
-    priceLabel: "Pre-sale Price",
-    price: { pre: "S/ 111", regular: "S/ 133" },
-    priceNote: "Pre-sale valid through September 30 · Delivery starts October 29",
-    ctaLabel: "Reserve via WhatsApp",
+    priceLabel: "Price",
+    price: "S/ 133",
+    priceNote: "Delivery starts October 29",
+    ctaLabel: "Buy via WhatsApp",
 };

@@ -11,7 +11,7 @@ export type ServiceGroup = {
     items: ServiceItem[];
 };
 
-export type PreventaEdition = {
+export type JournalEdition = {
     image: string;
     name: string;
     subtitle: string;
