@@ -2,7 +2,7 @@
    English translation of the site copy. Shape must mirror es.ts exactly —
    this is a rewrite for tone/idiom, not a literal word-for-word rendering.
    ========================================================================== */
-import type { JournalEdition, ServiceGroup } from "./types";
+import type { JournalCover, JournalMedia, ServiceGroup } from "./types";
 
 export const nav = {
     items: [
@@ -173,7 +173,7 @@ export const productos = {
     heading: "Our Magical Products",
     items: [
         { id: "oraculo", name: "Cosmic Oracle", image: "img/oraculomain.jpg", hasDetail: true },
-        { id: "journal", name: "Cosmic Journal", image: "img/journal-unicornio.png", hasDetail: true },
+        { id: "journal", name: "Cosmic Journal", image: "img/PortadaUnicornio.jpeg", hasDetail: true },
         { id: "kit", name: "Ritual Kit", image: "img/velas.jpg" },
         { id: "cristales", name: "Crystals", image: "img/cristales.jpg" },
     ],
@@ -209,24 +209,26 @@ export const journal = {
     tagline: "A year to come home to yourself",
     intro:
         "This edition is guided by unicorns, dragons, and elves — a feminine, enveloping, transformative energy to help you manifest and understand yourself in this lifetime.",
-    editionsHeading: "Choose Your Edition",
+    editionsHeading: "Choose Your Cover",
+    editionsNote: "Six hand-illustrated covers. The inside is the same in every one.",
     coverAltPrefix: "Cosmic Journal cover",
     watchVideoLabel: "Watch video",
-    editions: [
-        {
-            image: "img/journal-unicornio.png",
-            name: "Unicorn Edition",
-            subtitle: "Remember Your Magic and Power",
-            body: "Choose this one to invite tenderness, love, inspiration, and to awaken your stellar vision.",
-        },
-        {
-            image: "img/journal-dragona.png",
-            name: "Dragon Edition",
-            subtitle: "Integration and Transformation",
-            body: "Choose this one for the strength and power to transform your fears into desires.",
-            video: "videos/journal1.MP4",
-        },
-    ] satisfies JournalEdition[],
+    covers: [
+        { image: "img/PortadaUnicornio.jpeg", name: "Unicorn" },
+        { image: "img/PortadaDragonRosa.jpeg", name: "Pink Dragon" },
+        { image: "img/PortadaDragonVerde.jpeg", name: "Green Dragon" },
+        { image: "img/PortadaSirena.jpeg", name: "Mermaid" },
+        { image: "img/PortadaHadaValle.jpeg", name: "Valley Fairy" },
+        { image: "img/PortadaColibri.jpeg", name: "Hummingbird" },
+    ] satisfies JournalCover[],
+    insideHeading: "Inside",
+    insideNote: "What you'll find inside, whichever cover you choose.",
+    inside: [
+        { type: "video", src: "img/VideoAgendaDetalles.MP4", caption: "Pages and details" },
+        { type: "video", src: "img/VideoRitualesAgenda.MP4", caption: "Rituals and spells" },
+        { type: "video", src: "img/VideoStickers.MP4", caption: "Stickers in use" },
+        { type: "image", src: "img/Stickers_Agenda.jpeg", caption: "Stickers included" },
+    ] satisfies JournalMedia[],
     includesHeading: "What's Included",
     includes: [
         "Undated pages for your daily journaling: lunar cycle, elements, gratitude, wishes, and your daily oracle card.",

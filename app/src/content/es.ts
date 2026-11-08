@@ -2,7 +2,7 @@
    Todo el texto del sitio en español vive aquí, separado de la maquetación.
    Editar una frase, un precio o una fecha se hace aquí, no en los componentes.
    ========================================================================== */
-import type { JournalEdition, ServiceGroup } from "./types";
+import type { JournalCover, JournalMedia, ServiceGroup } from "./types";
 
 export const nav = {
     items: [
@@ -174,7 +174,7 @@ export const productos = {
     heading: "Nuestros Productos Mágicos",
     items: [
         { id: "oraculo", name: "Oráculo Cósmico", image: "img/oraculomain.jpg", hasDetail: true },
-        { id: "journal", name: "Journal Cósmico", image: "img/journal-unicornio.png", hasDetail: true },
+        { id: "journal", name: "Journal Cósmico", image: "img/PortadaUnicornio.jpeg", hasDetail: true },
         { id: "kit", name: "Kit Ritual", image: "img/velas.jpg" },
         { id: "cristales", name: "Cristales", image: "img/cristales.jpg" },
     ],
@@ -210,24 +210,26 @@ export const journal = {
     tagline: "Un año para volver a ti",
     intro:
         "Nos acompañan los unicornios, dragones y elfas: una energía femenina, envolvente y transformadora para materializar y comprenderte en esta encarnación.",
-    editionsHeading: "Elige tu edición",
+    editionsHeading: "Elige tu portada",
+    editionsNote: "Seis portadas ilustradas a mano. El interior es el mismo en todas.",
     coverAltPrefix: "Portada del Journal Cósmico",
     watchVideoLabel: "Ver video",
-    editions: [
-        {
-            image: "img/journal-unicornio.png",
-            name: "Edición Unicornio",
-            subtitle: "Recuerda tu magia y poder",
-            body: "Elígela si quieres traer ternura, amor, inspiración y activar tu visión estelar.",
-        },
-        {
-            image: "img/journal-dragona.png",
-            name: "Edición Dragona",
-            subtitle: "Integración y transformación",
-            body: "Elígela si quieres fuerza y poder para transformar tus miedos en deseos.",
-            video: "videos/journal1.MP4",
-        },
-    ] satisfies JournalEdition[],
+    covers: [
+        { image: "img/PortadaUnicornio.jpeg", name: "Unicornio" },
+        { image: "img/PortadaDragonRosa.jpeg", name: "Dragón Rosa" },
+        { image: "img/PortadaDragonVerde.jpeg", name: "Dragón Verde" },
+        { image: "img/PortadaSirena.jpeg", name: "Sirena" },
+        { image: "img/PortadaHadaValle.jpeg", name: "Hada del Valle" },
+        { image: "img/PortadaColibri.jpeg", name: "Colibrí" },
+    ] satisfies JournalCover[],
+    insideHeading: "Por dentro",
+    insideNote: "Lo que encontrarás dentro, elijas la portada que elijas.",
+    inside: [
+        { type: "video", src: "img/VideoAgendaDetalles.MP4", caption: "Hojas y detalles" },
+        { type: "video", src: "img/VideoRitualesAgenda.MP4", caption: "Rituales y hechizos" },
+        { type: "video", src: "img/VideoStickers.MP4", caption: "Stickers en uso" },
+        { type: "image", src: "img/Stickers_Agenda.jpeg", caption: "Stickers incluidos" },
+    ] satisfies JournalMedia[],
     includesHeading: "Qué incluye",
     includes: [
         "Hojas sin fecha para tu journal diario: ciclo lunar, elementos, gratitud, deseos y la carta del oráculo del día.",

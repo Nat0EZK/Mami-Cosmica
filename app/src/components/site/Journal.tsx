@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { ArrowLeft, Check, Play } from "lucide-react";
-import { whatsapp, type JournalEdition } from "@/content";
+import { whatsapp, type JournalMedia } from "@/content";
 import { useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 import { wrap } from "./Card";
 import { MoonPhases } from "./Magic";
 
 /**
- * Detalle del Journal Cósmico dentro de Productos: un solo producto con sus
- * dos ediciones, en vez de dos productos casi iguales en el catálogo.
+ * Detalle del Journal Cósmico. Las seis portadas sólo se diferencian por fuera,
+ * así que se muestran como un selector sobre una única portada grande, y el
+ * interior se enseña una sola vez en la galería "Por dentro".
  */
 export function JournalDetail({ onBack }: { onBack: () => void }) {
     const { journal, productos } = useContent();
+    const [picked, setPicked] = useState(0);
+    const cover = journal.covers[picked];
 
     return (
         <div className={`${wrap} view-enter py-16 md:py-24`}>
@@ -30,13 +33,67 @@ export function JournalDetail({ onBack }: { onBack: () => void }) {
             <p className="mt-1 text-ink-muted">{journal.subheading}</p>
             <p className="mt-6 max-w-[60ch] text-[1.1875rem] leading-[1.7] text-ink">{journal.intro}</p>
 
-            {/* Ediciones */}
+            {/* Portadas */}
             <h4 className="mt-16 text-[clamp(1.75rem,3.5vw,2.5rem)] text-ink">{journal.editionsHeading}</h4>
-            <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-10">
-                {journal.editions.map((edition) => (
-                    <EditionCard key={edition.name} edition={edition} />
-                ))}
+            <p className="mt-2 max-w-[52ch] text-ink-muted">{journal.editionsNote}</p>
+
+            <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
+                <div>
+                    <div className="card-face aspect-[3/4] overflow-hidden">
+                        <div className="absolute inset-[15px] overflow-hidden rounded-[4px] bg-ink">
+                            <img
+                                key={cover.image}
+                                src={cover.image}
+                                alt={`${journal.coverAltPrefix}, ${cover.name}`}
+                                decoding="async"
+                                className="absolute inset-0 size-full animate-[view-enter_380ms_cubic-bezier(.16,1,.3,1)_both] object-cover"
+                            />
+                        </div>
+                    </div>
+                    <p className="mt-5 font-display text-[1.75rem] text-ink">{cover.name}</p>
+                </div>
+
+                <ul className="grid grid-cols-3 gap-4 self-start sm:gap-5">
+                    {journal.covers.map((item, i) => (
+                        <li key={item.image}>
+                            <button
+                                type="button"
+                                onClick={() => setPicked(i)}
+                                aria-pressed={i === picked}
+                                className={cn(
+                                    "group block w-full overflow-hidden rounded-[6px] outline-offset-4 transition-all duration-200",
+                                    i === picked
+                                        ? "ring-2 ring-rose"
+                                        : "opacity-70 ring-1 ring-line hover:opacity-100",
+                                )}
+                            >
+                                <img
+                                    src={item.image}
+                                    alt={item.name}
+                                    loading="lazy"
+                                    decoding="async"
+                                    className="aspect-[3/4] w-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
+                                />
+                                <span className="block px-1 py-2 text-[0.8125rem] font-medium text-ink-soft">
+                                    {item.name}
+                                </span>
+                            </button>
+                        </li>
+                    ))}
+                </ul>
             </div>
+
+            {/* Interior: común a todas las portadas */}
+            <h4 className="mt-20 text-[clamp(1.75rem,3.5vw,2.5rem)] text-ink">{journal.insideHeading}</h4>
+            <p className="mt-2 max-w-[52ch] text-ink-muted">{journal.insideNote}</p>
+
+            <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {journal.inside.map((media) => (
+                    <li key={media.src}>
+                        <MediaTile media={media} label={journal.watchVideoLabel} />
+                    </li>
+                ))}
+            </ul>
 
             {/* Qué incluye + precio */}
             <div className="mt-20 grid items-start gap-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
@@ -66,58 +123,59 @@ export function JournalDetail({ onBack }: { onBack: () => void }) {
 }
 
 /**
- * Al pasar el cursor (o tocar en móvil) sobre una edición con vídeo, la
- * portada cede el paso a una vista previa muda en bucle.
+ * Foto fija, o vídeo que se reproduce mudo y en bucle al pasar el cursor
+ * (o al tocar en móvil).
  */
-function EditionCard({ edition }: { edition: JournalEdition }) {
-    const { journal } = useContent();
+function MediaTile({ media, label }: { media: JournalMedia; label: string }) {
     const [playing, setPlaying] = useState(false);
-    const hasVideo = Boolean(edition.video);
+    const isVideo = media.type === "video";
 
     return (
-        <article
+        <figure
             className="group"
-            onMouseEnter={() => hasVideo && setPlaying(true)}
+            onMouseEnter={() => isVideo && setPlaying(true)}
             onMouseLeave={() => setPlaying(false)}
-            onFocus={() => hasVideo && setPlaying(true)}
+            onFocus={() => isVideo && setPlaying(true)}
             onBlur={() => setPlaying(false)}
-            onClick={() => hasVideo && setPlaying(true)}
-            tabIndex={hasVideo ? 0 : undefined}
+            onClick={() => isVideo && setPlaying((v) => !v)}
+            tabIndex={isVideo ? 0 : undefined}
         >
-            <div className="card-face aspect-[3/4] overflow-hidden">
-                <div className="absolute inset-[15px] overflow-hidden rounded-[4px] bg-ink">
-                    <img
-                        src={edition.image}
-                        alt={`${journal.coverAltPrefix}, ${edition.name}`}
-                        loading="lazy"
-                        decoding="async"
-                        className={cn(
-                            "absolute inset-0 size-full object-cover transition-opacity duration-300",
-                            playing && hasVideo && "opacity-0",
-                        )}
-                    />
-                    {hasVideo && playing && (
+            <div className="relative aspect-[3/4] overflow-hidden rounded-[6px] bg-ink ring-1 ring-line">
+                {isVideo ? (
+                    <>
+                        {/* El póster del propio vídeo evita cargar el archivo hasta que hace falta */}
                         <video
-                            key={edition.video}
-                            src={edition.video}
-                            autoPlay
+                            src={media.src}
                             muted
                             loop
                             playsInline
+                            preload="metadata"
+                            autoPlay={playing}
+                            ref={(el) => {
+                                if (!el) return;
+                                if (playing) void el.play().catch(() => {});
+                                else el.pause();
+                            }}
                             className="absolute inset-0 size-full object-cover"
                         />
-                    )}
-                    {hasVideo && !playing && (
-                        <span className="pointer-events-none absolute right-3 bottom-3 inline-flex items-center gap-1.5 rounded-full bg-ink px-3.5 py-2 text-[0.8125rem] font-semibold text-stock">
-                            <Play aria-hidden="true" className="size-3 translate-x-px fill-current" />
-                            {journal.watchVideoLabel}
-                        </span>
-                    )}
-                </div>
+                        {!playing && (
+                            <span className="pointer-events-none absolute right-3 bottom-3 inline-flex items-center gap-1.5 rounded-full bg-ink px-3.5 py-2 text-[0.8125rem] font-semibold text-stock">
+                                <Play aria-hidden="true" className="size-3 translate-x-px fill-current" />
+                                {label}
+                            </span>
+                        )}
+                    </>
+                ) : (
+                    <img
+                        src={media.src}
+                        alt={media.caption}
+                        loading="lazy"
+                        decoding="async"
+                        className="absolute inset-0 size-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
+                    />
+                )}
             </div>
-            <h5 className="mt-6 font-display text-[1.75rem] text-ink">{edition.name}</h5>
-            <p className="mt-1 font-medium text-rose">{edition.subtitle}</p>
-            <p className="mt-3 max-w-[48ch] leading-relaxed text-ink-soft">{edition.body}</p>
-        </article>
+            <figcaption className="mt-3 text-[0.9375rem] font-medium text-ink-soft">{media.caption}</figcaption>
+        </figure>
     );
 }
