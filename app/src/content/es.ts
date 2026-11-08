@@ -216,10 +216,10 @@ export const journal = {
     watchVideoLabel: "Ver video",
     covers: [
         { image: "img/PortadaUnicornio.jpeg", name: "Unicornio" },
-        { image: "img/PortadaDragonRosa.jpeg", name: "Dragón Rosa" },
-        { image: "img/PortadaDragonVerde.jpeg", name: "Dragón Verde" },
-        { image: "img/PortadaSirena.jpeg", name: "Sirena" },
-        { image: "img/PortadaHadaValle.jpeg", name: "Hada del Valle" },
+        { image: "img/PortadaDragonRosa.jpeg", name: "Vuelo" },
+        { image: "img/PortadaDragonVerde.jpeg", name: "Dragona" },
+        { image: "img/PortadaSirena.jpeg", name: "Creo mi propia realidad" },
+        { image: "img/PortadaHadaValle.jpeg", name: "Pachamama" },
         { image: "img/PortadaColibri.jpeg", name: "Colibrí" },
     ] satisfies JournalCover[],
     insideHeading: "Por dentro",
@@ -227,7 +227,7 @@ export const journal = {
     inside: [
         { type: "video", src: "img/VideoAgendaDetalles.MP4", caption: "Hojas y detalles" },
         { type: "video", src: "img/VideoRitualesAgenda.MP4", caption: "Rituales y hechizos" },
-        { type: "video", src: "img/VideoStickers.MP4", caption: "Stickers en uso" },
+        { type: "video", src: "img/VideoStickers.MP4", caption: "Postal de regalo" },
         { type: "image", src: "img/Stickers_Agenda.jpeg", caption: "Stickers incluidos" },
     ] satisfies JournalMedia[],
     includesHeading: "Qué incluye",
